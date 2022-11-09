@@ -1,0 +1,80 @@
+<!-- Main -->
+<main class="main-container">
+  <div class="main-title">
+    <p class="font-weight-bold">DASHBOARD</p>
+  </div>
+
+
+  <div class="container">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Category
+              <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="/admin/adminCategory" method="post">
+              <input type="text" name="_category" required id="inputPassword5" class="form-control"
+                aria-describedby="passwordHelpBlock">
+          </div>
+          <div class="modal-footer">
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="table-responsive">
+    <!-- Button trigger modal -->
+
+    <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Category
+      </button>
+      <thead class="bg-secondary">
+        <tr>
+          <th>Category Name</th>
+          <th>Actions</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0;i<Categories.length;i++) { %>
+          <tr>
+            <td>
+              <%= Categories[i]._category %>
+            </td>
+
+            <td> <a href="/admin/editCategory<%= Categories[i]._id%>"
+                class="btn btn-primary align-content-end">Edit</a></td>
+            <td><a href="/admin/deleteCategory?id=<%= Categories[i]._id %> "
+                class="btn  btn-danger align-content-end">Delete</a></td>
+          </tr>
+
+          <% } %>
+      </tbody>
+    </table>
+  </div>
+
+
+</main>
+
+
+<script>
+  var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+  })
+</script>

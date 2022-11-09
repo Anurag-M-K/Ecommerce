@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+       
+        <form class="d-flex  " style="    margin-left: 907px; ;"   role="search">
+          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success justify-content-md-end" type="submit">Search</button>
+        </form>
+       
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">inventory</span> Cric Store
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+             <li class="sidebar-list-item">
+              <a href="/admin/admin-panel" class="btn btn-primary" style=" width: 215px;">  Dashboard</a>
+          </li>
+        
+
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+             <a href="/admin/adminCategory" class="btn btn-primary"  style=" width: 215px;">  Category</a>
+         </li>
+
+
+
+
+
+          <li class="sidebar-list-item">
+            <a href="/admin/product" class="btn btn-primary"  style=" width: 215px;"> Products</a>
+          </li>
+          <li class="sidebar-list-item"> 
+        <a href="/admin/adminBanner" class="btn btn-primary"  style=" width: 218px;"> Banner </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/admin/user-management" class="btn btn-primary"  style=" width: 218px">  Users </a> 
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/admin/brandCategory" class="btn btn-primary" style=" width: 218px">Brand </a>
+          </li>
+          <li class="sidebar-list-item">
+          <a href="/admin/adminLogout" class="btn btn-primary" style=" width: 218px">Log out</a> 
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+     

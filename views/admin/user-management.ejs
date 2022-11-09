@@ -1,0 +1,48 @@
+<main class="main-container">
+  <div class="main-title">
+    <p class="font-weight-bold">DASHBOARD</p>
+  </div>
+
+
+     
+      
+        <!--   -->
+
+
+        <table class="table table-bordered"  style="border: 1px solid black; margin-top: 75px ; margin-left: 75px;"  >
+
+          <thead class="bg-secondary" >
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0;i<userDetails.length;i++) { %>
+              <tr>
+               <td> <%= userDetails[i].Name %></td>
+              <td> <%= userDetails[i].Lname%></td>
+               <td><%= userDetails[i].Email%></td>
+               <td> <%= userDetails[i].Phone %></td>
+                 
+                
+
+                <td><a class="btn  btn-danger" href="/admin/delete-data?id=<%= userDetails[i]._id %> ">Block</a></td>
+                <td>  <a class="btn btn-primary" href="/admin/edit?id=<%= userDetails[i]._id%>">Unblock</a>
+                </td>
+
+              </tr>
+              <% } %>
+
+
+
+
+          </tbody>
+        </table>
+    </div>
+
+        

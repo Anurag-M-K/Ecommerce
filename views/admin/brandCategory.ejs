@@ -1,0 +1,58 @@
+<main class="main-container">
+    <div class="main-title">
+      <p class="font-weight-bold"></p>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add brand
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">  
+              <form action="/admin/brandCategory" method="post">
+                <input type="text" name="_brand" required id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+            </div>
+            <div class="modal-footer">
+            
+              <button type="submit" class="btn btn-primary">Save</button>
+           
+            </div> </form>
+          </div>
+        </div>
+      </div>
+    
+    
+      <script>
+        var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+    
+    myModal.addEventListener('shown.bs.modal', function () {
+      myInput.focus()
+    })
+      </script>
+                
+                              
+    
+                <div class="table-responsive">
+                  <table class="table table-bordered" style="border: 1px solid black;">
+                    <button type="button" class="btn btn-primary "  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Brand
+                      </button>
+                   <div style="height:17px ;"></div>
+                    <thead class="bg-secondary">
+                      <tr>
+                        <th>Brand Name</th>
+                        <th>Actions</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(var i=0;i<Brand.length;i++) { %>
+                        <tr>
+                          <td> <%= Brand[i]._brand %> </td>
+                         
+                          <td><a href="/admin/editBrand/<%= Brand[i]._id%>" class ="btn btn-primary align-content-end"   >Edit</a></td>
+                         <td><a href="/admin/deleteBrand?id=<%= Brand[i]._id %> " class="btn  btn-danger align-content-end"  >Delete</a></td>
+                        </tr>
+                        <% } %>

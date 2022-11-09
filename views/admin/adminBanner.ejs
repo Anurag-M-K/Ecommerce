@@ -1,0 +1,119 @@
+
+
+<main class="main-container">
+  <div class="main-title">
+    <p class="font-weight-bold">DASHBOARD</p>
+  </div>
+
+
+
+<section class="home-section mt-2 ">
+  <div class="container mb-3">
+    <!-- Button trigger modal -->
+<button
+type="button"
+class="btn btn-success"
+data-bs-toggle="modal"
+data-bs-target="#exampleModal"
+>
+ADD BANNER
+</button>
+<form action="/admin/addNewBanner" method="POST" enctype="multipart/form-data">
+  
+<!-- Modal -->
+<div
+class="modal fade"
+id="exampleModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-warning" id="exampleModalLabel">ADD BANNER</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <label for="newBannerName" class="text-primary">Banner Name : </label>
+      <input type="text" name="bannerName" id="bannerName"><br><br>
+      <label for="newBannerOffer" class="text-primary">Banner offer : </label>
+      <input type="number" name="bannerOffer" id="bannerOffer"><br><br>
+      <label for="newBannerImage" class="text-primary">ADD BANNER IMAGE</label>
+      <input type="file" name="bannerImage" id="bannerImage"><br>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="submit" class="btn btn-success">ADD</button>
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+</form>
+  <div class="container">
+    <table class="table  table-hover" style="border: 1px solid black; margin-top: 15px;">
+      <thead class="bg-secondary">
+        <tr >
+          <th scope="col">SNO</th>
+          <th scope="col">BANNER NAME</th>
+          <th scope="col">BANNER IMAGE</th>
+          <th scope="col">DELETE BANNER</th>
+        </tr>
+      </thead>
+      <tbody>
+         <% for(var i=0;i<banners.length;i++) { %>
+        <tr>
+          <th scope="row"><%= i+1 %></th>
+          <td><%= banners[i].bannerName %></td>
+          <td><img src="/images/<%= banners[i].bannerImage %>" alt="banner image" style="width:6em ; height:5em"></td>
+          <td><a class="btn btn-danger" onclick="deleteBanner('<%= banners[i]._id %>')">DELETE</a></td>
+        </tr>
+     <% } %>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
+<script>
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".sidebarBtn");
+  sidebarBtn.onclick = function () {
+    sidebar.classList.toggle("active");
+    if (sidebar.classList.contains("active")) {
+      sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+    } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+  };
+
+  var myModal = document.getElementById("myModal");
+  var myInput = document.getElementById("myInput");
+
+  myModal.addEventListener("shown.bs.modal", function () {
+    myInput.focus();
+  });
+
+
+  function deleteBanner(bannerId){
+    fetch("/admin/deleteBanner",{
+      method: 'DELETE',
+      headers: {
+        'Content-Type':'application/JSON'
+      },
+      body:JSON.stringify({
+        bannerId
+      })
+    }).then(()=>{
+      window.location='/admin/adminBannerPage'
+    
+    })
+  }
+</script>
+
+

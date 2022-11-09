@@ -1,0 +1,107 @@
+
+
+
+
+
+<style>
+  body{
+    overflow: hidden;
+  }
+	.input{
+    width: 368px;
+    height: 39px;
+    border-radius: 8px;
+	}
+</style>
+<section class="vh-100 bg-dark text-white">
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="col-sm-6 text-black ">
+		  
+		  <div
+			class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5" >
+		   <div class="m-5 p-5">
+			<form action="/signup" method="post"  style="width: 23rem  ;  margin-top: -4rem;" onsubmit="return validation()">
+			 <label for="otp verification"><h5 class="text-white">First Name</h5></label><br>
+			 <input type="text" id="name" name="Name" placeholder="First Name" aria-label="Large" class="form-control" ><br><br>
+			 <span id="usernameError"></span>
+  
+			 <label for="otp verification"><h5 class="text-white">Last Name</h5></label><br>
+			 <input type="text" id="name" required name="Lname"Enter your placeholder="Last Name" aria-label="Large" class="form-control" ><br><br>
+			 
+  
+             
+			 <label for="otp verification"><h5 class="text-white">Phone</h5></label><br>
+			 <input type="number"  required name="Phone" placeholder="Mobile NUmber" aria-label="Large" class="form-control" ><br><br>
+			 
+
+             <label for="otp verification"><h5 class="text-white">Email Address</h5></label><br>
+			 <input type="email"  required id="mail" name="Email" placeholder="Email" aria-label="Large" class="form-control" ><br><br>
+             <span id="emailError"></span>
+		  
+
+             
+             <label for="otp verification"><h5 class="text-white">Password</h5></label><br>
+			 <input type="password"  required id="pass" name="Password" placeholder="Password" aria-label="Large" class="form-control" ><br><br>
+             <span id="passwordError"></span>
+
+			 <input type="submit" value="Signup" class="btn btn-success rounded-pill">
+			</form>
+		   </div>
+		  </div>
+		</div>
+		<div class="col-sm-6 px-0 d-none d-sm-block">
+		  <img
+			src="https://w0.peakpx.com/wallpaper/613/558/HD-wallpaper-virat-kohli-icc-ind-vs-aus-india-latest-virat-kohli.jpg"
+			alt="Login image"
+			class="w-100 vh-100"
+			style="object-fit: cover; object-position: left"
+		  />
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  
+  
+<script>
+    function validation(){
+    let flag=0
+    let username= document.getElementById('name').value.trim()
+    let email = document.getElementById('mail').value.trim()      
+    let password = document.getElementById('pass').value.trim()
+  
+  
+    if(username==''){
+      document.getElementById('usernameError').innerHTML="Username Required"
+      flag=1
+    }else if(username.length<3){
+      document.getElementById('usernameError').innerHTML="Enter atleast 3 character"
+      flag=1
+    }else{
+      document.getElementById('usernameError').innerHTML=""
+    }
+  
+    if(email==''){
+        document.getElementById('emailError').innerHTML="email Required"
+        flag=1
+    }else{
+        document.getElementById('emailError').innerHTML=""
+    }
+  
+    if(password==''){
+        document.getElementById('passwordError').innerHTML="Password Required"
+        flag=1
+    }else{
+        document.getElementById('passwordError').innerHTML=""
+    }
+  
+    if(flag==1){
+        return false
+    }
+  
+    }
+  
+  
+    </script>
+ 

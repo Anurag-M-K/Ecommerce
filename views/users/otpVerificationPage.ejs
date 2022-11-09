@@ -1,0 +1,54 @@
+<section class="vh-100 bg-dark text-white">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 text-black ">
+          <div class="px-5 ms-xl-4 mt-5">
+            
+            <span class="h1 fw-bold mb-5 m-5 p-5 text-white">VERIFY YOUR EMAIL </span>
+          </div>
+  
+          <div
+            class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
+          >
+           <div class="m-5 p-5">
+            <form style="width: 23rem" onsubmit="return otpvalidation()" method="POST" action="/checkOtp">
+             <label for="otp verification"><h5 class="text-white">Enter the otp send to your email</h5></label><br>
+             <input type="text" name="otpSend" id="otpSend" placeholder="enter otp" aria-label="Large" class="form-control" ><br><br>
+             <span name="otpErrorDisplay"></span>
+             <input type="submit" id="checkOtp" class="btn btn-success rounded-pill">
+            </form>
+           </div>
+          </div>
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img
+            src="https://w0.peakpx.com/wallpaper/613/558/HD-wallpaper-virat-kohli-icc-ind-vs-aus-india-latest-virat-kohli.jpg"
+            alt="Login image"
+            class="w-100 vh-100"
+            style="object-fit: cover; object-position: left"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    function otpvalidation() {
+      let otp = document.getElementById("otpSend").value.trim();
+      var flag = 0;
+      if (otp === "") {
+        document.getElementById("otpErrorDisplay").innerHTML =
+          "invalid email";
+         flag=1
+      }
+      else
+      {
+        document.getElementById("otpErrorDisplay").innerHTML = "";
+      }
+      
+      if(flag == 1)
+      {
+        return false
+      }
+    }
+  </script>
