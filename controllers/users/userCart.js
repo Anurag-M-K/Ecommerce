@@ -28,7 +28,7 @@ const cart =  async(req,res)=>{
         cartCount = await userHelper.getCartCount(req.session.user._id)
        
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
-        console.log("total amount : ",totalAmount);
+       
         categoryHelper.getAllCategories().then((CategoryDetails) => {
 
             res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails})
@@ -50,7 +50,7 @@ const cart =  async(req,res)=>{
          userHelper.getTotalAmount(userData._id).then((result)=>{
            
             let totalAmount = result.totalAmount
-            console.log(totalAmount);
+          
             res.json({response,result})
          })
      

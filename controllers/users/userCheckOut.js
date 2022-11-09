@@ -8,8 +8,9 @@ const checkoutPage = (req,res)=>{
 }
 
 
-const payment = async (req,res)=>{
+const   payment = async (req,res)=>{
     let userData = req.session.user 
+
     if(req.session.user){
         let totalAmount = await userHelper.getTotalAmount(req.session.user._id)
        
@@ -19,15 +20,32 @@ const payment = async (req,res)=>{
                 res.render('users/addressPayment',{user:true,admin:false,userData,cartCount,products,totalAmount,CategoryDetails})
             })
         
-        
-        
-    
-       
     }
     }
    
+const checkOut = async(req,res)=>{
+    let products = await userHelper.getCartProductList(req.body.userId)
+    let totalPrice = await userHelper.getTotalAmount(req.body.userId)
+  
+   userHelper.placeOrder(req.body,products,totalPrice).then((response)=>{
+
+   })
+   console.log("cartProducts",products);
+    console.log(req.body)
+
+
+
+
+
+
+
+
+
+    
+}
 
 module.exports = {
     checkoutPage,
-    payment
+    payment,
+    checkOut
 }

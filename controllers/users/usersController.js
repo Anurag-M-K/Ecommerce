@@ -39,8 +39,7 @@ const userHomePage = async(req, res) => {
   productHelpers.getAllProducts().then((products) => {
     bannerHelper.showBanner().then((banners) => {
       categoryHelper.getAllCategories().then((CategoryDetails) => {
-        console.log("categories",CategoryDetails);
-        res.render("users/userHome", {
+           res.render("users/userHome", {
           user: true,
           admin: false,
           products,

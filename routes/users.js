@@ -40,6 +40,7 @@ router.post('/change-product-quantity',userCart.productCount)
 
 //checkout
 router.get('/users/checkOut',userCheckOut.checkoutPage)
+router.post('/place-order',userCheckOut.checkOut)
 
 
 

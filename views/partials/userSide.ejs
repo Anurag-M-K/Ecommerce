@@ -16924,6 +16924,7 @@ color: #b3b3b3;
 					<form action="#" method="post">
             <select name="Category" class="form-select align-content-center" value="<%= products.Category %>" aria-label="Default select example">
               <% for (var i=0;i<CategoryDetails.length;i++) { %>
+               
               <option selected><%= CategoryDetails[i]._category %></option>
               <% } %>
      
@@ -17094,17 +17095,7 @@ color: #b3b3b3;
 	<!-- start-smooth-scrolling -->
 	<script src="js/move-top.js"></script>
 	<script src="js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
-			});
-		});
-	</script>
+	
 	<!-- //end-smooth-scrolling -->
 
 	<!-- smooth-scrolling-of-move-up -->

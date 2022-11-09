@@ -89,7 +89,7 @@ module.exports = {
             
             
            
-            // console.log(cartItems[0].products);
+         
 
             resolve(cartItems)
         
@@ -113,7 +113,7 @@ module.exports = {
         details.count = parseInt(details.count)
         details.quantity = parseInt(details.quantity)
 
-        // let cartId = ObjectId(details.cart) 
+    
         
 
         return new Promise((resolve,reject)=>{
@@ -135,7 +135,7 @@ module.exports = {
                 $inc : {"products.$.quantity":details.count }
             }).then((response)=>{
                 resolve({status:true})
-                console.log({status:true});
+                
             })
           
         }
@@ -193,16 +193,28 @@ module.exports = {
                     }
                 ]).toArray()
              
-
+                
               
                 response.TotalAmount = TotalAmount
-                console.log("total",TotalAmount[0].total);
+               
                 resolve(TotalAmount[0].total)
-                    
+                
                
             
             })
            
+     },
+     placeOrder : (order)=>{
+        return new  Promise((resolve,reject)=>{
+            
+        })
+         
+     },
+     getCartProductList:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let cartProducts = await db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectId(userId)})
+            resolve(cartProducts.products)
+        })
      }
     
 }

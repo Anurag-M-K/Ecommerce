@@ -1,157 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-	<title>Electro Store Ecommerce Category Bootstrap Responsive Web Template | Checkout :: w3layouts</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
-	/>
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
-	<!-- //Meta tag Keywords -->
-
-	<!-- Custom-Files -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- Bootstrap css -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- Main css -->
-	<link rel="stylesheet" href="css/fontawesome-all.css">
-	<!-- Font-Awesome-Icons-CSS -->
-	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- pop-up-box -->
-	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- menu style -->
-	<!-- //Custom-Files -->
-
-	<!-- web fonts -->
-	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
-	<!-- //web fonts -->
-
-</head>
-
-
-<body>
-	<!-- top-header -->
-
-	<!-- checkout page -->
-	<div class="privacy py-sm-5 py-4">
-		<div class="container py-xl-4 py-lg-2">
-			<!-- tittle heading -->
-			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-				<span>C</span>heckout
-			</h3>
-			<!-- //tittle heading -->
-			
-			<div class="checkout-left">
-				<div class="address_form_agile mt-sm-5 mt-4">
-					<h4 class="mb-sm-4 mb-3">Add a new Details</h4>
-					<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
-						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
-							<div class="information-wrapper">
-								<div class="first-row">
-									<div class="controls form-group">
-										<input class="billing-address-name form-control" type="text" name="name" placeholder="Full Name" required="">
-									</div>
-									<div class="w3_agileits_card_number_grids">
-										<div class="w3_agileits_card_number_grid_left form-group">
-											<div class="controls">
-												<input type="text" class="form-control" placeholder="Mobile Number" name="number" required="">
-											</div>
-										</div>
-										<div class="w3_agileits_card_number_grid_right form-group">
-											<div class="controls">
-												<input type="text" class="form-control" placeholder="Landmark" name="landmark" required="">
-											</div>
-										</div>
-									</div>
-									<div class="controls form-group">
-										<input type="text" class="form-control" placeholder="Town/City" name="city" required="">
-									</div>
-									<div class="controls form-group">
-										<select class="option-w3ls">
-											<option>Select Address type</option>
-											<option>Office</option>
-											<option>Home</option>
-											<option>Commercial</option>
-
-										</select>
-									</div>
-								</div>
-								<button class="submit check_out btn">Delivery to this Address</button>
-							</div>
-						</div>
-					</form>
-					<div class="checkout-right-basket">
-						<a href="payment.html">Make a Payment
-							<span class="far fa-hand-point-right"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
 
 <!-- --------------------------------------------------Payment-------------------------------------- -->
 
+<section class="bg-light">
+	<div class="container mt-5">
+		<form action="" id="checkout-form">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>Enter delivery details</h2>
+				</div>
+				<label >Address</label>
 
-<div class="container">
-	<div class="row">
-		<div class="border mb-3 " style="width:25rem ;">
-			<h3>Total Amount : RS. <%=totalAmount %></h3>
-			<hr>
+				<input type="text" class="form-control" id="address" name="address">
+				<label for="">Pincode</label>
 
-			<h>Payment Method</h>
-			<br><hr>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-				<label class="form-check-label" for="flexRadioDefault1">
-				  COD
-				</label>
-				<br>
-			  </div>
-			  <div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-				<label class="form-check-label" for="flexRadioDefault2">
-				 Online Payment
-				</label>
-				<br>
-				<button class="btn btn-primary">Check OUT</button>
-			  </div>
+				<input type="text" class="form-control" id="pincode" name="pincode">
+
+				<label for="">Mobile</label>
+				<input type="text" class="form-control" id="mobile" name="mobile">
+				<input type="text" name="userId" id="" value="<%= userData._id %>" >
+			</div>
 		</div>
-	</div>
-</div>
-</body>
+			<div class="col-md-4">
+				<div class="container mt-5 ml-5 checkout ">
+					<h5>Total Amount : RS. <%= totalAmount %></h5>
+					<hr>
+					<div class="payment">
+						<p>Payment Method</p>
+						<label for="" class="radio-inline">
+							<input type="radio" name="payment-method" value="COD" checked>COD 
+						 </label>
+						 <label for=" " class="radio-inline mt-2">
+						 <input type="radio" name="payment-method" value="ONLINE">Online Payment
+						</label>
+						<button class="btn btn-primary float-right" type="submit">Checkout</button>
+					</div>
+				</div>
+			  </div>
+			</div>
+		</form>
 
-</html>
-</body>
-</html>
+	</div>
+
+	<br><br><br>
+</section>
+
+<script>
+	$("#checkout-form").submit((e)=>{
+		e.preventDefault()
+		console.log("checking");
+		$.ajax({
+			url:"/place-order",
+			method:"post",
+			data:$('#checkout-form').serialize(),
+			success:(response)=>{
+				alert(response)
+			}
+
+		})	
+	})
+</script>
+<style>
+	input[type=radio]{
+		width: 20px;
+		height: 20px;
+	}
+	label.radio-inline{
+		display : flex;
+		align-items:center;
+	}
+	.checkout{
+		border: 1px solid;
+		border-radius: 3px;
+		padding: 30px;
+	}
+	.payment{
+		padding-bottom: 16px;
+	}
+</style>
+
+
+
+
