@@ -28,9 +28,10 @@ const checkOut = async(req,res)=>{
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
   
    userHelper.placeOrder(req.body,products,totalPrice).then((response)=>{
-
+    console.log("PRICE",totalPrice);
+    res.json({status:true})
    })
-   console.log("cartProducts",products);
+   
     console.log(req.body)
 
 

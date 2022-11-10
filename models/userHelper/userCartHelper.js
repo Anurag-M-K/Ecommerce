@@ -204,9 +204,61 @@ module.exports = {
             })
            
      },
-     placeOrder : (order)=>{
-        return new  Promise((resolve,reject)=>{
+     placeOrder : (order,total,userId)=>{
+        return new  Promise(async(resolve,reject)=>{
+            let cartProducts = await db.get().collection(collection.CART_COLLECTION).aggregate([
+                {
+                    $match : {user : ObjectId(userId)}
+                },
+                {
+                    $unwind : '$products'
+                },
+                {
+                    $lookup : {
+                        from : collection.PRODUCT_COLLECTION,
+                        localField:'products.item',
+                        foreignField:'_id',
+                        as:'products'
+                    }
+                },
+                {
+                    $project : {
+                        item:'$products.item',
+                        quantity: '$products.quantity',
+                        sumOfProducts: '$products.sumOfProducts',
+                        products : 1
+                    }
+                },
+                {
+                    $project : {
+                        _id : 0,
+                        quantity : 1,
+                        productDetails : { $arrayElemAt: ['$product',0]}
+                    }
+                }
+            ]).toArray()
+            console.log("this is cartProducts ",cartProducts);
+            let status = order['payment-method']==='COD'?'placed':'pending'
             
+            let orderObj = {
+                deliveryDetails:{
+                    mobile:order.mobile,
+                    address:order.address,
+                    pincode:order.pincode,
+                    products:cartProducts,
+                    orderStatus:status,
+                    userId : ObjectId(order.userId),
+                    paymentMethod:order['payment-method'],
+                    date:new Date(),
+                    expected_Date: new Date(+ new Date() + 7 * 40 * 24 * 60 * 1000)
+                },
+               
+                
+            }
+            db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
+                resolve()
+               
+            })
         })
          
      },

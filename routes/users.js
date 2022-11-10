@@ -8,6 +8,11 @@ const userCheckOut = require('../controllers/users/userCheckOut')
 const userSinglePage = require('../controllers/users/userSinglePage')
 const navButtons = require('../controllers/users/navButtons')
 const categoryBasedPage = require("../controllers/users/categoryBasedPage")
+const usersOrderList = require("../controllers/users/usersOrderList")
+
+
+
+
 const verifyLogin = (req,res,next)=>{
     if(req.session.loggedIn){
         next()
@@ -53,6 +58,8 @@ router.get('/homeButton',navButtons.homeButton)
 
 //plceorder
 router.get('/placeOrder',userCheckOut.payment)
+router.get('/orderPlaced',usersOrderList.orderSuccess)
+
 
 
 //category based page

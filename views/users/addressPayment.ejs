@@ -53,8 +53,11 @@
 			method:"post",
 			data:$('#checkout-form').serialize(),
 			success:(response)=>{
-				alert(response)
-			}
+				// alert(response)
+				
+					window.location.href='/orderPlaced'
+				}
+			
 
 		})	
 	})
