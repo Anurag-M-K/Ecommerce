@@ -6,11 +6,19 @@ const db = require("../../config/connection")
 
 
 module.exports = {
-    getUserOrders : (userId)=>{
+     getUserOrders : (userId)=>{
         return new Promise(async(resolve,reject)=>{
-            let orders =await db.get().collection(collection.ORDER_COLLECTION)
-            .find({userId:ObjectId(userId)}).toArray()
-            resolve(orders)
+            let productList = await db.get().collection(collection.ORDER_COLLECTION).find().toArray()
+            // let productList =await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+            //     {
+            //         $match : { user: ObjectId(userId)}
+            //     }
+            // ]).toArray()
+            
+            
+            resolve(productList)
+            console.log('hosidffffffffffff',productList);
+            
         })
     }
 }

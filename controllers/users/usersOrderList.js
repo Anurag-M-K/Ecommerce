@@ -27,13 +27,35 @@ res.render('users/orderPlaced',{user:true,admin:false,products,cartCount,totalAm
 
 
 const orderList = async (req,res)=>{
-  let products =await userCartHelper.getCartProducts(req.session.user._id)
+
   let userData = req.session.user
-  let order = await userOrderHelper.getUserOrders(req.session.user._id)
+  let cartCount = null;
+  if (req.session.userLoggedIn) {
+      cartCount = await userCartHelper.getCartCount(req.session.user._id)
+  }
+  let products =await userCartHelper.getCartProducts(req.session.user._id)
+  console.log("user:",userData._id);
+ 
+  let productList =await userOrderHelper.getUserOrders(req.session.user._id)
+  let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
+
   categoryHelper.getAllCategories().then((CategoryDetails) => {
-  res.render("users/orderList",{user:true,admin:false,order,userData,products,CategoryDetails})
-  })
-}
+
+
+      res.render("users/orderList",{
+        user:true,
+        admin:false,
+        productList,
+        totalAmount,
+        userData,
+        products,
+        cartCount,
+        CategoryDetails
+       
+      })
+    })
+ 
+  }
 
 
 

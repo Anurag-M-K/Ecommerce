@@ -13,7 +13,7 @@ module.exports = {
            
 
         }
-       
+                                                                                                                                                
         return new Promise(async(resolve,reject)=>{
             let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectId(userId)})
            
@@ -143,6 +143,7 @@ module.exports = {
         })
         
     },
+    
     getTotalAmount : (userId)=>{
         
        
@@ -206,44 +207,81 @@ module.exports = {
      },
      placeOrder : (order,total,userId)=>{
         return new  Promise(async(resolve,reject)=>{
+
+            
             let cartProducts = await db.get().collection(collection.CART_COLLECTION).aggregate([
-                   
                 {
-                    $match : {user:ObjectId(userId)}
+                    $match: { user: ObjectId(userId) }
                 },
-               
                 {
-                    $unwind : "$products"
+                    $unwind: '$products'
                 },
-              
-                
                 {
                     $lookup: {
-                        from :collection.PRODUCT_COLLECTION,
-                        localField : 'item',
-                        foreignField : "_id",
-                        as : "products"
-                    }
-                    
-                },
-                {
-                    $project:{
-                        item:'$products.item',
-                        quantity:'$products.quantity',
-                        products: 1
+                        from: collection.PRODUCT_COLLECTION,
+                        localField: 'products.item',
+                        foreignField: '_id',
+                        as: 'product'
                     }
                 },
                 {
-                    $project:{
-                        _id:0,
-                        item:1,
-                        quantity:1,
-                        products:{$arrayElemAt:['$products',0]}
+                    $project: {
+                        item: '$products.item',
+                        quantity: '$products.quantity',
+                      
+                        product: 1
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        quantity: 1,
+                        productDetails: { $arrayElemAt: ['$product', 0] }
                     }
                 }
-                
+
             ]).toArray()
-            console.log("hello ", cartProducts.products)
+            console.log('cartProduct checking :',cartProducts);
+            
+            // let cartProducts = await db.get().collection(collection.CART_COLLECTION).aggregate([
+                   
+            //     {
+            //         $match : {user:ObjectId(userId)}
+            //     },
+               
+            //     {
+            //         $unwind : "$products"
+            //     },
+     
+                
+            //     {
+            //         $lookup: {
+            //             from :collection.PRODUCT_COLLECTION,
+            //             localField : 'item',
+            //             foreignField : "_id",
+            //             as : "products"
+            //         }
+                    
+            //     },
+            //     {
+            //         $project:{
+            //             item:'$products.item',
+            //             quantity:'$products.quantity',
+            //             products: 1
+            //         }
+            //     },
+            //     {
+            //         $project:{
+            //             _id:0,
+            //             item:1,
+            //             quantity:1,
+            //             products:{$arrayElemAt:['$products',0]}
+            //         }
+            //     }
+                
+            // ]).toArray()
+
+            
     
           
             let status = order['payment-method']==='COD'?'placed':'pending'
@@ -258,14 +296,17 @@ module.exports = {
                     paymentMethod:order['payment-method'],
                     date:new Date(),
                     expected_Date: new Date(+ new Date() + 7 * 40 * 24 * 60 * 1000),
-                    products:cartProducts.products,
-                    totalAmount: total.totalAmount
+                    products:cartProducts,
+                    totalAmount: order.totalAmount
                 },
                
                 
             }
+            
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
                 resolve(response)
+
+               
                
             })
         })
@@ -275,6 +316,14 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let cartProducts = await db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectId(userId)})
             resolve(cartProducts.products)
+        })
+     },
+     getPaymentMethod : (userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let paymentMethod = await db.get().collection(collection.ORDER_COLLECTION).findOne({user:ObjectId(userId)})
+            resolve(response)
+
+           
         })
      }
     

@@ -24,20 +24,23 @@
               <th>Pincode</th>
               <th>Mobile</th>
               <th>Amount</th>
-              <th>Payment</th>
+              <th>Payment Method</th>
+              <th>Expected Delivery</th>
+              <th>View</th>
             </tr>
           </thead >
           <tbody >
-              <% for(var i=0;i<order.length;i++) { %>
+              <% for(var i=0;i<productList.length;i++) { %>
             <tr>
-              <td> <%=order[i].deliveryDetails.date %> </td>
-              <td> <%= order[i].deliveryDetails.address %> </td>
-              <td> <%= order[i].deliveryDetails.pincode %> </td>
-              <td> <%= order[i].deliveryDetails.mobile %> </td>
-              <td> <%= order[i].deliveryDetails.totalAmount %></td>
-              <td> <%= order[i].deliveryDetails.status %></td>
+              <td> <%=productList[i].deliveryDetails.date %> </td>
+              <td> <%= productList[i].deliveryDetails.address %> </td>
+              <td> <%= productList[i].deliveryDetails.pincode %> </td>
+              <td> <%= productList[i].deliveryDetails.mobile %> </td>
+              <td> <%= productList[i].deliveryDetails.totalAmount %></td>
+              <td><%= productList[i].deliveryDetails.paymentMethod %></td>
+              <td> <%= productList[i].deliveryDetails.expected_Date %></td>
               <td>
-                <a href="/view-order-products?id=<%=order[i]._id %>" class="btn btn-primary"> View products </a>
+                <a href="/view-order-products?id=<%=productList[i]._id %>" class="btn btn-primary"> View products </a>
               </td>
              </tr>
             <% } %>
