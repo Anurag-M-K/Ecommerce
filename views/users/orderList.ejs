@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+ 
+
+
+
+<div class="container">
+  <div class="row mt-4">
+    
+    <div class="table-responsive">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
+        <a href="" class="btn btn-success">OrderList</a>
+        </div>
+        <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;">
+          <thead class="bg-secondary">
+            <tr>
+              <th>Date</th>
+              <th>Address</th>
+              <th>Pincode</th>
+              <th>Mobile</th>
+              <th>Amount</th>
+              <th>Payment</th>
+            </tr>
+          </thead >
+          <tbody >
+              <% for(var i=0;i<order.length;i++) { %>
+            <tr>
+              <td> <%=order[i].deliveryDetails.date %> </td>
+              <td> <%= order[i].deliveryDetails.address %> </td>
+              <td> <%= order[i].deliveryDetails.pincode %> </td>
+              <td> <%= order[i].deliveryDetails.mobile %> </td>
+              <td> <%= order[i].deliveryDetails.totalAmount %></td>
+              <td> <%= order[i].deliveryDetails.status %></td>
+              <td>
+                <a href="/view-order-products?id=<%=order[i]._id %>" class="btn btn-primary"> View products </a>
+              </td>
+             </tr>
+            <% } %>
+          
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<br><br><br><br>
+  
+  
+  
+   
+
+
+    

@@ -9,7 +9,7 @@ const userSinglePage = require('../controllers/users/userSinglePage')
 const navButtons = require('../controllers/users/navButtons')
 const categoryBasedPage = require("../controllers/users/categoryBasedPage")
 const usersOrderList = require("../controllers/users/usersOrderList")
-
+const userOrderHelper = require('../models/userHelper/userOrderHelper')
 
 
 
@@ -60,6 +60,9 @@ router.get('/homeButton',navButtons.homeButton)
 router.get('/placeOrder',userCheckOut.payment)
 router.get('/orderPlaced',usersOrderList.orderSuccess)
 
+
+//orderlist
+router.get('/orderList',usersOrderList.orderList)
 
 
 //category based page

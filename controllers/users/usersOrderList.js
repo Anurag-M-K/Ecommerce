@@ -1,5 +1,6 @@
 const categoryHelper = require("../../models/categoryHelper")
 const userCartHelper = require("../../models/userHelper/userCartHelper")
+const userOrderHelper = require('../../models/userHelper/userOrderHelper')
 
 const orderSuccess = async(req,res)=>{
    let userData = req.session.user
@@ -25,6 +26,17 @@ res.render('users/orderPlaced',{user:true,admin:false,products,cartCount,totalAm
 
 
 
+const orderList = async (req,res)=>{
+  let products =await userCartHelper.getCartProducts(req.session.user._id)
+  let userData = req.session.user
+  let order = await userOrderHelper.getUserOrders(req.session.user._id)
+  categoryHelper.getAllCategories().then((CategoryDetails) => {
+  res.render("users/orderList",{user:true,admin:false,order,userData,products,CategoryDetails})
+  })
+}
+
+
+
 
 
 
@@ -33,5 +45,6 @@ res.render('users/orderPlaced',{user:true,admin:false,products,cartCount,totalAm
 
 
 module.exports = {
-    orderSuccess
+    orderSuccess,
+    orderList
 }

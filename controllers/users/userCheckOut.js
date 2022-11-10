@@ -27,7 +27,8 @@ const checkOut = async(req,res)=>{
     let products = await userHelper.getCartProductList(req.body.userId)
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
   
-   userHelper.placeOrder(req.body,products,totalPrice).then((response)=>{
+   userHelper.placeOrder(req.body,req.body.userId,totalPrice,products).then((response)=>{
+    console.log("products",products);
     console.log("PRICE",totalPrice);
     res.json({status:true})
    })
