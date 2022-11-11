@@ -317,7 +317,7 @@ console.log('total amount :',TotalAmount[0].total);
           
             
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                resolve(response)
+                resolve(response.insertedId)
       
                
             })

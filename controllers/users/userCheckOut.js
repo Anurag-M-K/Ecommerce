@@ -1,5 +1,6 @@
 const userHelper = require('../../models/userHelper/userCartHelper')
 const categoryHelper = require("../../models/categoryHelper")
+const razorPayModel = require('../../models/userHelper/razorPayModel')
 
 const checkoutPage = (req,res)=>{
     let userData = req.session.user
@@ -27,12 +28,21 @@ const checkOut = async(req,res)=>{
     let products = await userHelper.getCartProductList(req.body.userId)
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
   
-   userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((response)=>{
-
-    res.json({status:true})
+   userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((orderId)=>{
+   
+    if(req.body['paymnet-method']==='COD'){
+        res.json({codSuccess:true})
+    }else{
+        razorPayModel.generateRazorPay(orderId,totalPrice).then((response)=>{
+res.json(response)
+        })
+    }
+   
    })
    
-    console.log(req.body)
+   const verifyPayment = (req,res)=>{
+    console.log(req.body);
+   }
 
 
 

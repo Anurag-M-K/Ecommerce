@@ -1,14 +1,13 @@
-
 <!-- --------------------------------------------------Payment-------------------------------------- -->
 
 <section class="bg-light">
 	<div class="container mt-5">
 		<form action="" id="checkout-form">
-			<div class="row"z>
+			<div class="row" z>
 				<div class="col-md-6">
 					<h2>Enter delivery details</h2>
 				</div>
-				<label >Address</label>
+				<label>Address</label>
 
 				<input type="text" class="form-control" id="address" name="address">
 				<label for="">Pincode</label>
@@ -17,70 +16,117 @@
 
 				<label for="">Mobile</label>
 				<input type="text" class="form-control" id="mobile" name="mobile">
-				<input type="text" name="userId" id="" value="<%= userData._id %>" >
+				<input type="text" name="userId" id="" value="<%= userData._id %>">
+			</div>
+	</div>
+	<div class="col-md-4">
+		<div class="container mt-5 ml-5 checkout ">
+			<h5>Total Amount : RS. <%= totalAmount %>
+			</h5>
+			<hr>
+			<div class="payment">
+				<p>Payment Method</p>
+				<label for="" class="radio-inline">
+					<input type="radio" name="payment-method" value="COD" checked>COD
+				</label>
+				<label for=" " class="radio-inline mt-2">
+					<input type="radio" name="payment-method" value="ONLINE">Online Payment
+				</label>
+				<button class="btn btn-primary float-right" type="submit">Checkout</button>
 			</div>
 		</div>
-			<div class="col-md-4">
-				<div class="container mt-5 ml-5 checkout ">
-					<h5>Total Amount : RS. <%= totalAmount %></h5>
-					<hr>
-					<div class="payment">
-						<p>Payment Method</p>
-						<label for="" class="radio-inline">
-							<input type="radio" name="payment-method" value="COD" checked>COD 
-						 </label>
-						 <label for=" " class="radio-inline mt-2">
-						 <input type="radio" name="payment-method" value="ONLINE">Online Payment
-						</label>
-						<button class="btn btn-primary float-right" type="submit">Checkout</button>
-					</div>
-				</div>
-			  </div>
-			</div>
-		</form>
+	</div>
+	</div>
+	</form>
 
 	</div>
 
 	<br><br><br>
 </section>
 
+
 <script>
-	$("#checkout-form").submit((e)=>{
+	$("#checkout-form").submit((e) => {
 		e.preventDefault()
 		console.log("checking");
 		$.ajax({
-			url:"/place-order",
-			method:"post",
-			data:$('#checkout-form').serialize(),
-			success:(response)=>{
-				// alert(response)
-				
-					window.location.href='/orderPlaced'
+			url: "/place-order",
+			method: "post",
+			data: $('#checkout-form').serialize(),
+			success: (response) => {
+				alert(response)
+				if (response.codSuccess) {
+					window.location.href = '/orderPlaced'
+				} else {
+					razorPayPayment(response)
 				}
-			
+			}
 
-		})	
-	})
+
+		})
+	});
+
+	function razorPayPayment(order){
+		var options = {
+			"key": "rzp_test_ZzZWhbQTjsVswA", // Enter the Key ID generated from the Dashboard
+			"amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			"currency": "INR",
+			"name": "Anurag",
+			"description": "Test Transaction",
+			"image": "https://example.com/your_logo",
+			"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+			"handler": function (response) {
+
+				verifyPayment(response,order)
+
+			},
+
+			"callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+			"prefill": {
+				"name": "Gaurav Kumar",
+				"email": "gaurav.kumar@example.com",
+				"contact": "9999999999"
+			},
+			"notes": {
+				"address": "Razorpay Corporate Office"
+			},
+			"theme": {
+				"color": "#3399cc"
+			}
+		}; 
+		var rzp1 = new Razorpay(options);
+		rzp1.open();
+	}
+
+	function verifyPayment(payment,order){
+		$.ajax({
+			url:'/verify-payment',
+			data:{
+				payment,
+				order
+			},
+			method:'post'
+		})
+	}
 </script>
 <style>
-	input[type=radio]{
+	input[type=radio] {
 		width: 20px;
 		height: 20px;
 	}
-	label.radio-inline{
-		display : flex;
-		align-items:center;
+
+	label.radio-inline {
+		display: flex;
+		align-items: center;
 	}
-	.checkout{
+
+	.checkout {
 		border: 1px solid;
 		border-radius: 3px;
 		padding: 30px;
 	}
-	.payment{
+
+	.payment {
 		padding-bottom: 16px;
 	}
 </style>
-
-
-
-

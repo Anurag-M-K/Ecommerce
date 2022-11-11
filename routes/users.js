@@ -47,7 +47,8 @@ router.delete('/removeCartProduct')
 router.get('/users/checkOut',userCheckOut.checkoutPage)
 router.post('/place-order',userCheckOut.checkOut)
 
-
+//category based page
+router.get('/categoryBasedPage',categoryBasedPage.categoryBased)
 
 //single page
 router.get('/users/singlePage',userSinglePage.single)
@@ -65,9 +66,11 @@ router.get('/view-order-products',order.viewOrderProducts)
 //orderlist
 router.get('/orderList',usersOrderList.orderList)
 
+//payment
+router.post('/verify-payment')
 
-//category based page
-router.get('/categoryBasedPage',categoryBasedPage.categoryBased)
+
+
 
 
 
