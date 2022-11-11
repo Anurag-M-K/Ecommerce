@@ -10,7 +10,7 @@ const navButtons = require('../controllers/users/navButtons')
 const categoryBasedPage = require("../controllers/users/categoryBasedPage")
 const usersOrderList = require("../controllers/users/usersOrderList")
 const userOrderHelper = require('../models/userHelper/userOrderHelper')
-
+const order = require('../controllers/users/order')
 
 
 const verifyLogin = (req,res,next)=>{
@@ -40,7 +40,7 @@ router.post('/checkOtp',usersController.checkOtp)
 router.get('/add-to-cart/:id',userCart.addToCart)
 router.get('/users/cart',userCart.cart)
 router.post('/change-product-quantity',userCart.productCount)
-
+router.delete('/removeCartProduct')
 
 
 //checkout
@@ -59,6 +59,7 @@ router.get('/homeButton',navButtons.homeButton)
 //plceorder
 router.get('/placeOrder',userCheckOut.payment)
 router.get('/orderPlaced',usersOrderList.orderSuccess)
+router.get('/view-order-products',order.viewOrderProducts)
 
 
 //orderlist

@@ -6,19 +6,29 @@
 
 
  
+<body class="bg-light">
+  
 
 
 
-<div class="container">
+<div class="container " >
   <div class="row mt-4">
     
     <div class="table-responsive">
       <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
-        <a href="" class="btn btn-success">OrderList</a>
+       
         </div>
+       
         <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;">
+         
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Search Your Order" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <span class="btn btn-success px-5 " style="border-radius:8 px ;" id="basic-addon2">Search</span>
+</div>
           <thead class="bg-secondary">
+           
             <tr>
+              <th>Image</th>
               <th>Date</th>
               <th>Address</th>
               <th>Pincode</th>
@@ -26,19 +36,22 @@
               <th>Amount</th>
               <th>Payment Method</th>
               <th>Expected Delivery</th>
+              <th>Status</th>
               <th>View</th>
             </tr>
           </thead >
           <tbody >
               <% for(var i=0;i<productList.length;i++) { %>
             <tr>
+              <td><%=productList[i].deliveryDetails.Pitcure %></td>
               <td> <%=productList[i].deliveryDetails.date %> </td>
               <td> <%= productList[i].deliveryDetails.address %> </td>
               <td> <%= productList[i].deliveryDetails.pincode %> </td>
               <td> <%= productList[i].deliveryDetails.mobile %> </td>
-              <td> <%= productList[i].deliveryDetails.totalAmount %></td>
+              <td> <%= productList[i].deliveryDetails.TotalAmount[0].total %></td>
               <td><%= productList[i].deliveryDetails.paymentMethod %></td>
               <td> <%= productList[i].deliveryDetails.expected_Date %></td>
+              <td><%= productList[i].deliveryDetails.status %> </td>
               <td>
                 <a href="/view-order-products?id=<%=productList[i]._id %>" class="btn btn-primary"> View products </a>
               </td>
@@ -51,10 +64,11 @@
   </div>
 </div>
 <br><br><br><br>
+<br><br><br><br>
   
   
   
    
 
 
-    
+</body>

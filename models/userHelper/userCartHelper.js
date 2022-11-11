@@ -248,7 +248,52 @@ module.exports = {
 
             
     
-          
+            const TotalAmount = await db.get().collection(collection.CART_COLLECTION).aggregate([
+                   
+                {
+                    $match : {user:ObjectId(userId)}
+                },
+               
+                {
+                    $unwind : "$products"
+                },
+                {
+                    $project:{
+                        item:'$products.item',
+                        quantity:'$products.quantity'
+                    }
+                },
+                
+                {
+                    $lookup: {
+                        from :collection.PRODUCT_COLLECTION,
+                        localField : 'item',
+                        foreignField : "_id",
+                        as : "products"
+                    }
+                    
+                },
+                {
+                    $project:{
+                        item:1,quantity:1,products:{$arrayElemAt:['$products',0]}
+                    }
+                },
+                {
+                    $group:{
+                        _id:'',
+                        total:{
+                            $sum:{
+                                $multiply:[
+                                    "$quantity","$products.Price"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]).toArray()
+console.log('total amount :',TotalAmount[0].total);
+
+
             let status = order['payment-method']==='COD'?'placed':'pending'
             
             let orderObj = {
@@ -262,7 +307,8 @@ module.exports = {
                     date:new Date(),
                     expected_Date: new Date(+ new Date() + 7 * 35 * 24 * 60 * 1000),
                     products:cartProducts,
-                    TotalAmount: total.totalAmount
+                    status:status,
+                    TotalAmount:TotalAmount
                 },
                
                
@@ -272,7 +318,7 @@ module.exports = {
             
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
                 resolve(response)
-console.log('jk',orderObj)       
+      
                
             })
         })
@@ -290,6 +336,13 @@ console.log('jk',orderObj)
             resolve(response)
 
            
+        })
+     },
+     removeCartProduct : (details)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CART_COLLECTION).updateOne(
+                {_id:ObjectId(details)}
+            )
         })
      }
     

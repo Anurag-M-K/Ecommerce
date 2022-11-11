@@ -1,0 +1,18 @@
+
+
+
+<div class="container">
+    <div class="row">
+       
+        <% for(var i=0;i<orderItem.length;i++) { %>
+        <div class="card" style="width: 18rem;">
+            <img src="/images/<%= orderItem[i].Pitcure %>" style="width: 100px; height:120px" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= orderItem[i].productName %>  </h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+          <% } %>
+    </div>
+</div>

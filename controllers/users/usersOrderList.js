@@ -38,7 +38,7 @@ const orderList = async (req,res)=>{
  
   let productList =await userOrderHelper.getUserOrders(req.session.user._id)
   let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
-
+           
 
   let paymentMethod= await userCartHelper.getPaymentMethod(req.session.user._id)
 

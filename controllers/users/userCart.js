@@ -58,6 +58,10 @@ const cart =  async(req,res)=>{
     })
  }
 
+ const removeCartOneProduct = (req,res)=>{
+    userCartHelper.removecartpro
+ }
+
 
 
 module.exports = {

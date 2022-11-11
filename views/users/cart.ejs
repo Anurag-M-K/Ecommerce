@@ -102,11 +102,27 @@
 					console.log("response check",response);
 					document.getElementById(proId).innerHTML=quantity+count
 					document.getElementById("totalAmount").innerHTML = response.result //routil ninn pass cheythath ivide successinte ullil
-					//pass cheytha response.result enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
+					//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
 					
 				}
 				
 			}
+		})
+	}
+
+
+	//fetch
+	function removeProduct(cartId,productId){
+		fetch('/removeCartProduct',
+		{
+			method:'delete',
+			headers:{'content-type':'application/json'},
+			body:JSON.stringify({
+				cart:cartId,
+				product:productId
+			})
+		}).then((response)=>{
+			window.location.reload()
 		})
 	}
 	
