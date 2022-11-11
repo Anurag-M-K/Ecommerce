@@ -205,6 +205,7 @@ module.exports = {
             })
            
      },
+     
      placeOrder : (order,total,userId)=>{
         return new  Promise(async(resolve,reject)=>{
 
@@ -241,45 +242,9 @@ module.exports = {
                 }
 
             ]).toArray()
-            console.log('cartProduct checking :',cartProducts);
             
-            // let cartProducts = await db.get().collection(collection.CART_COLLECTION).aggregate([
-                   
-            //     {
-            //         $match : {user:ObjectId(userId)}
-            //     },
-               
-            //     {
-            //         $unwind : "$products"
-            //     },
-     
-                
-            //     {
-            //         $lookup: {
-            //             from :collection.PRODUCT_COLLECTION,
-            //             localField : 'item',
-            //             foreignField : "_id",
-            //             as : "products"
-            //         }
-                    
-            //     },
-            //     {
-            //         $project:{
-            //             item:'$products.item',
-            //             quantity:'$products.quantity',
-            //             products: 1
-            //         }
-            //     },
-            //     {
-            //         $project:{
-            //             _id:0,
-            //             item:1,
-            //             quantity:1,
-            //             products:{$arrayElemAt:['$products',0]}
-            //         }
-            //     }
-                
-            // ]).toArray()
+            
+            
 
             
     
@@ -295,18 +260,19 @@ module.exports = {
                     userId : ObjectId(order.userId),
                     paymentMethod:order['payment-method'],
                     date:new Date(),
-                    expected_Date: new Date(+ new Date() + 7 * 40 * 24 * 60 * 1000),
+                    expected_Date: new Date(+ new Date() + 7 * 35 * 24 * 60 * 1000),
                     products:cartProducts,
-                    totalAmount: order.totalAmount
+                    TotalAmount: total.totalAmount
                 },
+               
                
                 
             }
+          
             
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
                 resolve(response)
-
-               
+console.log('jk',orderObj)       
                
             })
         })

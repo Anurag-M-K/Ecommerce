@@ -101,7 +101,9 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3 ">
                         <% for(var j=0 ;j<products.length;j++ ) { %>
                             <% if(products[j]._category) { %>
-                        <img class="img-fluid" src="/images/<%=products[i].picture %>" alt="">
+                        <img class="img-fluid" src="/images/<%= products[i].Pitcure %>" style="        width: 9rem;
+						height: 12rem;
+						margin-left: 3rem;" alt="">
                         <% } %>
                         <% } %>
                     </a>
@@ -121,38 +123,20 @@
 
 	<!------------------------------------------------- top Products ---------------------------------------------------->
 	<div class="ads-grid py-sm-4 py-4 bg-light" >
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa6dGQmAXCw-VWDAHa4oGT1BjGQOPgt7S0IQbbjlRC&s" alt="">
+		<div>
+		<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIREhUSExIVExUXGRYVFRUXFRYXFhUYFxIWFxgXFRgYHSggGBolHRYXITEhJSktLjAuFyAzODMsNygtLisBCgoKDg0OGxAQGi0lHyUtLy0tLS0vLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIARMAtwMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgECBAUHAwj/xABIEAABAwIDBAcDBwkFCQAAAAABAAIDBBEFEiEGMUFRBxMiYXGBkVKhwRQycoKisdEIIzNCYpKzwvBzdLLh8SQ0NUNTZJPD0v/EABoBAQACAwEAAAAAAAAAAAAAAAADBAECBQb/xAAzEQACAQIDBAkDBAMBAAAAAAAAAQIDEQQhMQUSQZETIjJRYXGBocGx0fBysuHxFIKSUv/aAAwDAQACEQMRAD8A7iiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgNdjmLw0cL6id4ZGwXJ4k8GtHFxOgC+fNqelyuqpCKd5pIQey1lusIG4ySHj3NsNba71sulvE5MRxIUMZPU09mnXsmQgF7yOJaCGDlZ3NahvRs5zbtnF/oG1/VRyqRi7MkjSlJXSNbQdJGKQuDhWSOsb5ZD1jT3HPc28CujbIdNjZHtiromxXIHXx3yAnjIxxJaO8E+AChNF0cSg3llaG8mAuJ8zaywsX2JMdzG/duaRqfE81r00L2ubf49S17H1Ix4IBBBB1BGoIPEL0XM+gjHjUULqZ5JfSuyC+/q3XLL+BD2+DQumKYhCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiLAxfEBTxGUgutYWFrm/j6+Sw3Yyk27I4hBRONdUykWDppyTzvM6w9FNMKcy2tio9jVKKgy5S9rDLI+zTleQXk5bjdv4clGLSxuHUCSHjq8PB1AtZ3HXd3FVWlKV7l+F4wSSOpz5bGwUWxkDVX4tis7KRpB/OP7Ga24njbyUGkp3OeRPJUOfcdoOAYC65GUN395Wm6pZ3JVJxysdD6GsPMdVVv3B7I9O8Pcfiutrk+xePQUcgjlL3OkbCxrg24F5JGlzzw1y7u8rrCtwd0c6pFp3tqERFuRhERAEREAREQBERAEREAREQBERAFpdrIC+lksLltn27mkZvs5lulQhYaurG0JOMlJcDkVNUNMjhoCDqL3tdod8Vk1joQHE5SW6k8B4249y0vSjTtw2rhljDhHKx2YXuMzHagHho5mncoXT0UtY17mVBsXuDozcD52ZvHkR5qrKnZ5svQrKT6q7/AmmK10T42NBOYuuAWOHzdeWg0Op0WW+nisJA0agEaai4XPqnAaxmgkuG6iz16O2hnia6Oexf2ctiON99lq6X/kl6RrtqxKaSldU11PCy9jlzHlZ7pD9m/uXeFz/AKK9nwyBlc9xdLUMzAG1mMc67cul9WhhXQFZpw3SjXq79ktF8u7CIikIAiIgCIiAIiIAiIgCIiAIiIAiIgCIqE2QHKunWaCWnbSgk1TLVLGAH9GCY33I01vu/ZXEqKpkhOZrraEb/C9/64KcbS4yZMUmmk0Ae+AcQ1jXZW+RyA/WJVMa2eEzesjIa8+jvG33rSq9ySUtGkyWnByjvR1TIVHi0jL5C7XU3JOvHevCnBmlBku4XBk11IvqL8Da4XpLgc7HWcB5G6zY6QxtOlibrSU4rTU3hTlJ9bQ7Tsl0uUlXPFSsppIA6zGuJZ1bTazG6HiQGjvIXTl8gUceQXb2XGxuN4PC3JfTWzm1UNS0WzMdoDnAs47jYgnjzU9ZxpKO87OXeQ06c5qTirqOrXiSVERYNQiIgCIiAIiIAiIgCIiAIiIAioTZaDE8bvdkXm7/AOfxUNevCjHem/5JaVGdWVoo2NbiLItCbu4Nv9/JRjE8Vklu3l+qNB68VzrbDbgtJipXXcD2pdHDQ6tZfeebvS+8e2yu2jp3PFS+njLQ0guBGe5N7EmwtYfvKu6NevS36kXGL4Xzt48fTmi1TlSpT3YO8u+3Hw4fPiXY1scamZ8udsQda4NjqGgE3zDfbks2iwg07BGZes00NuHqs9+09GzX5XADu7OU93evKnx6gncbVTHkczlF+4G1/JbSlN01B6LTL8ZtFRU3LizWOw4Zr5Qfco9jOGTm4ihMr3HK0Ntpfi650XSfksRF8wPmsjD4mAki1xxUEpdGt98CXt9VHBKnDq+nfeenkYAdbxnIfB40PqpDRbaS0wDRThotcseXXJJ0cDYEDfprddoqJrNJG/cFGKzCqeYkmKOV5u0SSAPJdrmy5r2a3U+OgUdTaFKrJdPT3reL+jy9zajhqsIONKpuptcF9ddCPYX0uVoc2MwxPu4NaDmFg5wAHEk67/cunt2kkvq1nofxXOYuj1kcscsU7rMe15bI0EnK4HRzbW3cQVLhA7Xcf6/09Fpj8bG8f8WTSs769/jf2NcNhspdOk3fLT4sSijx+J+j/wA3utmIsT3H8VuQbqAxxZTewOltdfTktvheLmOzHgZNwtvb+IW+F2lfq1svG31I8Rgks6XK/wBCUIsOPEYnaCRt/T71mLqxkpK8Xc50ouOqsERFsYCIiAIiIAiIgNFtDWkDqm7yLu8OA81FKyPOx7b2zNcy97EZgQD6n3LYVVT1kj3g3u428ja3jYLCnIvfgd68rjK7qVXNcHl6P75noMNRUKajzOFSR20IsRcEeSl2yWCRixLrzyMY9gtpGx5eGuPtEkRaAjSTvWm2upjFVyNO5xMjTzDr/EkeSk2A4dUNdDM9mUxMDQC4t6xm9jXdkhrmlzR5N3EXXt1WjVpqpF5NX5/mZ5ydN05uD4O359SM7TYZD+clhBYWujEsZN2gyxB92HhZ4e0t8LWAWt2UwP5XVRxm+QHPIQNzWan1Nh5qV47hUbQ4GoZHnJmyXzlzjmy3Le1lGZ1uz+sbrOwjDfkNHPKdZSwgkGwaSLBo52v6qHE1VCHjwJMPSc5+BFcY2mnZUPdBJkYCWhoF2EN0uAd17X0W22a6SurzCqaTfLldG3dvvmBN+W5QetdqGjU7rDUnkPFZtfs3PTxNmlytDiBlv2m3FxcWt6FVJYelKChLj6Fnp6qqSlHNL1R1sbX008TnRSAuAvlN2uHiCttR2c5xaOywCNnLVrXOI53u0fVXAOqXQNmNvRFGyGdlstm9bc2sAAM4AJBsBci/PRczGbJlTW9SvLvWV7fJfw20YzW5NJPv4fxzOmAkblex/qtDDtRSOsPlMBJ4CRvuuVsoa6J+okYe8OBXFcZR1TXoXt26us/czXFeRKoJB7TT5hULlrIJWBN/6+/8VdDiUsBzMcSBvYdx5i3A9/8AmrF4yrCnKD3ouzN92MspK6OhUk4kY17dzgHDzC91Gti63PG+I74zp9F1yPeHKSr12HqqrSjNcV/fuebxFF0asoPh9OHtYIiKYhCIiALX43NkhdwJ7I89D7rrYKO7TVF3NjHDtHxOg+Pqq2Mq9HRlL05k+Gp79VL15Gia0AWAsBwAtbwHJYk5KznBeFQF5SaPRU3mcy6SI+3C624SA/YIHuPqtHRYhUNJLXvJd2CSM5NyDlFwdSQFKdvYXSMs0XDLPdzAzBtx+9qrMDidPh+VjC98czS0AXcQHh9vBeq2XiVTwkN7Te3fK7yb5o5O06DeIduMU/bT2NLHDPJPEZusJJFjJfc05iBfx+0pntu4Mo2sFySQTy331UixSjzMic5ozNLb8f1SCPU/fzKje20wfCGji4W9VHLFvEpScbWytrxM0aHRZa3IpshgQFQKiTUBpLRbc7df+uZV2Itdi1WKZhLGR639om/aG/gLeqzto69sEbY2HtnTTvFj7rrI2QgEVbHzfHIXesYb7nH1WspzUZSWqjJr/VXJHThuZab0U1+q/wArlmRqiwQPrG0upaHWJ42tcXt5C/etpt1s5BBC18ANmuLX3JOvnfut4nykOz9FbE6qQiwjG87rZQD72rwq6WOWOohbOJCRnI/6Z3ADQd+hVjEYxqrFqT3UotpJ2e9e7btZWVpK7XyqVHDqUGrZvet6aL1eRA8Dpg6aIHk8+YjJXTtl8GJna1maznDrA0/q31PdpxXM6AlssXAhwB+4hfQXR7TDJJLbUkNB7soJ95Cj2lRdTFwjfJrP0Zf2fiugwFSS13rf9JJfLL67ZRw1icHD2X7/ACdx81oaigki+fCW9+XT94aLpipZQ1tl0Z5x6vlpyZXo7Tqwyl1vZ80cuZUBXyVbQ0qbYjs7TzaluR3tMs0nxFiD42WK3Y6m4mRw5F418bALny2RWTtFp8/sy/HaeGavJSXhk/lGNsDD+akl9t+UfRYPxc70UsXhTU7Y2hjGhrWiwA3AL3Xcw9JUaUaa4I4uJrdNVlU737cPYIiKYgCIiAoVC8Qmzyvd36eA0HuCk+LVYhic7juaObju/HyUKDnHkB7/AL1xdrVl1aa8/hfJ1NnU+1P0+We5esSocvXqhxv6lXCNo4BcZ3ep1ItRdyJ1WEzVLprDI10Zja53ElzSSBvI09y2+zuDsoY8jSXEm73kWud27gFsnPVma63eIn0fRp2je/mzapFVJ9JJZ2t6HvVSBwI3grmm21SY3AOkY1m8Eklxtwygb/D3KY4tUvgidJplAN9bWsDz8FwrGMRfVTOkcd57I5Dgujs2nKrJtacfPgV8XOFCkna7enpq2Z8eOFz8xjDje5cTb4FbWhxqVkwnGUutYAjRo3gDz1UepafKtllsAvUUcPBJ3WuXp3HnquJqzSi5Oy0++XHx1NxUbVVPacHNY5/zi1vzvEOuCFH2zPbo17ml3zsriL+Nt6uHaN+AXnBq4nyUyhGOUVb+CFyb1MoSHOwn2gfRfRnRs8Gk+u4HyaxfN0x7TfAr6F6KXk08o4CTTzYL/BUMYrYim/CS/adDDu+DqrucH+5E5REQqBERAEREAREQBERARzbBpyxn9ojzIHwBUYbIpftU3/ZyR+q5p+HxUGc5eW2st3EZcUn8fB6HZq3qHk39/kyzKj5v8lgmZeTpXvd1UTS+R3BoJyDiXW3eCoU027LM6LpW1Ml1SBfXQbyo7jm20FPzeeAbx8+Sv27Y/D4Wlwa6QtD7O7QYC7L83cXX53HiuQyZ5nGSQkk6knf/AKLsYLZTqveq8MrfmhQxmPp0Vamrtq6fC12r246G22k2yqa0ZHERxcI28fpO3uPu7lpqKHW5XvDS3O7RZYjAXp6GFjTSUVZI85VrSm7yd2VjbrdX1T+A3lW57C6tjbftHeVc4WILlZTlZbiVfTMsFjE5ndwWWzcizYPGY9sfRK+kOi6K1ED7by8eGVjf5SvnjD6Mzz5Acoy3c47mNB7Tj4ffZfT+ykTWUkLWiwDbW7wTf33XOxMourGN80pPnZF2k5Rw88spOOf6VJ/Ovg/TcoiLUhCIiAIiIAiIgCIiA8pog9pa4XBBBHMFQXEtlp2yWiAew7nFwGUcnX+Cn6KticJSxCW+tPy3kWcNi6mHbcOPB6efmRGg2LYNZpC88WtOVvrvPuUioaCKBuWKNrBxsN/id581mIt6WHp0laEbfnea1sTVrO9STf05HLukSgbUyyseQ0ZWRtJ3Bzspbf6zguKVNI6N7mPFnNNnC24hdT6XZHFri0nKZrP7w1rg2/ddo9AoDiGJsqIfzt/lDMrWyAaStva0nJzRqHcdyzs7f61TWMpteKs7J+T492TzV7TY5xahB5OMV5PLNc8143XnpnSBo+CtYCe042HJUbHrc68u5HC+8+S7GZyy0HOb8Bu71fUP0sFeRYLGL7lYeQuekYsvYPXhEL9wXs471lAPqyAY26B/6Q+0Aey36PG3evo7oqxL5Rh0TibuaXMd9Jp19b3818xPNiDy08iu59AFfmiqofZeyQfXaWn+GqNanHtJZ3fv/S5FhVG47r0y9v7fM62iIojAREQBERAEREAREQBERAEREBwLpIx2N+anYczy/PJybYkht/auR4WXOntU56W9noKGpBie53Wh0pj0JjJdz3lpOa1/ZOpUANRbfm/dVjBUYUKKgnfi33t6/b0M4mtKtU3n5eh6C69BzKxHVbf2iV5dY5/zgcvJvFWXNcCDdPWaozGw3JHGT4K9krRuYR5KpqeTD7gsK2rYPYnKF5PdYLwdK8/q+9Wuhc89o2HABHJ8ELFHld/6Ddm5qWCWeZjozP1YYx2jsjA4hxG9tzIdD7PeuCMhDSDcr6l6OcYZVYfA5r87mNbFJrctexouHd9sp+sFXq3SN4knREVc3CIiAIiIAiIgCIiAIiIAiLWbSVnUUlRL7EUjgOZDDYeZsgPmLaTEjVVM9STfrZHuaf2L2jHkwNHktYVUGzQOQsqLqaZIrlpCorrKlhyQBUVQFVAWKoV1uasvfwWAVIXWugDEbTVNOTo6OOYDvY4sefR8foFya6mnQxWdXi0Q3CRksP2Os++NRVl1Wbx1PpFERUSUIiIAiIgCIiAIiIAiIgCiXSlU9Xhs/NxiZ5PmYD7rqWrnXTpPlw5rfbnjb6Mkd/Kt6fbXmYlocBebk25qmZWqq6BAVRURZBUJdWqhQFpN/BXoEWAVC3vR9P1eJ0juBmjb++cn8y0K2Wy0lq2kP/c0x9KiMrSp2TK1PrRERc8nCIiAIiIAiIgCIiAIiIAuS/lBVVoaSHi6SST/AMbAz/3LrS4h0+1Oapp4rfMic+/9pJY/wh6qWiuujWehylUVXK1XiEIrSVVAVurcyEosXBcqXREAusnBp8lTTv8AZmhd6StPwWIqtkykOtfKQ63Oxvb3LWWhlH2SisjfcAjcRceavXPJwiIgCIiAIiIAiIgCIiALhPTzC4VsTzudCA36sj7j7Y9V3ZcW/KB/S0n0Jv8AFGpqHbNJ6HInFWo5UVwjKqiohKxcG02c2ZqsRm6mmYHFozPc52VjBuBc7vO4AE7+RWBUQOje5jxlc1zmOad7XNcWuB8CCF2n8nrDi2CqqT/zJGxt8Imk39ZSPJQ7psoWQ4m4tFutijmdyzEvYSPHqwfElQwqXm0bNZEEVFS6qp0zU9KandI9rGAuc42AHHj92vksiTC3BrM4LXzWEUZ0cWuNuscDq1h3N9rUjQa+WH10lPIyaF5ZIw3Y4AGxIIOjgQdCRqOKzMHqHz4hA+V7pHyVEBe5xuXEzMGvlp3BaSMo+som5QByAHoF6IioEwREQBERAEREAREQBERAFxL8oH9PS/2cn+NqIpaHbNJ6HJHKxEVwjKKjkRYYPo7oQjAwmIgWu+cnvPXvbf0AHkue9P3/ABGP+7M/jTIiq0u2Sy0OaMVzkRW1oRArP2Y/32k/vFP/AB2KiLSWhmJ9eIiKiTBERAEREAREQH//2Q==" alt="">
+	</div>
 		<div class="container py-xl-4 py-lg-2">
+			
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
 				<span>O</span>ur
 				<span>N</span>ew
 				<span>P</span>roducts</h3>
 			<!-- //tittle heading -->
-			<div class="row" >
-				<!-- product left -->
-				<div class="agileinfo-ads-display col-lg-9">
-					<div class="wrapper" style="max-width: 822px;
-          min-height: 518px;
-          margin: 2px auto;
-          padding: 40px 30px 30px 30px;
-          background-color: #fff;
-          /* border-radius: 15px; */
-          box-shadow: 13px 13px 20px #ffffff, -13px -13px 20px #fff;">
-		  <h3 class="heading-tittle text-center font-italic">Special Offer on </h3>
-						<!-- first section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-							
-							<div class="row">
-								<div class="col-md-4 product-men mt-5">
-									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
-											
-											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="single.html" class="link-product-add-cart">Quick View</a>
-												</div>
-											</div>
-										</div>
+		
+						
                    
 
 
@@ -162,34 +146,27 @@
 
 										<div class="item-info-product text-center border-top mt-4">
 											
-                      
-                      <div class="container" style="width: 590px;">
-                        <div class="row" style="    margin-left: -6rem;
-						margin-top: -5rem;">
-                          <% for (var i= 0 ; i<products.length ;  i++) { %>
-							
-                          <div class="col-md-4 p-0" >
-                            <div class="card" style="    width: 14rem;
-							height: 20rem;
-							margin-right: 2rem;
-							border: 0px solid black;">
-								<img src="/images/<%= products[i].Pitcure %>" style="width:130px ; height:120px;    margin-left: 2rem;" alt="">
-                             <div class="card-body">
-                              <h5 class="card-title"><%= products[i].productName %></h5>
-                              <p class="card-text"><%= products[i].Price %> </p>
-							  <a href="/users/singlePage"><button >view</button></a>
-                              <!-- <a href="/add-to-cart/<%= products[i]._id %>" class="btn btn-primary">Add to cart</a> -->
-							  <button onclick="addToCart('<%= products[i]._id %>')"    class="btn btn-primary">Add to cart</button>
-                             </div>
-                            </div>
-                          </div>
-
-
-                          <% } %>
-                        </div>
-                      </div>
+                   
+					  <!-- ---------------------------------------------------------------------------------- -->
 					
+<div class="container">
+	<div class="row">	
+		
 
+		<% for (var i= 0 ; i<products.length ;  i++) { %>
+		<div class="card" style="width: 18rem; border: 1px ;border:1px solid black; border-radius: 2rem; padding: 1rem; margin-right: 3rem;    margin-bottom: 3rem;";>
+			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:15rem ; height:17rem;" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title"><%= products[i].productName %>/h5>
+			  <p class="card-text"><%= products[i].Price %> </p>
+			  <a href="/users/singlePage"><button >view</button></a>
+			  <button onclick="addToCart('<%= products[i]._id %>')"    class="btn btn-primary">Add to cart</button>
+			</div>
+		  </div>
+		  <% } %>
+		
+	</div>
+</div>
 
 
 
@@ -396,251 +373,7 @@
 				<!-- //product left -->
 
 				<!-- product right -->
-				<div class="col-lg-3 mt-lg-0 mt-4 p-lg-0">
-					<div class="side-bar p-sm-4 p-3">
-						<div class="search-hotel border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Search Here..</h3>
-							<form action="#" method="post">
-								<input type="search" placeholder="Product name..." name="search" required="">
-								<input type="submit" value=" ">
-							</form>
-						</div>
-						<!-- price -->
-						<div class="range border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Price</h3>
-							<div class="w3l-range">
-								<ul>
-									<li>
-										<a href="#">Under $1,000</a>
-									</li>
-									<li class="my-1">
-										<a href="#">$1,000 - $5,000</a>
-									</li>
-									<li>
-										<a href="#">$5,000 - $10,000</a>
-									</li>
-									<li class="my-1">
-										<a href="#">$10,000 - $20,000</a>
-									</li>
-									<li>
-										<a href="#">$20,000 $30,000</a>
-									</li>
-									<li class="mt-1">
-										<a href="#">Over $30,000</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- //price -->
-						<!-- discounts -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Discount</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">5% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">10% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">20% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">30% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">50% or More</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">60% or More</span>
-								</li>
-							</ul>
-						</div>
-						<!-- //discounts -->
-						<!-- reviews -->
-						<div class="customer-rev border-bottom left-side py-2">
-							<h3 class="agileits-sear-head mb-3">Customer Review</h3>
-							<ul>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<span>5.0</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<span>4.0</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star-half"></i>
-										<span>3.5</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<span>3.0</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star-half"></i>
-										<span>2.5</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<!-- //reviews -->
-						<!-- electronics -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Electronics</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Cameras & Photography</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Car & Vehicle Electronics</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Computers & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">GPS & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Headphones</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Home Audio</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Home Theater, TV & Video</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Mobiles & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Portable Media Players</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Tablets</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Telephones & Accessories</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Wearable Technology</span>
-								</li>
-							</ul>
-						</div>
-						<!-- //electronics -->
-						<!-- delivery -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Cash On Delivery</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Eligible for Cash On Delivery</span>
-								</li>
-							</ul>
-						</div>
-						<!-- //delivery -->
-						<!-- arrivals -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">New Arrivals</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Last 30 days</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Last 90 days</span>
-								</li>
-							</ul>
-						</div>
-						<!-- //arrivals -->
-						<!-- best seller -->
-						<div class="f-grid py-2">
-							<h3 class="agileits-sear-head mb-3">Best Seller</h3>
-							<div class="box-scroll">
-								<div class="scroll">
-									<div class="row">
-										<div class="col-lg-3 col-sm-2 col-3 left-mar">
-											<img src="images/k1.jpg" alt="" class="img-fluid">
-										</div>
-										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-											<a href="">Samsung Galaxy On7 Prime (Gold, 4GB RAM + 64GB Memory)</a>
-											<a href="" class="price-mar mt-2">$12,990.00</a>
-										</div>
-									</div>
-									<div class="row my-4">
-										<div class="col-lg-3 col-sm-2 col-3 left-mar">
-											<img src="images/k2.jpg" alt="" class="img-fluid">
-										</div>
-										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-											<a href="">Haier 195 L 4 Star Direct-Cool Single Door Refrigerator</a>
-											<a href="" class="price-mar mt-2">$12,499.00</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-sm-2 col-3 left-mar">
-											<img src="images/k3.jpg" alt="" class="img-fluid">
-										</div>
-										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-											<a href="">Ambrane 13000 mAh Power Bank (P-1310 Premium)</a>
-											<a href="" class="price-mar mt-2">$1,199.00 </a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- //best seller -->
-					</div>
-					<!-- //product right -->
-				</div>
-			</div>
-		</div>
-	</div>
+				
 	<!-- //top products -->
 
 	<!-- middle section -->

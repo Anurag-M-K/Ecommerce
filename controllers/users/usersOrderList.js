@@ -34,10 +34,13 @@ const orderList = async (req,res)=>{
       cartCount = await userCartHelper.getCartCount(req.session.user._id)
   }
   let products =await userCartHelper.getCartProducts(req.session.user._id)
-  console.log("user:",userData._id);
+ 
  
   let productList =await userOrderHelper.getUserOrders(req.session.user._id)
   let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
+
+
+  let paymentMethod= await userCartHelper.getPaymentMethod(req.session.user._id)
 
   categoryHelper.getAllCategories().then((CategoryDetails) => {
 
