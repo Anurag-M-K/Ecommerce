@@ -10,7 +10,8 @@ const navButtons = require('../controllers/users/navButtons')
 const categoryBasedPage = require("../controllers/users/categoryBasedPage")
 const usersOrderList = require("../controllers/users/usersOrderList")
 const userOrderHelper = require('../models/userHelper/userOrderHelper')
-const order = require('../controllers/users/order')
+const order = require('../controllers/users/order');
+const razorPayModel = require('../models/userHelper/razorPayModel');
 
 
 const verifyLogin = (req,res,next)=>{
@@ -67,8 +68,7 @@ router.get('/view-order-products',order.viewOrderProducts)
 router.get('/orderList',usersOrderList.orderList)
 
 //payment
-router.post('/verify-payment')
-
+router.post('/verify-payment',userCheckOut.verifyingPayment)
 
 
 

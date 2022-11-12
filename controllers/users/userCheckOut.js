@@ -15,8 +15,8 @@ const   payment = async (req,res)=>{
     if(req.session.user){
         let totalAmount = await userHelper.getTotalAmount(req.session.user._id)
        
-        let products = userHelper.getCartProducts(req.session.user._id)
-            let  cartCount =  userHelper.getCartCount(req.session.user._id)
+        let products = await userHelper.getCartProducts(req.session.user._id)
+            let  cartCount = await  userHelper.getCartCount(req.session.user._id)
             categoryHelper.getAllCategories().then((CategoryDetails) => {
                 res.render('users/addressPayment',{user:true,admin:false,userData,cartCount,products,totalAmount,CategoryDetails})
             })
@@ -40,23 +40,35 @@ res.json(response)
    
    })
    
-   const verifyPayment = (req,res)=>{
-    console.log(req.body);
-   }
-
-
-
-
-  
-
-
-
-
-    
 }
+
+
+const verifyingPayment = (req,res)=>{
+   
+    razorPayModel.verifyPayment(req.body).then(()=>{ 
+       console.log("details checking "+req.body);
+        razorPayModel.changePaymentStatus(req.body['reciept']).then(()=>{
+            console.log('payment successfull');
+            res.json({status:true})
+        })
+
+    }).catch((err)=>{
+        console.log("error status false  "+err);
+        res.json({status:false})
+    })
+}
+
+
+
+
+
+
 
 module.exports = {
     checkoutPage,
     payment,
-    checkOut
+    checkOut,
+    verifyingPayment
+   
+
 }

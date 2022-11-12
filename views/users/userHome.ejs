@@ -155,10 +155,10 @@
 
 		<% for (var i= 0 ; i<products.length ;  i++) { %>
 		<div class="card" style="width: 18rem; border: 1px ;border:1px solid black; border-radius: 2rem; padding: 1rem; margin-right: 3rem;    margin-bottom: 3rem;";>
-			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:15rem ; height:17rem;" alt="...">
+			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
 			<div class="card-body">
-			  <h5 class="card-title"><%= products[i].productName %>/h5>
-			  <p class="card-text"><%= products[i].Price %> </p>
+			  <h5 class="card-title"><%= products[i].productName %>
+			  <p class="card-text text-danger fs-4"><%= products[i].Price %> </p>
 			  <a href="/users/singlePage"><button >view</button></a>
 			  <button onclick="addToCart('<%= products[i]._id %>')"    class="btn btn-primary">Add to cart</button>
 			</div>

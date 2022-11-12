@@ -44,7 +44,7 @@ module.exports = {
                     Price:parseInt(productDetails.Price),
                     Category:productDetails.Category,
                     brandName:productDetails.brandName,
-                    Quantity : productDetails.Quantity,
+                    Quantity :parseInt( productDetails.Quantity),
                     Pitcure: productImage,
                 },
             }).then((response)=>{

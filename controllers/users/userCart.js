@@ -24,11 +24,14 @@ const cart =  async(req,res)=>{
     if(req.session.loggedIn){
       
         let products =await userHelper.getCartProducts(req.session.user._id)
-       
-        cartCount = await userHelper.getCartCount(req.session.user._id)
-       
+   console.log("products",products);
+    
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
+      
        
+       
+       
+          cartCount = await userHelper.getCartCount(req.session.user._id)
         categoryHelper.getAllCategories().then((CategoryDetails) => {
 
             res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails})
@@ -58,9 +61,6 @@ const cart =  async(req,res)=>{
     })
  }
 
- const removeCartOneProduct = (req,res)=>{
-    userCartHelper.removecartpro
- }
 
 
 

@@ -23,7 +23,7 @@
       <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
         <a href="/admin/addProductPage" class="btn btn-success">Add Product</a>
         </div>
-        <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;">
+        <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;" id="productsTable">
           <thead class="bg-secondary">
             <tr>
               <th>S.NO</th>
@@ -53,6 +53,23 @@
           </tbody>
         </table>
       </div>
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+      <script>
+
+
+
+
+
+        $(document).ready( function () {
+    $('#productsTable').DataTable();
+} );
+
+
+
+
+
+
+      </script>
 
 
     
