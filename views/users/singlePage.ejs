@@ -1,80 +1,9 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="zxx">
 
-<head>
-	<title>Electro Store Ecommerce Category Bootstrap Responsive Web Template | Single Product 1 :: w3layouts</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
-	/>
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
-	<!-- //Meta tag Keywords -->
-
-	<!-- Custom-Files -->
-	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- Bootstrap css -->
-	<link href="../../public/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- Main css -->
-	<link rel="stylesheet" href="../../public/css/fontAwesome.css">
-	<!-- Font-Awesome-Icons-CSS -->
-	<link href="../../public/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- pop-up-box -->
-	<link href="../../public/css/menu.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- menu style -->
-	<!-- //Custom-Files -->
-
-	<!-- web fonts -->
-	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
-	<!-- //web fonts -->
-
-</head>
-
-<body>
+<body class="bg-light" style="    overflow-x: hidden;">
 
 
 	
-	<!-- //shop locator (popup) -->
-
-	<!-- modals -->
-	<!-- log in -->
-	
-	<!-- register -->
-	
-	<!-- //modal -->
-	<!-- //top-header -->
-
-	<!-- header-bottom-->
-	
-	<!-- shop locator (popup) -->
-	<!-- //header-bottom -->
-	<!-- navigation -->
-	
-	<!-- //navigation -->
-
-	<!-- banner-2 -->
-	
-	<!-- //banner-2 -->
-	<!-- page -->
-	
-	<!-- //page -->
-
 	<!-- Single Page -->
 	<div class="banner-bootom-w3-agileits py-5">
 		<div class="container py-xl-4 py-lg-2">
@@ -98,18 +27,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="grid images_3_of_2">
 						<div class="flexslider">
 							<ul class="slides">
-								<li data-thumb="images/si1.jpg">
+								<li data-thumb="">
 									<div class="thumb-image">
-										<img src=" " data-imagezoom="true" class="img-fluid" alt="fgdfgdfg"> </div>
+											
+										<img src="/images/<%= products.Pitcure %> " data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
-								<li data-thumb="images/si2.jpg">
-									<div class="thumb-image">
-										<img src="" data-imagezoom="true" class="img-fluid" alt="dfgdfgdfg"> </div>
-								</li>
-								<li data-thumb="images/si3.jpg">
-									<div class="thumb-image">
-										<img src="images/si3.jpg" data-imagezoom="true" class="img-fluid" alt="edfgdfgdgd"> </div>
-								</li>
+							
 							</ul>
 							<div class="clearfix"></div>
 						</div>
@@ -117,7 +40,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
+					<h3 class="mb-3"><%= products.productName %></h3>
+					
 					<p class="mb-3">
 						<span class="item_price">$200.00</span>
 						<del class="mx-2 font-weight-light">$280.00</del>
@@ -177,11 +101,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="hidden" name="currency_code" value="USD" />
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
+									<button onclick="addToCart('<%= products._id %>')"    class="btn btn-primary">Add to cart</button>
 								</fieldset>
 							</form>
 						</div>
-					</div>
+					</div>	
 				</div>
 			</div>
 		</div>
@@ -189,41 +113,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //Single Page -->
 
 	<!-- middle section -->
-	<div class="join-w3l1 py-sm-5 py-4">
-		<div class="container py-xl-4 py-lg-2">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="join-agile text-left p-4">
-						<div class="row">
-							<div class="col-sm-7 offer-name">
-								<h6>Smooth, Rich & Loud Audio</h6>
-								<h4 class="mt-2 mb-3">Branded Headphones</h4>
-								<p>Sale up to 25% off all in store</p>
-							</div>
-							<div class="col-sm-5 offerimg-w3l">
-								<img src="images/off1.png" alt="" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 mt-lg-0 mt-5">
-					<div class="join-agile text-left p-4">
-						<div class="row ">
-							<div class="col-sm-7 offer-name">
-								<h6>A Bigger Phone</h6>
-								<h4 class="mt-2 mb-3">Smart Phones 5</h4>
-								<p>Free shipping order over $100</p>
-							</div>
-							<div class="col-sm-5 offerimg-w3l">
-								<img src="images/off2.png" alt="" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- middle section -->
+	
 
 	<!-- footer -->
 	<footer>
@@ -299,7 +189,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			);
 		});
 	</script>
-	<!-- //nav smooth scroll -->
+	<!-- //nav smooth scroll -->oo
 
 	<!-- popup modal (for location)-->
 	<script src="js/jquery.magnific-popup.js"></script>
@@ -426,6 +316,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+
+	<script>
+		function addToCart(proId){
+		$.ajax({
+			url:'/add-to-cart/'+proId,
+			method:'get',
+			success:(response)=>{
+                if(response.status){
+                    let count = $('#cart-count').html()
+                    count = parseInt(count)+1
+                    $("#cart-count").html(count)
+                }
+				
+			}
+		})
+	}
+</script>
 
 </body>
 
