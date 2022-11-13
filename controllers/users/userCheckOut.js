@@ -29,31 +29,34 @@ const checkOut = async(req,res)=>{
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
   
    userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((orderId)=>{
-   
-    if(req.body['paymnet-method']==='COD'){
+   console.log(req.body);
+    if(req.body['payment-method']==='COD'){
         res.json({codSuccess:true})
     }else{
         razorPayModel.generateRazorPay(orderId,totalPrice).then((response)=>{
-res.json(response)
+           res.json(response)
         })
     }
    
    })
+
    
 }
 
 
 const verifyingPayment = (req,res)=>{
-   
+    console.log("checkcing body ",req.body);
+   console.log('req.body  '+req.body.payment.razorpay_order_id);
+   console.log("req.body 2  : ",req.body.payment.razorpay_payment_id);
     razorPayModel.verifyPayment(req.body).then(()=>{ 
-       console.log("details checking "+req.body);
+      
         razorPayModel.changePaymentStatus(req.body['reciept']).then(()=>{
             console.log('payment successfull');
             res.json({status:true})
         })
 
     }).catch((err)=>{
-        console.log("error status false  "+err);
+       
         res.json({status:false})
     })
 }

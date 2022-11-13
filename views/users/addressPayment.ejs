@@ -60,7 +60,6 @@
 <script>
 	$("#checkout-form").submit((e) => {
 		e.preventDefault()
-		console.log("checking");
 		$.ajax({
 			url: "/place-order",
 			method: "post",
@@ -70,7 +69,7 @@
 				if (response.codSuccess) {
 					window.location.href = '/orderPlaced'
 				} else {
-
+					alert(response)
 					razorPayPayment(response)
 				}
 			}

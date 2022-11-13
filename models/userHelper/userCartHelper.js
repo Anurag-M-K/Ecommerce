@@ -207,7 +207,7 @@ module.exports = {
            
      },
      
-     placeOrder : (order,total,userId)=>{
+       placeOrder : (order,total,userId)=>{
         return new  Promise(async(resolve,reject)=>{
 
             
