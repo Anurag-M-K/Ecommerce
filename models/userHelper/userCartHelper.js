@@ -6,10 +6,12 @@ const { loginview } = require('../../controllers/admin/adloginController')
 
 
 module.exports = {
-    addToCart:(proId,userId)=>{
+    addToCart:(proId,userId,imgId)=>{
         let proObj = {
             item:ObjectId(proId),
-            quantity:1
+            quantity:1,
+            image:ObjectId(imgId) //////////////////////made change////////////////////////////////////////////////////////
+            
            
 
         }
@@ -46,10 +48,12 @@ module.exports = {
                 let cartObj = {
                     user:ObjectId(userId),
                     products : [proObj]
+                   
                 }
                 db.get().collection(collection.CART_COLLECTION).insertOne(cartObj).then((response)=>{
                     
                     resolve()
+                    console.log("usercrt : "+userCart);
                 })
             }
         })

@@ -1,13 +1,44 @@
+<section class="bg-light">
+ 
+   <br><br><br><br>
+   
+
+   <div class="container border ">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvQut4WZkLYolCMb60e21orj2AeemXzJyplX4T9ibB&s" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
+      </div>
+      <div class="col-md-4 mt-2 ">
+        <h4 class="text-dark font-weight-bold">Address</h4>
+        <div class="mt-5"> <%=  orderList.deliveryDetails.address %></div>
+        <br>
+        <div><%= orderList.deliveryDetails.pincode %></div>
+       
+      </div>
+      <div class="col-md-4 mt-2">
+        <h4 class="text-dark font-weight-bold">Delivery Date</h4>
+        <div class="mt-5"><%=  orderList.deliveryDetails.expected_Date %></div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <br><br><br><br><br>
+</section>
+
+
+
+
 
 
 <div class="container">
     <div class="row">
        
-        <% for(var i=0;i<orderItem.length;i++) { %>
+        <% for(var i=0;i<orderList.length;i++) { %>
         <div class="card" style="width: 18rem;">
-            <img src="/images/<%= orderItem[i].Pitcure %>" style="width: 100px; height:120px" class="card-img-top" alt="...">
+           
             <div class="card-body">
-              <h5 class="card-title"><%= orderItem[i].productName %>  </h5>
+              <h5 class="card-title">  </h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>

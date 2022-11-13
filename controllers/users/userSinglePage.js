@@ -11,7 +11,7 @@ const single = async(req,res)=>{
     let CategoryDetails = categoryHelper.getAllCategories()
 
      productHelpers.getProductDetails(id).then((products)=>{
-        console.log("prodicts",products);
+       
         res.render('users/singlePage',{user:true,admin:false,userData,products,cartCount,CategoryDetails})
     })
     }

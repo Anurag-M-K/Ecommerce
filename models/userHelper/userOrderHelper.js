@@ -34,5 +34,13 @@ module.exports = {
             resolve(orderItem)
             console.log('orderItem : ',orderItem.deliveryDetails);
         })
+    },
+    getOneOrderProduct : (orderid)=>{
+        return new Promise(async(resolve,reject)=>{
+            db.get().collection(collection.ORDER_COLLECTION).findOne({_id:ObjectId(orderid)}).then((orderList)=>{
+                resolve(orderList)
+            })
+           
+        })
     }
 }

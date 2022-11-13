@@ -4,22 +4,26 @@ const categoryHelper = require('../../models/categoryHelper')
 const userHelper = require('../../models/userHelper/userCartHelper')
 
 const viewOrderProducts = async(req,res)=>{
-    
+    let id = req.query
+    console.log(id);
     let userData = req.session.user
-    cartCount = await userHelper.getCartCount(req.session.user._id)
- 
+    let cartCount = null;
+    if (req.session.userLoggedIn) {
+        cartCount = await userCartHelper.getCartCount(req.session.user._id)
+    }
+    let products =await userCartHelper.getCartProducts(req.session.user._id)
    
-      
-        let products =await userHelper.getCartProducts(req.session.user._id)
-       
-        cartCount = await userHelper.getCartCount(req.session.user._id)
-       
-        let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
+   
+  
+    let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
        
     categoryHelper.getAllCategories().then(async(CategoryDetails) => {
-    let orderItem = await userOrderHelper.getOrderProducts(req.query.id)
-    console.log('orderitem :',orderItem);
-    res.render('users/view-order-products',{user:true,admin:false,orderItem,userData,cartCount,totalAmount,products,CategoryDetails})
+     userOrderHelper.getOneOrderProduct(id).then((orderList)=>{
+        console.log('productList :',orderList);
+         res.render('users/view-order-products',{user:true,admin:false,orderList,userData,cartCount,totalAmount,products,CategoryDetails})
+    })
+
+   
     })
 }
 
