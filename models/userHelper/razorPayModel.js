@@ -2,6 +2,7 @@ const collection = require("../../config/collection")
 const { ObjectId } = require('mongodb')
 const Razorpay = require('razorpay')
 const db = require("../../config/connection")
+const { response } = require("express")
 var instance = new Razorpay({
     key_id : 'rzp_test_ZzZWhbQTjsVswA',
     key_secret : 'ADGRZTuXU9N2iSkZmE0dwZFX',
@@ -29,7 +30,7 @@ module.exports = {
     },
     verifyPayment : (details)=>{
         return new Promise((resolve,reject)=>{
-           const crypto = require('crypto') 
+           const crypto = require('crypto') //kind of algoritham for creating sha256 code
            let hmac = crypto.createHmac('sha256','ADGRZTuXU9N2iSkZmE0dwZFX')
           
            hmac.update(details.payment.razorpay_order_id+'|'+details.payment.razorpay_payment_id);
@@ -38,8 +39,7 @@ module.exports = {
 
 
            console.log("hmac:",hmac);
-        //   console.log("details id :"+details.payment.razorpay_order_id);
-        //   console.log("detais id 2 :",details.payment.razorpay_payment_id);
+ 
         console.log("sum :",details.payment.razorpay_order_id+'|'+details.payment.razorpay_payment_id);
 
 
@@ -65,6 +65,7 @@ module.exports = {
             }
             ).then(()=>{
                 resolve()
+             
                
             })
         })

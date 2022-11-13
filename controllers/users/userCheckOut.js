@@ -46,11 +46,12 @@ const checkOut = async(req,res)=>{
 
 const verifyingPayment = (req,res)=>{
     console.log("checkcing body ",req.body);
-   console.log('req.body  '+req.body.payment.razorpay_order_id);
-   console.log("req.body 2  : ",req.body.payment.razorpay_payment_id);
+   
+
     razorPayModel.verifyPayment(req.body).then(()=>{ 
       
-        razorPayModel.changePaymentStatus(req.body['reciept']).then(()=>{
+        razorPayModel.changePaymentStatus(req.body.order.receipt).then(()=>{
+          
             console.log('payment successfull');
             res.json({status:true})
         })

@@ -120,7 +120,9 @@
 			method: 'post',
 			success: (response) => {
 				if (response.status) {
-					window.location.href = '/orderPlaced'
+					
+					window.location.href = '/orderPlaced',
+					deliveryDetails.status("placed")
 				} else {
 
 					alert('Payment failed')
