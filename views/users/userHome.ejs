@@ -82,11 +82,73 @@
 		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
 		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		  <span class="visually-hidden">Next</span>
+		
+		  <div class="text-block">
+			
+			<h1 style="    color: palevioletred;
+			font-weight: bold;" >Cric Store</h1><br>
+			<h1 style="    color: cornflowerblue;
+			font-weight: bold;">Mega Sale Offer</h1><br>
+			<h1>Order Now</h1><br>
+		  </div>
 		</button>
 	  </div>
 	<!-- ----------------------------------------------banner ---------------------------------------------------------->
 </div>
 </div>
+<style>
+	.container-fluid {
+	  position: relative;
+	  font-family: Arial;
+	}
+	
+	.text-block {
+		margin-left: -76rem;
+    margin-top: 25rem;
+	    position: relative;
+    bottom: 14rem;
+    right: 24px;
+    background-color: black;
+    color: white;
+    padding-left: 10rem;
+    padding-right: 10rem;
+	padding-top: 3rem;
+    padding-bottom: 3rem;
+	}
+	.element.style {
+    margin-left: -81rem;
+    margin-top: 25rem;
+}
+
+
+	</style>
+
+
+
+<!-- -------------------------------------------------banner text------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,20 +217,24 @@
 <div class="container">
 	<div class="row">	
 		
-
-		<% for (var i= 0 ; i<products.length ;  i++) { %>
+				<% for (var i= 0 ; i<products.length ;  i++) { %>
 		<div class="card" style="width: 18rem; border: 1px ;border:1px solid black; border-radius: 2rem; padding: 1rem; margin-right: 3rem;    margin-bottom: 3rem;";>
+			
+			
+			<div   class=" d-md-flex justify-content-md-end"><i class=" btn btn-danger fa-solid fa-heart " onclick="addToWishlist('<%= products[i]._id %>')"></i></div>
 			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
 			<a href="/users/singlePage?id=<%= products[i]._id %>">	<div class="card-body">
 			  <h5 class="card-title"><%= products[i].productName %>
-			  <p class="card-text text-danger fs-4"><%= products[i].Price %> </p>
+			  <p class="card-text text-danger fs-4 fw-bold">RS:<%= products[i].Price %> </p>
 			  </a>
 			  <button onclick="addToCart('<%= products[i]._id %>')"    class="btn btn-primary">Add to cart</button>
 			</div>
+			
 		  </div>
 		  <% } %>
 		
-		
+
+	
 	</div>
 </div>
 
@@ -491,6 +557,15 @@
                 }
 				
 			}
+		})
+	}
+
+
+	function addToWishlist(proId){
+		$.ajax({
+			url:'/add-to-wishlist/'+proId,
+			method:'get',
+			
 		})
 	}
 </script>

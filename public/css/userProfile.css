@@ -1,0 +1,73 @@
+.userProfile .profileSideBar{
+    background: #fff;
+    padding: 10px;
+}
+.userProfile .profileSideBar img{
+    width: 60px;
+    height: 60px;
+    background: yellow;
+    border-radius: 50%;
+}
+.userProfile .username{
+    padding: 10px;
+}
+.userProfile .username p{
+    font-size: 12px;
+}
+.userProfile .username span{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.userProfile .profileSideBar .row span{
+    color: #2874f0;
+    float: left;
+}
+.userProfile .profileSideBar .menu{
+    padding: 15px 12px 15px 24px;
+}
+.userProfile .profileSideBar .menu .title{
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #878787;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+a{
+    text-decoration: none;
+}
+.userProfile .profileSideBar .submenus .subTitle{
+    font-size: 14px;
+    padding: 12px 5px 12px 66px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.sidebarDetails .tab_subtitleContent{
+    display: none;
+}
+.sidebarDetails .show{
+    display: block;
+}
+
+.userProfile .sidebarDetails{
+    background: #fff;
+    height: 100%;
+    padding: 24px 32px 0;
+}
+.userProfile .sidebarDetails .title{
+    font-size: 18px;
+    font-weight: 600;
+    padding-right: 24px;
+}
+.userProfile .sidebarDetails .edit{
+    font-size: 14px;
+    font-weight: 600;
+    color: #2874f0;
+    cursor: pointer;
+}
+.userProfile .sidebarDetails .tab_subtitleContent label{
+    margin-bottom: 0;    
+}

@@ -1,0 +1,285 @@
+<div style="background: #eeeeee;">
+    <div class="container-fluid user-order pb-5" style="padding-top: 30px;">
+        <div class="row px-xl-5 userProfile">
+            <div class="col-lg-3">
+                <div class="profileSideBar d-flex mb-3">
+                    
+                    
+                    <div class="username">
+                     
+                        <span class="pr-3 ml-2"><i class="fa-solid fa-address-card"></i></span>    <span><%= userData.Name %></span>
+                    </div>
+                </div>
+                
+
+                <div class="profileSideBar">
+                    <div class="row">
+                        <div>
+                            <div class="menu d-flex">
+                                <span class="material-symbols-outlined">
+                                   
+                                </span>
+                              <a href="/toOrder"><span><i class="fa-solid fa-bag-shopping"></i></span> <a class="title">My Orders</a></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="menu d-flex">
+                                <span class="material-symbols-outlined">
+                                    
+                                </span>
+                               <span><i class="fa-solid fa-gear"></i></span> <a class="title">Account Settings</a>
+                            </div>
+                            <hr>
+                            <div class="submenus">
+                                <a href="#" class="btn_submenus show" onclick="showContents(this, 'content_1')">
+                                    <div class="subTitle">Profile Information</div>
+                                </a>
+                                <a href="#" class="btn_submenus" onclick="showContents(this, 'content_2') ,showAddress()">
+                                    <div class="subTitle">Manage Address</div>
+                                </a>
+                                <a href="#" class="btn_submenus" onclick="showContents(this, 'content_3')">
+                                    <div class="subTitle">Change Password</div>
+                                </a>
+                            </div>
+                            <hr>
+                            <div class="menu d-flex">
+                                <span class="material-symbols-outlined">
+                                   
+                                </span>
+                                <span><i class="fa-solid fa-heart"></i></span><a class="title">Wish List</a>
+                            </div>
+                            <hr>
+                            <div class="menu d-flex">
+                                <span class="material-symbols-outlined">
+                                  
+                                </span>
+                               <a href="/toCart"> <span><i class="fa-solid fa-cart-shopping"></i></span><a class="title">My Cart</a></a>
+                            </div><hr>
+                            <div class="menu d-flex">
+                                <span class="material-symbols-outlined">
+                                   
+                                </span>
+                              <a href="/logoutFromProfile"> <span><i class="fa-solid fa-right-from-bracket"></i></span> <a class="title">Log Out</a></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="sidebarDetails tabContents">
+
+                    <!-- ()()()()()()()()()()()()() 1st TAB Content Started ()()()()()()()()()()()()() -->
+                    <div class="tab_subtitleContent show mb-4" id="content_1">
+
+                        <!-------------------------Profile Information Started-------------------------->
+                        <div class="d-flex" style="align-items: center;">
+                            <span class="title">Profile Information</span>                        
+                            <a href="#" id="proEditBtn" class="edit" onclick="editProfile()">Edit</a>
+                        <a href="#" id="proCaneclBtn" class="edit" onclick="cancelBtn()" style="display: none;">Cancel</a>
+                        </div><br>
+                        <form action="" id="profileUpdateForm">
+                            <div class="pb-2" style="width: 100%;">
+                                <div style="width: 100%; padding-right: 12px;" id="profileData">
+                                    <div class="d-flex" style="margin-bottom: 10px;">
+                                        <div class="field" style="width: 270px; padding-right: 12px;">
+                                            <label for="" class="form-label" >First Name</label>
+                                            <input disabled type="text" placeholder="<%= userData.Name %>" class="form-control" id="first_Name" name="first_Name"
+                                                style="width: 100%;" value="">
+                                        </div>
+                                        <div class="field" style="width: 270px; padding-right: 12px;">
+                                            <label for="" class="form-label">Last Name</label>
+                                            <input disabled type="text" placeholder="<%= userData.Lname %>" class="form-control" id="last_Name" name="last_Name"
+                                                style="width: 100%;" value="">
+                                        </div>
+                                        <div id="proBtn" style="display: none;">
+                                            <label for=""></label>
+                                            <input type="submit" class="btn btn-primary" id=""
+                                                name="" style="width: 100%;" value="SAVE">
+                                        </div>
+                                    </div><br><br>
+                                    <div class="d-flex" style="margin-bottom: 10px;">
+                                        <div class="field" style="width: 270px; padding-right: 12px;">
+                                            <label for="" class="form-label">User Name</label>
+                                            <input disabled type="text" placeholder="<%= userData.Name %>" class="form-control" id="user_Name" name="user_Name"
+                                                style="width: 100%;" value="">
+                                        </div>
+                                       
+                                    </div><br><br>
+
+
+
+                                    <div class="d-flex" style="margin-bottom: 10px;">
+                                       
+                                        <div class="field" style="width: 270px; padding-right: 12px;">
+                                            <label for="" class="form-label">Your Gender</label></div><br>
+                                           
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+                                            <label class="form-check-label" for="inlineRadio3">Other</label>
+                                          </div>
+                                    </div><br><br>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-------------------------Profile Information Ended-------------------------->
+
+                        <!-------------------------Email & Mobile Information Started-------------------------->
+                        <div class="d-flex" style="align-items: center;">
+                       
+                        
+                        <a href="#" id="emailCancelBtn" class="edit" style="display: none;" onclick="emailCancel()">Cancel</a>
+                        </div>
+                        <form action="" id="emailUpdateForm">
+                            <div class="pb-2" style="width: 100%;">
+                                <div style="width: 100%; padding-right: 12px;">
+                                    <div class="d-flex" style="margin-bottom: 10px;">
+                                        <div class="field" style="width: 270px; padding-right: 12px;">
+                                            <label for="" class="form-label">Mobile No.</label><span><a href="#" id="emailEditBtn" class="edit" onclick="emailEdit()">Edit</a></span>
+                                            <input disabled type="number" placeholder="<%= userData.Phone %>" class="form-control" id="mobile_No"
+                                                name="mobile_No" style="width: 100%;" value="">
+                                        </div>
+                                        <div class="field" style="width: 270px; padding-right: 12px;">
+                                            <label for="" class="form-label">Email</label><span><a href="#" id="emailEditBtn" class="edit" onclick="emailEdit()">Edit</a></span>
+                                            <input disabled type="email" placeholder="<%= userData.Email %>" class="form-control" id="user_Email"
+                                                name="user_Email" style="width: 100%;" value="">
+                                        </div>
+                                        <div>
+                                            <label for=""></label>
+                                            <input type="submit" class="btn btn-primary" id="emailBtn"
+                                                name="" style="width: 100%; display: none;" value="SAVE">
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="tab_subtitleContent mb-4" id="content_2">
+                            <!-------------------------Manage Address Started-------------------------->
+                            <span class="title">Manage Address</span>
+                            <div class="mt-3">
+                                <a href="/addressPage" class="btn"
+                                    style="width: 100%; text-align: left; border: 1px solid #e0e0e0; color: #2874f0;"> + Add
+                                    A New Address</a>
+                            </div>
+                            <div id = "userAddressList"></div>
+                            <!-------------------------Manage Address Ended-------------------------->
+                        </div>
+                        <div class="tab_subtitleContent" id="content_3">
+                            <!-------------------------Change Password Started-------------------------->
+                            <span class="title">Change Password</span>
+                            <form action="" id="changePassword">
+                                <div class="pb-2" style="width: 100%;">
+                                    <div style="width: 100%; padding-right: 12px;">
+                                        <div class="d-flex" style="margin-bottom: 10px;">
+                                            <div class="field" style="width: 270px; padding-right: 12px;">
+                                                <label for="" class="form-label">New Password</label>
+                                                <input type="text" class="form-control" id="" name="password"
+                                                    style="width: 100%;">
+                                            </div>
+                                            <div class="field" style="width: 270px; padding-right: 12px;">
+                                                <label for="" class="form-label">Confirm Password</label>
+                                                <input type="text" class="form-control" id="" name=""
+                                                    style="width: 100%;">
+                                            </div>
+                                            <div>
+                                                <label for=""></label>
+                                                <input type="submit" class="btn btn-primary" id=""
+                                                    name="" style="width: 100%;" value="SAVE">
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </form>
+                        <!-------------------------Email & Mobile Information Ended-------------------------->
+
+                    </div>
+                    <!-- ()()()()()()()()()()()()() 1st TAB Content Ended ()()()()()()()()()()()()() -->
+
+                    <!-- ()()()()()()()()()()()()() 2nd TAB Content Started ()()()()()()()()()()()()() -->
+                
+                    <!-- ()()()()()()()()()()()()() 2nd TAB Content Ended ()()()()()()()()()()()()() -->
+
+                    <!-- ()()()()()()()()()()()()() 3rd TAB Content Started ()()()()()()()()()()()()() -->
+                    
+                        <!-------------------------Change Password Ended-------------------------->
+                    </div>
+                    <!-- ()()()()()()()()()()()()() 3rd TAB Content Ended ()()()()()()()()()()()()() -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showContents(activeTab, contentsID) {
+        var tabs = document.querySelectorAll('.btn_submenus');
+        var contents = document.querySelectorAll('.tab_subtitleContent');
+
+        var i = 0;
+        while (i < tabs.length) {
+            tabs[i].classList.remove('show');
+            contents[i].classList.remove('show');
+            i++;
+        }
+        activeTab.classList.add('show');
+        document.getElementById(contentsID).classList.add('show');
+    }
+    
+
+
+    function showAddress(){
+        const address = document.getElementById('userAddressList')
+        fetch('/userProfile/address',{
+            method: 'get',
+            headers: {'Content-Type':'application/json'}
+        }).then(res => res.json()).then(data =>{
+            let datas = data.addressList.address
+            let addressess = 
+            ``
+            for( var i=0;i<datas.length;i++){
+                addressess +=
+                        `<div style="border: 1px solid #e0e0e0; margin-top: 20px; border-radius: 2px 0;">
+                                <div style="width: 100%; overflow: hidden; padding: 20px;">
+                                    <p style="line-height: 1.5">
+                                        <span style="font-weight: 600; font-size: 14px;">${datas[i].name}</span>
+                                        <span
+                                            style="font-weight: 600; padding-right: 15px; font-size: 14px;">${datas[i].mobile_No}</span>
+                                            <a href="/userProfile/addressEditPage?addressID=${datas[i]._id}&addressDoc=${data.addressList._id}" id="emailEditBtn" class="edit">Edit</a>
+                                            <a onclick="addressDelete('${datas[i]._id}','${data.addressList._id}')" href="#" id="emailEditBtn" class="edit">Delete</a>
+                                    </p>
+                                    <span style="margin-top: 10px; width: 100%; display: block; font-size: 14px;">${datas[i].address}</span>
+                                </div>
+                            </div>`                    
+                }
+                addressess +=
+                 ``
+                 address.innerHTML = addressess
+        }).catch((error)=>{
+            console.log(error.message);
+        })
+    }
+
+    function addressDelete(addressID,addressDocID){
+        fetch('/userProfile/addressDelete',{
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({addressID,addressDocID})
+        }).then(()=>{
+            window.location.reload()
+        })
+    }
+    
+</script>
+
