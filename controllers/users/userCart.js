@@ -24,7 +24,7 @@ const cart =  async(req,res)=>{
     if(req.session.loggedIn){
       
         let products =await userHelper.getCartProducts(req.session.user._id)
-   console.log("products",products);
+   
     
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
       

@@ -1,6 +1,0 @@
-
-
-
-const addTowishlist = (req,res)=>{
-    
-}

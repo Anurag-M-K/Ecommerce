@@ -35,11 +35,15 @@ const logOutProfile = (req,res)=>{
     res.redirect('/logout')
 }
 
+const toWishlist =  (req,res)=>{
+    res.redirect('/users/wishList')
+}
 
 
 module.exports = {
     profilePage,
     toOrder,
     toCart,
-    logOutProfile
+    logOutProfile,
+    toWishlist
 }

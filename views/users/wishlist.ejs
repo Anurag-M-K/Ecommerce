@@ -1,0 +1,52 @@
+<body style="background-color: #e8e8e8;">
+    
+
+<div class="container">
+    <div class="row">
+        <div class="text-danger text-center pt-4 "><h3 class="fw-bold ">WISHLIST</h3></div>
+        <div class="d-flex" style="margin-bottom: 10px;width: 80rem;">
+            <div class="field" style="width:100%; ">
+                <br><br><br>
+                <div class="row">
+                    <% for(var i=0;i<products.length;i++) { %>
+                    <div class="col-sm-2 pr-0">
+                        <div class="mb-2" style=" background-color:#eef3f7">
+                        <img style="width:11rem ; height:10rem;" src="/images/<%= products[i].products.Pitcure %>" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-10 bg-light mb-2">
+                        <br>
+                        <div class="pl-3">
+                            <h5 style="
+                            font-weight: bold;"><%= products[i].products.productName %></h5>
+                            <br>
+                        
+                            <div> 
+                                <h6>
+                                    <span><i class="fa-solid fa-star text-success"></i></span>(154)
+                                </h6>
+                            </div>
+                        
+                            <div class="text-danger"><span class="d-flex flex-row-reverse pr-5"><a href="/admin/deleteProduct?id=<%= products[i]._id %>"><i class="fa-sharp fa-solid fa-trash"></i></a></span>
+                                RS:<%= products[i].products.Price %>     
+                            </div><br>
+                            <div >
+                            In Stock:<%= products[i].products.Quantity %>
+                           </div>
+                            
+                        </div>
+                     
+                    </div>
+                    <br>
+                    <% } %>
+
+                    <hr>
+                </div>
+                <br><br><br>
+            </div>
+            
+
+        </div <br><b>
+    </div>
+</div>
+</body>

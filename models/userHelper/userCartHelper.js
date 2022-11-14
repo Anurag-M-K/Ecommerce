@@ -97,7 +97,7 @@ module.exports = {
 
             resolve(cartItems)
            
-        
+        console.log("cart item :",cartItems);
         })
        
     },

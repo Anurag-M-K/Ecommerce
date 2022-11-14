@@ -13,7 +13,7 @@ const userOrderHelper = require('../models/userHelper/userOrderHelper')
 const order = require('../controllers/users/order');
 const razorPayModel = require('../models/userHelper/razorPayModel');
 const profile = require('../controllers/users/profile')
-
+const wishlistController = require('../controllers/users/wishlistController')
 const verifyLogin = (req,res,next)=>{
     if(req.session.loggedIn){
         next()
@@ -44,7 +44,8 @@ router.post('/change-product-quantity',userCart.productCount)
 router.delete('/removeCartProduct')
 
 //wishlist
-router.get('/add-to-wishlist/:id',)
+router.get('/add-to-wishlist/:id',wishlistController.addTowishlist)
+router.get('/users/wishList',wishlistController.wish)
 
 
 
@@ -82,6 +83,7 @@ router.get('/users/profile',profile.profilePage)
 router.get('/toOrder',profile.toOrder)
 router.get('/toCart',profile.toCart)
 router.get('/logoutFromProfile',profile.logOutProfile)
+router.get('/toWishlist',profile.toWishlist)
 
 
 
