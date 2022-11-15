@@ -10,13 +10,13 @@ const { ObjectID } = require('bson');
 
 
 module.exports = {
-    insertUserCredentials : (verified,Name,Email,Password,Lname,Phone)=>{
+    insertUserCredentials : (verified,Name,Email,Password,Lname,Phone,state)=>{
         return new Promise(async (resolve,reject)=>{
             Password = await bcrypt.hash(Password,10);
             console.log(Password);
             db.get()
             .collection(collection.USER_COLLECTION)
-            .insertOne({ verified,Name,Email,Password,Lname,Phone})
+            .insertOne({ verified,Name,Email,Password,Lname,Phone,state})
             .then((data)=>{
                 resolve(data);
             })
@@ -30,10 +30,10 @@ module.exports = {
             
             if(user){
                 console.log("user found");
-                if(user.verified==1)
+                if(user.verified==1   && user.state=="active")
             
                 {
-                    console.log("verifieed");
+                   
                 bcrypt.compare(userdata.Password,user.Password).then((status)=>{
                     if(status){
                         response.user = user
@@ -48,8 +48,11 @@ module.exports = {
 
             }else{
                 console.log("user not found");
+
                 resolve({status:false})
             }
+
+                
         }else{
             resolve({status:false})
         }

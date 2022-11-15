@@ -6,6 +6,8 @@ const bannerHelper = require("../../models/bannerHelper");
 const categoryHelper = require("../../models/categoryHelper");
 const userHelpers = require('../../models/userHelper/userCartHelper')
 const userHelper = require('../../models/helpers/user-helper')
+const userManagementHelper = require('../../models/userManagementHelper')
+
 
 //user login
 const userLogin = (req, res) => {
@@ -58,6 +60,7 @@ const userHomePage = async(req, res) => {
 // for send mail
 
 const userSignup = (req, res) => {
+  let state="active";
   let verified = 0;
 
   const { Name, Email, Password ,Lname,Phone} = req.body;
@@ -76,7 +79,7 @@ const userSignup = (req, res) => {
     }
   });
   userHelper
-    .insertUserCredentials(verified, Name, Email, Password,Lname,Phone)
+    .insertUserCredentials(verified, Name, Email, Password,Lname,Phone,state)
     .then((response) => {
       userId = response.insertedId;
       res.render("users/otpVerificationPage", {
@@ -109,7 +112,8 @@ const userSessionController = (req, res) => {
   console.log("Login Page");
 
   userHelper.userDoLogin(req.body).then((response) => {
-    console.log("vsvsv", response.status);
+    
+   
     if (response.status) {
       req.session.loggedIn = true;
       req.session.user = response.user;
