@@ -100,8 +100,10 @@ function changeQuantity(cartId,proId,count,userData){
 		},
 		method:'post',
 		success:(response)=>{
-			if(response.removeProduct){
+			if(response.response.removeProduct){
+				console.log("response"+response.response.removeProduct);
 				alert("Product Removed from cart")
+				
 				location.reload()
 			}else{
 				console.log("response check",response);

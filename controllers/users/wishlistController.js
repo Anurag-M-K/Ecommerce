@@ -25,7 +25,18 @@ const wish = async(req,res)=>{
     }
 }
 
+
+const deleteProduct = (req,res)=>{
+    let proId = req.query.id
+  
+    wishlistModel.deleteWishlistProduct(proId).then((response)=>{
+      
+        res.redirect('/users/wishList')
+    })
+}
+
 module.exports = {
     addTowishlist,
-    wish
+    wish,
+    deleteProduct
 }

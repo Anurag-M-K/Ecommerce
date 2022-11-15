@@ -31,9 +31,17 @@
                  
                 
 
-                <td><a class="btn  btn-danger" href="/admin/delete-data?id=<%= userDetails[i]._id %> ">Block</a></td>
-                <td>  <a class="btn btn-primary" href="/admin/edit?id=<%= userDetails[i]._id%>">Unblock</a>
-                </td>
+                <td>
+                  <% if (userDetails[i].state=="active" ) { %>
+                    <button onclick="userBlock('<%= userDetails[i]._id %>')" 
+                     style="background:#5E4543 ;" class="btn btn-primary" >Block</button>  
+                    <% } else{ %>
+                      <button onclick="userUnBlock('<%= userDetails[i]._id %>')" style="background: #c5cf64;" class="btn btn-primary"
+                        >Unblock</button>
+                    <% } %>
+                    
+                    </td>
+              
 
               </tr>
               <% } %>
@@ -46,3 +54,30 @@
     </div>
 
         
+
+    <script>
+     function userBlock(userId){
+      fetch('/admin/userManagement/block',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body: JSON.stringify({userId})
+      }).then(()=>{
+        window.location.reload();
+      }).catch((error)=>{
+        console.error("error: ", error)
+      })
+     }
+
+
+     function userUnBlock(userId)
+{
+  fetch('/admin/userManagement/unblock',{
+    method : "POST",
+    headers : {'content-type':'application/json'},
+    body:JSON.stringify({userId})
+  }).then(()=>{
+    window.location.reload()
+  }).catch((error)=>{
+    console.error("error:",error)
+  })
+}    </script>

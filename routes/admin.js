@@ -7,7 +7,8 @@ const adminProductController = require('../controllers/admin/adminProductControl
 const adminBrandController = require('../controllers/admin/adminBrandController')
 const adminUserController = require('../controllers/admin/adminUserController')
 const multer = require('multer');
-const adminBannerController = require('../controllers/admin/adminBannerController')
+const adminBannerController = require('../controllers/admin/adminBannerController');
+const userManagementHelper = require("../models/userManagementHelper");
 
 
 
@@ -52,18 +53,10 @@ router.get('/adminLogout',adloginController.adminLogoutControllers)
 
 
 
-
-
-
-
 //+++++++++++++++++++++++++++++++++++++++++ADMIN USER MANAGE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 router.get("/user-management", adminUserController.userManagement);
-
-
-
-
-
-
+router.post('/userManagement/block',adminUserController.userBlock)
+router.post('/userManagement/unblock',adminUserController.userUnblock)
 
 //-------------------------------------------BRAND DETAILS----------------------------------------------------------------------------//
 router.post("/brandCategory", adminBrandController.addBrandController);
@@ -72,19 +65,10 @@ router.get("/deleteBrand", adminBrandController.deleteBrandController);
 router.get("/brandCategory", adminBrandController.brandController);
 
 
-
-
-
-
-
 /******************************************************CATEGORY DETAILS*******************************************************************/
 router.get("/adminCategory", adminCategory.catogoryPageController);
 router.post("/adminCategory", adminCategory.addCategoryController);
 router.get("/deleteCategory", adminCategory.deleteCategoryController);
-
-
-
-
 
 
 //********************************************************PRODUCT DETAILS***************************************************************//
@@ -94,8 +78,6 @@ router.get('/deleteProduct',adminProductController.productDelete)
 router.get("/addProductPage", adminProductController.productForm);
 router.post('/updateProductDetails',upload.single('productImage'),adminProductController.updateProductDetailsAction)
 router.get('/addProductPage',adminProductController.adminAddProductPage)
-
-// router.post('/productUpdate',upload.single('productImage'),adminProductController.productUpdateController)
 router.post('/adminAddNewProduct',upload.single('productImage'),adminProductController.productAdding)
 router.get('/showEditProductPage',adminProductController.updateProductDetails)
 

@@ -80,7 +80,7 @@ module.exports = {
             ]).toArray()
 
             resolve(wishlistItem)
-            console.log("wishlist :",wishlistItem);
+           
         })
     },
     getwishlistCount : (userId)=>{
@@ -93,5 +93,24 @@ module.exports = {
             resolve(count)
 
         })
+    },
+    deleteWishlistProduct : (proId)=>{
+       
+        return new Promise((resolve, reject) => {
+            console.log(proId)
+            db.get().collection(collection.WISHLIST_COLLECTION)
+                .updateOne({ _id: ObjectId(proId) },
+                    {
+                        $pull  : { products: { item: ObjectId(proId) } }
+                    }
+                ).then((response)=>{
+                    resolve(response)
+                    console.log("resolved :", response)
+                })
+                
+        })
+      
+        
     }
 }
+

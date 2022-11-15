@@ -130,6 +130,7 @@ module.exports = {
                     $pull:{products:{item:ObjectId(details.products)}}
                 }
                 ).then((response)=>{
+                  
                     resolve({removeProduct : true})
                 })
                 

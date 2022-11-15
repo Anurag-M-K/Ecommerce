@@ -27,7 +27,8 @@
                                 </h6>
                             </div>
                         
-                            <div class="text-danger"><span class="d-flex flex-row-reverse pr-5"><a href="/admin/deleteProduct?id=<%= products[i]._id %>"><i class="fa-sharp fa-solid fa-trash"></i></a></span>
+                            <div class="text-danger"><div class="d-flex flex-row-reverse pr-5"><a href="/users/deleteWishlist?id=<%= products[i].products._id %>"><i class="fa-sharp fa-solid fa-trash"></i></a></div>
+                         
                                 RS:<%= products[i].products.Price %>     
                             </div><br>
                             <div >
@@ -49,4 +50,13 @@
         </div <br><b>
     </div>
 </div>
+
+
+<script>
+    
+</script>
+
+
+
+
 </body>

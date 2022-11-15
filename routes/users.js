@@ -46,6 +46,7 @@ router.delete('/removeCartProduct')
 //wishlist
 router.get('/add-to-wishlist/:id',wishlistController.addTowishlist)
 router.get('/users/wishList',wishlistController.wish)
+router.get('/users/deleteWishlist',wishlistController.deleteProduct)
 
 
 

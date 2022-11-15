@@ -18,7 +18,7 @@ getAllCategories:()=>{
 deleteCategory:(id)=>{
     return new Promise(async(resolve,reject)=>{
        await db.get().collection(collection.CATEGORIES_COLLECTION).deleteOne({_id:objectId(id)}).then((response)=>{
-            
+            console.log("category "+response);
             resolve(response)
         })
     })
