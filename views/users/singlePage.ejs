@@ -43,9 +43,10 @@
 					<h3 class="mb-3"><%= products.productName %></h3>
 					
 					<p class="mb-3">
-						<span class="item_price">$200.00</span>
-						<del class="mx-2 font-weight-light">$280.00</del>
-						<label>Free delivery</label>
+						<span class="item_price">RS:<%= products.Price %></span>
+						<del class="mx-2 font-weight-light"><%= products.Price * 2 %></del>
+						<div><img style=" width: 6rem; ;"  src="https://static.vecteezy.com/system/resources/thumbnails/005/405/595/small/special-offer-sale-banner-besign-discount-label-and-sticker-for-media-promotion-product-free-vector.jpg" alt=""></div>
+						<br><label>Free delivery</label>
 					</p>
 					<div class="single-infoagile">
 						<ul>
@@ -66,16 +67,14 @@
 					<div class="product-single-w3l">
 						<p class="my-3">
 							<i class="far fa-hand-point-right mr-2"></i>
-							<label>1 Year</label>Manufacturer Warranty</p>
+							<label>1 Year</label>Service</p>
 						<ul>
+							
 							<li class="mb-1">
-								3 GB RAM | 16 GB ROM | Expandable Upto 256 GB
+								free service for 1 year
 							</li>
 							<li class="mb-1">
-								5.5 inch Full HD Display
-							</li>
-							<li class="mb-1">
-								13MP Rear Camera | 8MP Front Camera
+								leather products
 							</li>
 							<li class="mb-1">
 								3300 mAh Battery
@@ -90,7 +89,7 @@
 					</div>
 					<div class="occasion-cart">
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-							<form action="#" method="post">
+							<form action="#" method="">
 								<fieldset>
 									<input type="hidden" name="cmd" value="_cart" />
 									<input type="hidden" name="add" value="1" />
@@ -101,7 +100,8 @@
 									<input type="hidden" name="currency_code" value="USD" />
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
-									<button onclick="addToCart('<%= products._id %>')"    class="btn btn-primary">Add to cart</button>
+									<button onclick="addToCart('<%= products._id %>')"    class="btn btn-primary">Add to cart</button><i class=" btn btn-danger fa-solid fa-heart ml-2 " onclick="addToWishlist('<%= products._id %>')"></i>
+
 								</fieldset>
 							</form>
 						</div>
@@ -120,11 +120,17 @@
 		<div class="footer-top-first">
 			<div class="container py-md-5 py-sm-4 py-3">
 				<!-- footer first section -->
-				<h2 class="footer-top-head-w3l font-weight-bold mb-2">Electronics :</h2>
+				<h2 class="footer-top-head-w3l font-weight-bold mb-2">Cric Store:</h2>
 				<p class="footer-main mb-4">
-					If you're considering a new laptop, looking for a powerful new car stereo or shopping for a new HDTV, we make it easy to
-					find exactly what you need at a price you can afford. We offer Every Day Low Prices on TVs, laptops, cell phones, tablets
-					and iPads, video games, desktop computers, cameras and camcorders, audio, video and more.</p>
+					E-commerce is revolutionizing the way we all shop in India. Why do you want 
+					to hop from one store to another in search of the latest product when you can find 
+					it on the Internet in a single click? . Cric Store houses everything
+					 you can possibly imagine, from trending products  like premium edition bats, gloves, helmets,
+					  and shoes, clothing and lifestyle 
+					  accessories;  we got them all covered. You name it, and you can
+						 stay assured about finding them all here. For those of you with erratic working hours, Cric Store is 
+						 your best bet. Shop in your PJs, at night or in the wee hours of the morning. This e-commerce never 
+						 shuts down.</p>
 				<!-- //footer first section -->
 				<!-- footer second section -->
 				<div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
@@ -171,151 +177,7 @@
 
 	<!-- js-files -->
 	<!-- jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
-	<!-- //jquery -->
-
-	<!-- nav smooth scroll -->
-	<script>
-		$(document).ready(function () {
-			$(".dropdown").hover(
-				function () {
-					$('.dropdown-menu', this).stop(true, true).slideDown("fast");
-					$(this).toggleClass('open');
-				},
-				function () {
-					$('.dropdown-menu', this).stop(true, true).slideUp("fast");
-					$(this).toggleClass('open');
-				}
-			);
-		});
-	</script>
-	<!-- //nav smooth scroll -->oo
-
-	<!-- popup modal (for location)-->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('.popup-with-zoom-anim').magnificPopup({
-				type: 'inline',
-				fixedContentPos: false,
-				fixedBgPos: true,
-				overflowY: 'auto',
-				closeBtnInside: true,
-				preloader: false,
-				midClick: true,
-				removalDelay: 300,
-				mainClass: 'my-mfp-zoom-in'
-			});
-
-		});
-	</script>
-	<!-- //popup modal (for location)-->
-
-	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
-	<script>
-		paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
-
-		paypals.minicarts.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-	</script>
-	<!-- //cart-js -->
-
-	<!-- password-script -->
-	<script>
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
-		}
-
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
-		}
-	</script>
-	<!-- //password-script -->
-
-	<!-- imagezoom -->
-	<script src="js/imagezoom.js"></script>
-	<!-- //imagezoom -->
-
-	<!-- flexslider -->
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-
-	<script src="js/jquery.flexslider.js"></script>
-	<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function () {
-			$('.flexslider').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-			});
-		});
-	</script>
-	<!-- //FlexSlider-->
-
-	<!-- smoothscroll -->
-	<script src="js/SmoothScroll.min.js"></script>
-	<!-- //smoothscroll -->
-
-	<!-- start-smooth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
-			});
-		});
-	</script>
-	<!-- //end-smooth-scrolling -->
-
-	<!-- smooth-scrolling-of-move-up -->
-	<script>
-		$(document).ready(function () {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-			};
-			*/
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
-
-		});
-	</script>
-	<!-- //smooth-scrolling-of-move-up -->
-
-	<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-	<!-- //for bootstrap working -->
-	<!-- //js-files -->
+	
 
 	<script>
 		function addToCart(proId){
@@ -330,6 +192,21 @@
                 }
 				
 			}
+		})
+	}
+
+	function addToWishlist(proId){
+		$.ajax({
+			url:'/add-to-wishlist/'+proId,
+			method:'get',
+			success:(response)=>{
+				if(response.stauts){
+					let count = $('#wishlist-count').html()
+					count = parseInt(count)+1
+					$('#wishlist-count').html(count)
+				}
+			}
+			
 		})
 	}
 </script>

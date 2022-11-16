@@ -18,7 +18,8 @@ const addToCart = (req,res)=>{
 
 
 
-const cart =  async(req,res)=>{
+const 
+cart =  async(req,res)=>{
   
     let userData = req.session.user;
     if(req.session.loggedIn){
@@ -32,6 +33,7 @@ const cart =  async(req,res)=>{
        
        
           cartCount = await userHelper.getCartCount(req.session.user._id)
+          
         categoryHelper.getAllCategories().then((CategoryDetails) => {
 
             res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails})
@@ -49,6 +51,7 @@ const cart =  async(req,res)=>{
 
  const productCount = (req,res,next)=>{
     let userData = req.session.user
+    console.log("userdata ",userData);
     userHelper.changeProductQuantity(req.body ).then(async(response)=>{
          userHelper.getTotalAmount(userData._id).then((result)=>{
            
@@ -62,10 +65,24 @@ const cart =  async(req,res)=>{
  }
 
 
+ const deleteCartProduct = (req,res)=>{
+ 
+    let proId = req.query.Id
+   let item = req.query.item
+ console.log("item id : ",item);
+
+    userHelper.deleteCartPro(proId).then((response)=>{
+        console.log("njaningethi");
+        res.redirect('/users/cart')
+    })
+
+ }
+
 
 
 module.exports = {
     cart,
     addToCart,
-    productCount
+    productCount,
+    deleteCartProduct
 }

@@ -34,7 +34,9 @@
 						</tr>
 					</thead>
 						<tbody>
+							<% if(products.length>0) { %>
 							<% for(var i=0; i<products.length; i++) { %>
+							
 								<tr>
 								 
 									<td style="border: 1px solid #000000;"> <%= i+1 %> </td>
@@ -48,10 +50,14 @@
 									<input disabled type="text" value="<%= products[i].quantity %>" style="width: 1%; flex: 1 1 auto; background: #f5f5f5; border: 0; padding: 0 5px;" id="<%= products[i].quantity %>">
 								   <button type="submit" class="cart-item-count ml-3 btn btn-secondary" onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>')" >+</button></td>
 								   <td style="border: 1px solid #000000;">subtotal>
-								   <td style="border: 1px solid #000000;"> <a href="/deleteProduct?id=<%= products[i]._id %>" class="btn btn-danger">Delete</a>  </td>
+								   <td style="border: 1px solid #000000;"> <a href='/users/deleteCartProduct/?Id=<%= products[i].products._id %> & item=<%= products[i].item %>'  class="btn btn-danger">Delete</a>  </td>
 								
 								</tr>
+							
 								<% } %>
+							<% } else { %>
+								<h2>Cart is empty</h2>
+							<% } %>
 
 
 								<div>
@@ -130,6 +136,19 @@ function removeProduct(cartId,productId){
 		window.location.reload()
 	})
 }
+
+// function deleteCartItem(cartProductId,cartId){
+// 	fetch('/deleteCartProduct',{
+// 		method:'delete',
+// 		headers:{'content-type':'application/json'},
+// 		body:JSON.stringify({
+// 			product : cartProductId,
+// 			cart:cartId
+// 		})
+// 	}).then((response)=>{
+// 		window.location.reload()
+// 	})
+// }
 
 </script>
 

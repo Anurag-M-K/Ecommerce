@@ -114,20 +114,15 @@ module.exports = {
         })
     },
     changeProductQuantity:(details)=>{
-        
+        console.log("details : ",details);
         details.count = parseInt(details.count)
         details.quantity = parseInt(details.quantity)
-
-    
-        
-
         return new Promise((resolve,reject)=>{
              if(details.count == -1 && details.quantity == 1){
-                    
                 db.get().collection(collection.CART_COLLECTION)
                 .updateOne({_id:ObjectId(details.cart)},
                 {
-                    $pull:{products:{item:ObjectId(details.products)}}
+                    $pull:{products:{item:ObjectId(details.product)}}
                 }
                 ).then((response)=>{
                   
@@ -350,6 +345,19 @@ console.log('total amount :',TotalAmount[0].total);
                 {_id:ObjectId(details)}
             )
         })
-     }
+     },
+         deleteCartPro : (proId)=>{
+         console.log("proid :",proId);
+           return new Promise((resolve,reject)=>{
+           
+            db.get().collection(collection.CART_COLLECTION).updateOne(
+                {_id:ObjectId(proId)},{$pull:{products:{_id:ObjectId(proId)}}}
+            )
+           })
+           
+
+            
+             
+         }
     
 }

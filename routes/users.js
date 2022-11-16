@@ -42,6 +42,7 @@ router.get('/add-to-cart/:id',userCart.addToCart)
 router.get('/users/cart',userCart.cart)
 router.post('/change-product-quantity',userCart.productCount)
 router.delete('/removeCartProduct')
+router.get('/users/deleteCartProduct/',userCart.deleteCartProduct)
 
 //wishlist
 router.get('/add-to-wishlist/:id',wishlistController.addTowishlist)
@@ -65,6 +66,8 @@ router.get('/users/singlePage',userSinglePage.single)
 
 //nav buttonsu
 router.get('/homeButton',navButtons.homeButton)
+router.get('/contact',navButtons.contactUs)
+router.get('/about',navButtons.aboutPage)
 
 //plceorder
 router.get('/placeOrder',userCheckOut.payment)
