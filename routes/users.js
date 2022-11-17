@@ -88,6 +88,8 @@ router.get('/toOrder',profile.toOrder)
 router.get('/toCart',profile.toCart)
 router.get('/logoutFromProfile',profile.logOutProfile)
 router.get('/toWishlist',profile.toWishlist)
+router.get('/edit-profile',profile.edtitProfile)
+router.post('/users/editUserDetails',profile.updateProfile)
 
 
 

@@ -25,6 +25,7 @@ const userManagement = (req, res) => {
 
   const orderPage = (req,res)=>{
      adminOrderModel.getOrders().then((orderList)=>{
+      console.log("admin order orderlist :",orderList);
      
       res.render('admin/adminOrder',{admin:true,user:false,orderList})
 
@@ -37,9 +38,9 @@ const userManagement = (req, res) => {
     let proId = req.query.id
 console.log("prodid :",proId);
 adminOrderModel.getAllOrderedPoducts(proId).then((orderProducts)=>{
-  console.log("orderProsucrs directly ;",orderProducts);
-let picture = orderProducts.deliveryDetails
-console.log("poicture :",picture);
+  console.log("torderProductst  ;",orderProducts);
+
+
   res.render('admin/orderProductsPage',{admin:true,user:false,orderProducts})
 })
 

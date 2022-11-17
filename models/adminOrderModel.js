@@ -50,6 +50,9 @@ module.exports = {
                 },
                 {
                     $unwind:'$deliveryDetails.products'
+                },
+                {
+                    $unwind :'$deliveryDetails.TotalAmount'
                 }
             ]).toArray()
             resolve(orderProducts)

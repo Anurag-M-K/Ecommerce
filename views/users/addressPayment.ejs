@@ -9,22 +9,21 @@
 
 
 
-		<div class="container col-md-6 mt-5">
+		<div class="container col-md-6 mt-5" style="    padding-bottom: 113px;">
 			
-			<form action="" id="checkout-form">
+			<form action="" id="checkout-form" style="    margin-bottom: 152px;">
 				<div class="row" z>
 					<div class="col-md-6">
 						<div class="row"><h3>Enter delivery details</h3></div><br>
 					</div>
 					<div>
-					<input type="text" class="form-control "  required id="address" placeholder="Address" name="address"></div><br><br>
-				<br>
+						<div><input type="text" placeholder="Enter your name " id="name" name="name"class="form-control "></div>														
+					<input type="text" class="form-control "  required id="address" placeholder="Address" name="address"></div>
+					<div><input type="text" class="form-control" required id="pincode" placeholder="Pincode" name="pincode"></div>
+					<div><input type="text" class="form-control" id="mobile" placeholder="Mobile" required name="mobile"></div>
 
-					<div><input type="text" class="form-control" required id="pincode" placeholder="Pincode" name="pincode"></div><br><br>
-						<br>
 					
-					<div><input type="text" class="form-control" id="mobile" placeholder="Mobile" required name="mobile"></div><br><br>
-					<br>
+					
 					<input type="text" name="userId" style="display:none ;"   id=""   value="<%= userData._id %>">
 				</div>
 		</div>

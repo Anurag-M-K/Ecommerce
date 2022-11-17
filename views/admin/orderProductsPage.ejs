@@ -22,38 +22,22 @@
         <div><h3>Expected Date</h3></div>
         <div><%= orderProducts[i].deliveryDetails.expected_Date %></div>
       </div>
+      <div class="col bg-light border rounded pt-2 pb-5" style="    padding-bottom: 24px;">
+        <div><h3>Total Amount</h3></div>
+        <div><%= orderProducts[i].deliveryDetails.TotalAmount.total %></div>
+      </div>
     </div>
    
     </div>
   </div>
+  <% } %>
 
 
 
-sdsf
-<div class="container">
-	<div class="row">	
-        <div class="col-md-3">
 
-        
-		
-				<% for (var i= 0 ; i<orderProducts.length ;  i++) { %>
-		<div class="card" style="width: 18rem; border: 1px ;border:1px solid black; border-radius: 2rem; padding: 1rem; margin-right: 3rem;    margin-bottom: 3rem;";>
-			
-			<%= orderProducts[i].deliveryDetails.mobile %>
-			<div   class=" d-md-flex justify-content-md-end"></div>
-			<img src="/images/<%= orderProducts[i].deliveryDetails.products.Pitcure %>" class="card-img-top" style="width:13rem ; height:13rem;" alt="...">
-			<div class="card-body">
-			  <h5 class="card-title"><%= orderProducts[i].deliveryDetails.products.productName %>
-			  <p class="card-text text-danger fs-4 fw-bold">RS:<%=orderProducts[i].deliveryDetails.products.Price %> </p>
-			  </a>
-    			</div>
-			
-		  </div>
-		  <% } %>
-          </div>
+
 		
 
 	
 	</div>
 </div>
-<% } %>

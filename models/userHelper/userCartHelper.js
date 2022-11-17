@@ -299,6 +299,7 @@ console.log('total amount :',TotalAmount[0].total);
             
             let orderObj = {
                 deliveryDetails:{
+                    name:order.name,
                     mobile:order.mobile,
                     address:order.address,
                     pincode:order.pincode,

@@ -70,5 +70,23 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    updateUserDetails:(userData,bodyData)=>{
+        console.log("checking model userdata :",userData);
+        console.log("checking model bodyData :",bodyData);
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).updateOne({_id:ObjectId(userData._id)},
+                {
+                    $set:{
+                        Name:bodyData.Name,
+                        Email:bodyData.Email,
+                        Phone:bodyData.mobile
+                    }
+                }).then((response)=>{
+                    resolve(response)
+                    console.log("checking response :",response);
+                })
+        })
     }
+    
 }

@@ -18,35 +18,28 @@ const addToCart = (req,res)=>{
 
 
 
-const 
-cart =  async(req,res)=>{
-  
+ 
+let cart =  async(req,res)=>{
     let userData = req.session.user;
-    if(req.session.loggedIn){
-      
+    cartCount = await userHelper.getCartCount(req.session.user._id)
+    if(req.session.loggedIn && cartCount){
         let products =await userHelper.getCartProducts(req.session.user._id)
-   
-    
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
-      
-       
-       
-       
-          cartCount = await userHelper.getCartCount(req.session.user._id)
           
+        
         categoryHelper.getAllCategories().then((CategoryDetails) => {
-
             res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails})
         })
-     
-       
-           
-     
+    
     }else{
         res.render("users/usersLogin", { user: false, admin: false, userData});
     }
-    
  }
+
+
+
+
+
 
 
  const productCount = (req,res,next)=>{
@@ -54,13 +47,9 @@ cart =  async(req,res)=>{
     console.log("userdata ",userData);
     userHelper.changeProductQuantity(req.body ).then(async(response)=>{
          userHelper.getTotalAmount(userData._id).then((result)=>{
-           
             let totalAmount = result.totalAmount
-          
             res.json({response,result})
          })
-     
-       
     })
  }
 
