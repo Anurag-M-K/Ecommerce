@@ -23,6 +23,7 @@ let cart =  async(req,res)=>{
     let userData = req.session.user;
     cartCount = await userHelper.getCartCount(req.session.user._id)
     if(req.session.loggedIn && cartCount){
+      
         let products =await userHelper.getCartProducts(req.session.user._id)
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
           

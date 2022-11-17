@@ -54,7 +54,7 @@ const edtitProfile = async(req,res)=>{
 
 const updateProfile = (req,res)=>{
     userProfileModel.updateUserDetails(req.session.user, req.body).then(()=>{
-        res.redirect('/users/profile')
+        res.redirect('/')
     })
 }
 
