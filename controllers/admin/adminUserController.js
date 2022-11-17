@@ -1,6 +1,8 @@
 const adminHelper = require("../../models/helpers/admin-helper");
 const userManagementHelper = require('../../models/userManagementHelper')
-
+const adminOrderModel = require('../../models/adminOrderModel');
+const { orderList } = require("../users/usersOrderList");
+const userCartHelper = require('../../models/userHelper/userCartHelper');
 const userManagement = (req, res) => {
     adminHelper.showUser(req.body).then((userDetails) => {
       res.render("admin/user-management", { userDetails,admin:true,user:false});
@@ -16,15 +18,42 @@ const userManagement = (req, res) => {
 
   const userUnblock = (req,res)=>{
     userManagementHelper.unBlockUser(req.body.userId).then((response)=>{
-      console.log("respnse ;",response);
+    
       res.json({status:true})
     })
   }
+
+  const orderPage = (req,res)=>{
+     adminOrderModel.getOrders().then((orderList)=>{
+     
+      res.render('admin/adminOrder',{admin:true,user:false,orderList})
+
+     })
+    
+ 
+  }
+
+  const viewProducts = (req,res)=>{
+    let proId = req.query.id
+console.log("prodid :",proId);
+adminOrderModel.getAllOrderedPoducts(proId).then((orderProducts)=>{
+  console.log("orderProsucrs directly ;",orderProducts);
+let picture = orderProducts.deliveryDetails
+console.log("poicture :",picture);
+  res.render('admin/orderProductsPage',{admin:true,user:false,orderProducts})
+})
+
+  }
+
+
+
 
 
 
   module.exports = {
     userManagement,
     userBlock,
-    userUnblock
+    userUnblock,
+    orderPage,
+    viewProducts
   }

@@ -12,6 +12,7 @@ getAllCategories:()=>{
     return new Promise(async(resolve,reject)=>{
         let Categories = await db.get().collection(collection.CATEGORIES_COLLECTION).find().toArray()
         resolve(Categories)
+      
     })
 },
 

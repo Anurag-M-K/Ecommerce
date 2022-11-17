@@ -19095,7 +19095,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           </p>
         </div>
         <div class="col-lg-8 header-right mt-lg-0 mt-2">
-          <!-- header lists -->
+      
           <ul>
             <li class="text-center  text-white ">
               <a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
@@ -19109,64 +19109,63 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             <li style="" class="text-center   text-white">
 
-              <% if(userData) { %>
+                <% if(userData) { %>
 
-                <div class="btn-group">
-
-                  <button type="button" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <%= userData.Name %>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/logout">Logout</a></li><br>
-                  </ul>
-                </div>
-                <% } else { %>
                   <div class="btn-group">
 
-                    <button type="button" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                      aria-expanded="false">Account
+                    <button type="button" type="button" class="btn btn-danger dropdown-toggle "  data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <%= userData.Name %>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/usersLogin">Log IN</a></li><br>
-                      <li><a class="dropdown-item" href="/header/usersignup">Register</a></li><br>
+                      <li><a class="dropdown-item" href="/logout">Logout</a></li><br>
                     </ul>
                   </div>
-                  <% } %>
-            </li>
+                  <% } else { %>
+                    <div class="btn-group">
+
+                      <button type="button" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">Account
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/usersLogin">Log IN</a></li><br>
+                        <li><a class="dropdown-item" href="/header/usersignup">Register</a></li><br>
+                      </ul>
+                    </div>
+                    <% } %>
+              </li>
 
 
 
 
-                    <li><a href="/users/cart">
-            <span class="btn btn-dark" style=" margin-left: 36px;"><i class="fas fa-shopping-cart ml-1"></i>Cart
-                <span class="badge badge-success mb-1" id="cart-count">
-                  <%- cartCount %>
-                </span></span></a></li>
-          <a href="/users/profile">
-              <span class="btn btn-dark " ><i
-                    class="fa-regular fa-user"></i></i> <span class="badge badge-success mb-1"
-                    id="cart-count"></span></span></a>
+                      <li><a href="/users/cart">
+              <span class="btn btn-dark" style=" margin-left: 36px;"><i class="fas fa-shopping-cart ml-1"></i>Cart
+                  <span class="badge badge-success mb-1" id="cart-count">
+                    <%- cartCount %>
+                  </span></span></a></li>
+            <a href="/users/profile">
+                <span class="btn btn-dark " ><i
+                      class="fa-regular fa-user"></i></i> <span class="badge badge-success mb-1"
+                      id="cart-count"></span></span></a>
 
 
 
 
-                    <a style="" href="/users/wishList">
-                      <span class="btn btn-dark " ><i class="fa-solid fa-heart"></i></i> <span class="badge badge-success mb-1"
-                            id="wishlist-count"></span></span></a>
+                      <a style="" href="/users/wishList">
+                        <span class="btn btn-dark " ><i class="fa-solid fa-heart"></i></i> <span class="badge badge-success mb-1"
+                              id="wishlist-count"></span></span></a>
 
+
+          </div>
+
+          </ul>
 
         </div>
 
-        </ul>
-
-        <!-- //header lists -->
       </div>
 
     </div>
-
-  </div>
-  </div>
+    </div>
 
 
 
@@ -19175,7 +19174,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <!-- //home  section  -->
 
   <div class="navbar-inner border">
-    <div class="container">
+    <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="agileits-navi_search">
           <form action="#" method="post">
@@ -19197,10 +19196,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto text-center mr-xl-5">
-            <li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
-              <a class="nav-link" href="/homeButton">Home
+        <div class="collapse navbar-collapse ml-5 " id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto text-center mr-xl-5  ">
+            <li class="nav-item active mr-lg-2 mb-lg-0 mb-2 ">
+              <a class="nav-link " href="/homeButton">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>

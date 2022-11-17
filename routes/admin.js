@@ -57,6 +57,8 @@ router.get('/adminLogout',adloginController.adminLogoutControllers)
 router.get("/user-management", adminUserController.userManagement);
 router.post('/userManagement/block',adminUserController.userBlock)
 router.post('/userManagement/unblock',adminUserController.userUnblock)
+router.get('/orders',adminUserController.orderPage)
+router.get('/orderId',adminUserController.viewProducts)
 
 //-------------------------------------------BRAND DETAILS----------------------------------------------------------------------------//
 router.post("/brandCategory", adminBrandController.addBrandController);

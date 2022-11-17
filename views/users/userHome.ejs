@@ -176,7 +176,7 @@
                         <% } %>
                         <% } %>
                     </a>
-                   <a href="/categoryBasedPage"> <h5 class="font-weight-semi-bold m-0 text-center pb-2	"><%= CategoryDetails[i]._category %></h5></a>
+                   <a href="/categoryBasedPage/?catName=<%= CategoryDetails[i]._category %>"> <h5 class="font-weight-semi-bold m-0 text-center pb-2	"><%= CategoryDetails[i]._category %></h5></a>
                 </div>
             </div>
             <% } %> 
@@ -221,13 +221,13 @@
 		<div class="card" style="width: 18rem; border: 1px ;border:1px solid black; border-radius: 2rem; padding: 1rem; margin-right: 3rem;    margin-bottom: 3rem;";>
 			
 			
-			<div   class=" d-md-flex justify-content-md-end"><i class=" btn btn-danger fa-solid fa-heart " onclick="addToWishlist('<%= products[i]._id %>')"></i></div>
-			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
+			<div   class=" d-md-flex justify-content-md-end"></div>
+			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:13rem ; height:13rem;" alt="...">
 			<a href="/users/singlePage?id=<%= products[i]._id %>">	<div class="card-body">
 			  <h5 class="card-title"><%= products[i].productName %>
 			  <p class="card-text text-danger fs-4 fw-bold">RS:<%= products[i].Price %> </p>
 			  </a>
-			  <button onclick="addToCart('<%= products[i]._id %>')"    class="btn btn-primary">Add to cart</button><span></span>
+			  <button onclick="addToCart('<%= products[i]._id %>')"    class="btn btn-primary">Add to cart</button><span><i class=" btn btn-danger fa-solid fa-heart ml-2 " onclick="addToWishlist('<%= products[i]._id %>')"></i></span>
 			</div>
 			
 		  </div>
