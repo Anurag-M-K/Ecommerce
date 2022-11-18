@@ -1,48 +1,29 @@
 <section class="bg-light">
- 
-   <br><br><br><br>
-   
-
-   <div class="container border ">
+  <div class="container-fluid border ">
     <div class="row">
-      <div class="col-md-4">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvQut4WZkLYolCMb60e21orj2AeemXzJyplX4T9ibB&s" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
+
+        <% for(var i=0;i<orderList.length;i++) { %>
+          <div class="col-2">
+          <div class="card mt-5" style="width: 18rem;">
+            <img src="../images/<%= orderList[i].deliveryDetails.products.productDetails.Pitcure %>" class="card-img-top"
+              style="width:15rem ; height:15rem;" alt="image here">
+            <div class="card-body">
+              <h5 class="card-title text-center fw-bold">
+                <%= orderList[i].deliveryDetails.products.productDetails.productName %>
+              </h5>
+              <p class="card-text text-center text-danger">RS:<%=
+                  orderList[i].deliveryDetails.products.productDetails.Price %>
+              </p>
+            </div>
+          </div>
       </div>
-      <div class="col-md-4 mt-2 ">
-        <h4 class="text-dark font-weight-bold">Address</h4>
-        <div class="mt-5"> <%=  orderList.deliveryDetails.address %></div>
-        <br>
-        <div><%= orderList.deliveryDetails.pincode %></div>
-       
-      </div>
-      <div class="col-md-4 mt-2">
-        <h4 class="text-dark font-weight-bold">Delivery Date</h4>
-        <div class="mt-5"><%=  orderList.deliveryDetails.expected_Date %></div>
-        
-      </div>
+      <% } %>
     </div>
   </div>
-  
-  <br><br><br><br><br>
+  </div>
 </section>
 
 
 
 
-
-
-<div class="container">
-    <div class="row">
-       
-        <% for(var i=0;i<orderList.length;i++) { %>
-        <div class="card" style="width: 18rem;">
-           
-            <div class="card-body">
-              <h5 class="card-title">  </h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <% } %>
-    </div>
-</div>
+<!-- nicnsdncsbciubsiuc -->

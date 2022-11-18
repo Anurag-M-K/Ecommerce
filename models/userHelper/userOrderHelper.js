@@ -35,12 +35,26 @@ module.exports = {
             console.log('orderItem : ',orderItem.deliveryDetails);
         })
     },
-    getOneOrderProduct : (orderid)=>{
-        return new Promise(async(resolve,reject)=>{
-            db.get().collection(collection.ORDER_COLLECTION).findOne({_id:ObjectId(orderid)}).then((orderList)=>{
-                resolve(orderList)
-            })
+    // getOneOrderProduct : (orderid)=>{
+    //     return new Promise(async(resolve,reject)=>{
+    //         db.get().collection(collection.ORDER_COLLECTION).findOne({_id:ObjectId(orderid)}).then((orderList)=>{
+    //             resolve(orderList)
+    //         })
            
+    //     })
+    // },
+    getOneOrderProduct : (orderId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let orderList = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match:{_id:ObjectId(orderId)}
+                },
+                {
+                    $unwind:"$deliveryDetails.products"
+                }
+            ]).toArray()
+            resolve(orderList)
+            
         })
     }
 }

@@ -96,8 +96,7 @@ module.exports = {
          
 
             resolve(cartItems)
-           
-        console.log("cart item :",cartItems);
+       
         })
        
     },
@@ -114,7 +113,7 @@ module.exports = {
         })
     },
     changeProductQuantity:(details)=>{
-        console.log("details : ",details);
+       
         details.count = parseInt(details.count)
         details.quantity = parseInt(details.quantity)
         return new Promise((resolve,reject)=>{

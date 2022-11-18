@@ -115,9 +115,12 @@ function changeQuantity(cartId,proId,count,userData){
 			}else{
 				console.log("response check",response);
 				document.getElementById(proId).innerHTML=quantity+count
-				document.getElementById("totalAmount").innerHTML = response.result //routil ninn pass cheythath ivide successinte ullil
+				document.getElementById("totalAmount").innerHTML = response.result 
+				console.log("this is totala mount :",response.result);
+				//routil ninn pass cheythath ivide successinte ullil
 				//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
-				document.getElementById('subTotal').innerHTML = response.result
+				console.log("response.result",response.sub);
+				document.getElementById('subTotal').innerHTML = response.sub
 				
 			}
 			

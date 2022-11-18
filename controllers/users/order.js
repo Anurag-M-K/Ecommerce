@@ -19,7 +19,9 @@ const viewOrderProducts = async(req,res)=>{
        
     categoryHelper.getAllCategories().then(async(CategoryDetails) => {
      userOrderHelper.getOneOrderProduct(id).then((orderList)=>{
-        console.log('productList :',orderList);
+        console.log('orderlist : ',orderList);
+
+        console.log('orderList DELIVERDETAIS  products:',orderList[0].deliveryDetails);
          res.render('users/view-order-products',{user:true,admin:false,orderList,userData,cartCount,totalAmount,products,CategoryDetails})
     })
 

@@ -27,7 +27,7 @@ let cart =  async(req,res)=>{
         let products =await userHelper.getCartProducts(req.session.user._id)
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
         let subTotal = await userCartHelper.subTotal(req.session.user._id)
-        console.log("subtotal here :",subTotal);
+       
           
         
         categoryHelper.getAllCategories().then((CategoryDetails) => {
@@ -50,8 +50,14 @@ let cart =  async(req,res)=>{
     console.log("userdata ",userData);
     userHelper.changeProductQuantity(req.body ).then(async(response)=>{
          userHelper.getTotalAmount(userData._id).then((result)=>{
-            let totalAmount = result.totalAmount
-            res.json({response,result})
+            // userCartHelper.subTotal(userData._id).then((sub)=>{
+                let totalAmount = result.totalAmount
+                // let subTotal = sub.subTotal
+                
+                // console.log("subtOTak :",subTotal);
+                res.json({response,result})
+            // })
+            
          })
     })
  }
