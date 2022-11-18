@@ -207,6 +207,55 @@ module.exports = {
            
      },
      
+     subTotal : (userId)=>{
+return new Promise(async(resovle,reject)=>{
+  const subTotal = await  db.get().collection(collection.CART_COLLECTION).aggregate([
+        {
+            $match:{user:ObjectId(userId)}
+        },
+        {
+            $unwind :'$products'
+        },
+        {
+            $project:{
+                item:'$products.item',
+                quantity:'$products.quantity'
+            }
+        },
+        {
+            $lookup: {
+                from :collection.PRODUCT_COLLECTION,
+                localField : 'item',
+                foreignField : "_id",
+                as : "products"
+            }
+            
+        },
+        {
+            $project:{
+                item:1,quantity:1,products:{$arrayElemAt:['$products',0]}
+            }
+        },
+        {
+            $project:{
+                _id:0,
+                total:{
+                    
+                        $multiply:[
+                            "$quantity","$products.Price"
+                        ]
+                    
+                }
+            }
+        }
+
+    ]).toArray()
+    response.subTotal = subTotal
+    resovle(subTotal)
+   
+})
+     },
+     
        placeOrder : (order,total,userId)=>{
         return new  Promise(async(resolve,reject)=>{
 

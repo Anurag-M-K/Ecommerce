@@ -26,10 +26,12 @@ let cart =  async(req,res)=>{
       
         let products =await userHelper.getCartProducts(req.session.user._id)
         let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
+        let subTotal = await userCartHelper.subTotal(req.session.user._id)
+        console.log("subtotal here :",subTotal);
           
         
         categoryHelper.getAllCategories().then((CategoryDetails) => {
-            res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails})
+            res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails,subTotal})
         })
     
     }else{
