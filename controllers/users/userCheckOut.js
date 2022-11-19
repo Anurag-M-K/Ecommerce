@@ -25,10 +25,11 @@ const   payment = async (req,res)=>{
     }
    
 const checkOut = async(req,res)=>{
-    let products = await userHelper.getCartProductList(req.body.userId)
+  
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
+    if(totalPrice >0)
    userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((orderId)=>{
-   console.log(req.body);
+  
     if(req.body['payment-method']==='COD'){
         res.json({codSuccess:true})
     }else{

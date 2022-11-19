@@ -49,8 +49,8 @@
 								   <span id="<%= products[i].products._id %>"><%= products[i].quantity %></span> 
 									<input disabled type="text" value="<%= products[i].quantity %>" style="width: 1%; flex: 1 1 auto; background: #f5f5f5; border: 0; padding: 0 5px;" id="<%= products[i].quantity %>">
 								   <button type="submit" class="cart-item-count ml-3 btn btn-secondary" onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>')" >+</button></td>
-								   <td style="border: 1px solid #000000;"><span id="subTotal" class="subTotal"><%= subTotal[i].total %></span> </td>
-								   <td style="border: 1px solid #000000;"> <a href='/users/deleteCartProduct/?Id=<%= products[i].products._id %> & item=<%= products[i].item %>'  class="btn btn-danger">Delete</a>  </td>
+								   <td style="border: 1px solid #000000;"><span id="subTotal" class="subTotal"></span> </td>
+								   <td style="border: 1px solid #000000;"> <a href='/users/deleteCartProduct/?item=<%= products[i].item %>'  class="btn btn-danger">Delete</a>  </td>
 								
 								</tr>
 							

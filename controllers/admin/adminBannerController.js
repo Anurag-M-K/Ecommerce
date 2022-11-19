@@ -16,6 +16,10 @@ bannerHelper.insertBanner({bannerImage:req.file.filename,bannerName,bannerOffer}
 })
 }
 
+const bannerRedirect = (req,res)=>{
+    res.redirect('/adminBanner')
+}
+
 
 
 
@@ -29,5 +33,6 @@ const deleteBanner = (req,res)=>{
 module.exports = {
     showBannerPage,
    addBanner,
-  deleteBanner
+  deleteBanner,
+  bannerRedirect
 }

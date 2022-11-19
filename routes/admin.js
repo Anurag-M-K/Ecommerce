@@ -9,7 +9,7 @@ const adminUserController = require('../controllers/admin/adminUserController')
 const multer = require('multer');
 const adminBannerController = require('../controllers/admin/adminBannerController');
 const userManagementHelper = require("../models/userManagementHelper");
-
+const adminCoupenController = require('../controllers/admin/adminCoupenController')
 
 
 //Multer Start
@@ -88,8 +88,13 @@ router.get('/showEditProductPage',adminProductController.updateProductDetails)
 router.get('/adminBanner',adminBannerController.showBannerPage)
 router.post('/addNewBanner',upload.single("bannerImage"),adminBannerController.addBanner)
 router.delete('/deleteBanner',adminBannerController.deleteBanner)
+router.get("/adminBannerPage",adminBannerController.bannerRedirect)
 
 
+// ********************************************************admin coupen*******************************************************************
+
+router.get('/coupen',adminCoupenController.coupenPage)
+router.post('/addCoupen',adminCoupenController.addCoupen)
 
 
 module.exports = router

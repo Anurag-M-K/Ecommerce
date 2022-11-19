@@ -68,13 +68,13 @@ aria-hidden="true"
           <th scope="col">DELETE BANNER</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody  style="border-color: black;">
          <% for(var i=0;i<banners.length;i++) { %>
         <tr>
-          <th scope="row"><%= i+1 %></th>
-          <td><%= banners[i].bannerName %></td>
-          <td><img src="/images/<%= banners[i].bannerImage %>" alt="banner image" style="width:6em ; height:5em"></td>
-          <td><a class="btn btn-danger" onclick="deleteBanner('<%= banners[i]._id %>')">DELETE</a></td>
+          <th style="border-color: black;" scope="row"><%= i+1 %></th>
+          <td  style="border-color: black;"><%= banners[i].bannerName %></td>
+          <td  style="border-color: black;"><img src="/images/<%= banners[i].bannerImage %>" alt="banner image" style="width:6em ; height:5em"></td>
+          <td  style="border-color: black;"><a class="btn btn-danger" onclick="deleteBanner('<%= banners[i]._id %>')">DELETE</a></td>
         </tr>
      <% } %>
       </tbody>

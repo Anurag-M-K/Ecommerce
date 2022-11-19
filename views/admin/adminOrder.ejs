@@ -6,7 +6,7 @@
 
 <div class="container">
    
-        <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;">
+        <table id="order-table" class="table table-bordered"  style="border: 1px solid black; margin-top: 15px;">
             <thead class="bg-secondary">
               <tr>
                 <th scope="col text-light" style="color:white ;">OrderId</th>
@@ -22,13 +22,13 @@
                 <% for(var i=0;i<orderList.length;i++) { %>
               <tr>
                
-              <td> <a href="/admin/orderId?id=<%= orderList[i]._id %>"> <%= orderList[i]._id %></td></a>
-                <td><%= orderList[i].deliveryDetails.date %></td>
-                <td><%= orderList[i].deliveryDetails.name %></td>
-                <td><%= orderList[i].deliveryDetails.status %></td>
-                <td><%= orderList[i].deliveryDetails.paymentMethod %></td>
-                <td><%= orderList[i].deliveryDetails.expected_Date %></td>
-                <td><%= orderList[i].deliveryDetails.TotalAmount[0].total %></td>
+              <td  style="border-color: black;"> <a href="/admin/orderId?id=<%= orderList[i]._id %>"> <%= orderList[i]._id %></td></a>
+                <td  style="border-color: black;" ><%= orderList[i].deliveryDetails.date %></td>
+                <td  style="border-color: black;"><%= orderList[i].deliveryDetails.name %></td>
+                <td  style="border-color: black;"><%= orderList[i].deliveryDetails.status %></td>
+                <td  style="border-color: black;"><%= orderList[i].deliveryDetails.paymentMethod %></td>
+                <td  style="border-color: black;"> <%= orderList[i].deliveryDetails.expected_Date %></td>
+                <td  style="border-color: black;"><%= orderList[i].deliveryDetails.TotalAmount[0].total %></td>
               </tr>
               
               <% } %>
@@ -37,3 +37,12 @@
           </table>
     
 </div>
+
+<script>
+  $(document).ready( function () {
+    $('#order-table').DataTable();
+  } );
+  </script>
+ 
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>

@@ -51,13 +51,13 @@
       <tbody>
         <% for(var i=0;i<Categories.length;i++) { %>
           <tr>
-            <td>
+            <td style="border-color: black;">
               <%= Categories[i]._category %>
             </td>
 
-            <td> <a href="/admin/editCategory<%= Categories[i]._id%>"
+            <td  style="border-color: black;"> <a href="/admin/editCategory<%= Categories[i]._id%>"
                 class="btn btn-primary align-content-end">Edit</a></td>
-            <td><a href="/admin/deleteCategory?id=<%= Categories[i]._id %> "
+            <td style="border-color: black;"><a href="/admin/deleteCategory?id=<%= Categories[i]._id %> "
                 class="btn  btn-danger align-content-end">Delete</a></td>
           </tr>
 

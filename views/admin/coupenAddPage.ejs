@@ -1,0 +1,142 @@
+<main class="main-container">
+  <div class="main-title">
+    <p class="font-weight-bold">COUPEN</p>
+  </div>
+
+
+
+  <section class="home-section mt-2 ">
+    <div class="container mb-3">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        ADD COUPEN
+      </button>
+      <form action="/admin/addCoupen" method="POST">
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-warning" id="exampleModalLabel">Add Coupen</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label for="coupen" class="text-primary">Coupen Name </label>
+                <input type="text" name="coupenName" id="coupenName"><br><br>
+                <label for="coupenCode" class="text-primary">Coupen Code </label>
+                <input type="number" name="coupenCode" id="coupenCode"><br><br>
+                <label for="discount" class="text-primary">Discount </label>
+                <input type="number" name="discount" id="discount"><br><br>
+                <label for="startingDate" class="text-primary">Start Date</label>
+                <input type="date" name="startDate" id="startDate"><br>
+                <label for="endDate" class="text-primary">End Date</label>
+                <input type="date" name="endDate" id="endDate"><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
+                </button>
+                <button type="submit" class="btn btn-success">ADD</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </form>
+    <div class="main-container">
+      <div class="table-responsive">
+
+      
+
+
+        <table class="table table-dark table-striped">
+          <thead class="bg-secondary" style="border-style: solid;">
+            <tr>
+              <th scope="col" style="border-style: solid;">SNo</th>
+              <th scope="col" style="border-style: solid;">Coupen Name</th>
+              <th scope="col" style="border-style: solid;">Coupen Code</th>
+              <th scope="col" style="border-style: solid;">Start Date</th>
+              <th scope="col" style="border-style: solid;">End Date</th>
+              <th scope="col" style="border-style: solid;">Discount</th>
+              <th scope="col" style="border-style: solid;">Delete Coupen</th>
+            </tr>
+          </thead>
+
+
+
+          <% for (var i=0;i<coupen.length;i++) {%>
+          <tr style="border-color: black;">
+           
+              <td style="border-color: black; border-style: solid;">
+                <%= i+1 %>
+              </td>
+
+              <td style="border-color: black; border-style: solid;">
+                <%= coupen[i].coupenName %>
+              </td>
+              </td>
+              <td style="border-color: black; border-style: solid;">
+                <%= coupen[i].coupenCode %>
+              </td>
+
+              <td style="border-color: black; border-style: solid;">
+                <%= coupen[i].startDate %>
+              </td>
+              </td>
+              <td style="border-color: black; border-style: solid;">
+                <%= coupen[i].endDate %>
+              </td>
+
+              <td style="border-color: black;vborder-style: solid;">
+                <%= coupen[i].discount %>
+              </td>
+              </td>
+              <td style="border-color: black; border-style: solid;"><button class="btn btn-danger">DELETE</button></td>
+              </td>
+
+              
+          </tr>
+          <% } %>
+        </table>
+
+
+        </table>
+      </div>
+      </div>
+  </section>
+  </div>
+  </div>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    };
+
+    var myModal = document.getElementById("myModal");
+    var myInput = document.getElementById("myInput");
+
+    myModal.addEventListener("shown.bs.modal", function () {
+      myInput.focus();
+    });
+
+
+    function deleteCoupen(coupenId) {
+      fetch("/admin/deleteCoupen", {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/JSON'
+        },
+        body: JSON.stringify({
+          coupenId
+        })
+      }).then(() => {
+        window.location.href = '/adminCoupen'
+
+      })
+    }
+  </script>

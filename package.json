@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "npm run lint:ejs && node app.js",
     "dev": "nodemon app.js",
     "lint:ejs": "ejslint src/templates/some-template.ejs"
   },

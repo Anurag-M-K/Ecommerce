@@ -1,4 +1,5 @@
-<main class="main-container">
+<body class="bg-light " style="    overflow-x: hidden ;">
+  <main class="main-container">
   <div class="main-title">
     <p class="font-weight-bold">USERS</p>
   </div>
@@ -9,25 +10,25 @@
         <!--   -->
 
 
-        <table class="table table-bordered"  style="border: 1px solid black; margin-top: 75px ; margin-left: 75px;"  >
+        <table id="user-Table" class="table table-bordered"  style="border: 1px solid black; margin-top: 75px ; margin-left: 75px;"  >
 
           <thead class="bg-secondary" >
             <tr>
               <th>Name</th>
               <th>Surname</th>
-              <th>Email</th>
+              <th style="    width: 294.681px;">Email</th>
               <th>Phone</th>
               <th>Actions</th>
-              <th>Actions</th>
+              
             </tr>
           </thead>
-          <tbody>
+          <tbody style="border-color: black;">
             <% for(var i=0;i<userDetails.length;i++) { %>
-              <tr>
-               <td> <%= userDetails[i].Name %></td>
-              <td> <%= userDetails[i].Lname%></td>
-               <td><%= userDetails[i].Email%></td>
-               <td> <%= userDetails[i].Phone %></td>
+              <tr >
+               <td style="border-color: black;"> <%= userDetails[i].Name %></td>
+              <td style="border-color: black;"> <%= userDetails[i].Lname%></td>
+               <td style="border-color: black;"><%= userDetails[i].Email%></td>
+               <td style="border-color: black;"> <%= userDetails[i].Phone %></td>
                  
                 
 
@@ -51,8 +52,9 @@
 
           </tbody>
         </table>
-    </div>
+    </div> 
 
+ 
         
 
     <script>
@@ -81,3 +83,13 @@
     console.error("error:",error)
   })
 }    </script>
+
+
+<script>
+  $(document).ready( function () {
+    $('#user-Table').DataTable();
+  } );
+  </script>
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+</body>

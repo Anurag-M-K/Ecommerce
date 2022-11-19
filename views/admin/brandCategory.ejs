@@ -34,7 +34,7 @@
                 
                               
     
-                <div class="table-responsive">
+                <div class="table-responsive" id="brandTable">
                   <table class="table table-bordered" style="border: 1px solid black;">
                     <button type="button" class="btn btn-primary "  data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add Brand
@@ -43,16 +43,18 @@
                     <thead class="bg-secondary">
                       <tr>
                         <th>Brand Name</th>
-                        <th>Actions</th>
-                        <th>Actions</th>
+                       
+                        <th class="text-center" >Actions</th>
                       </tr>
                     </thead>
                     <tbody>
                       <% for(var i=0;i<Brand.length;i++) { %>
                         <tr>
-                          <td> <%= Brand[i]._brand %> </td>
+                          <td  style="border-color: black; "> <%= Brand[i]._brand %> </td>
                          
-                          <td><a href="/admin/editBrand/<%= Brand[i]._id%>" class ="btn btn-primary align-content-end"   >Edit</a></td>
-                         <td><a href="/admin/deleteBrand?id=<%= Brand[i]._id %> " class="btn  btn-danger align-content-end"  >Delete</a></td>
+                         
+                         <td  class="text-center" style="border-color: black;     width: 8rem;"><a href="/admin/deleteBrand?id=<%= Brand[i]._id %> " class="btn  btn-danger align-content-end"  >Delete</a></td>
                         </tr>
                         <% } %>
+
+                        

@@ -36,17 +36,17 @@
               <th>Delete</th>
             </tr>
           </thead >
-          <tbody >
+          <tbody style="border: 1px solid black; margin-top: 15px;" >
               <% for(var i=0;i<products.length;i++) { %>
-            <tr>
-              <td> <%= i+1 %> </td>
-              <td> <%= products[i].brandName %> </td>
-              <td> <%= products[i].productName %> </td>
-              <td> <%= products[i].Price %> </td>
-              <td> <%= products[i].Quantity %></td>
-              <td> <img src="/images/<%= products[i].Pitcure %>" style="width:75px ; height:50px;" alt=""></td>
-             <td> <a href="/admin/showEditProductPage?id=<%= products[i]._id %>" class="btn btn-success">Edit</a>  </td>
-             <td> <a href="/admin/deleteProduct?id=<%= products[i]._id %>" class="btn btn-danger">Delete</a>  </td>
+            <tr >
+              <td style="border-color: black;"> <%= i+1 %> </td>
+              <td style="border-color: black;"> <%= products[i].brandName %> </td>
+              <td style="border-color: black;"> <%= products[i].productName %> </td>
+              <td style="border-color: black;"> <%= products[i].Price %> </td>
+              <td style="border-color: black;"> <%= products[i].Quantity %></td>
+              <td style="border-color: black;"> <img src="/images/<%= products[i].Pitcure %>" style="width:75px ; height:50px;" alt=""></td>
+             <td style="border-color: black;"> <a href="/admin/showEditProductPage?id=<%= products[i]._id %>" class="btn btn-success">Edit</a>  </td>
+             <td style="border-color: black;"> <a href="/admin/deleteProduct?id=<%= products[i]._id %>" class="btn btn-danger">Delete</a>  </td>
              </tr>
             <% } %>
           

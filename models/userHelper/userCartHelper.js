@@ -149,7 +149,12 @@ module.exports = {
        
             return new Promise(async(resolve,reject)=>{
 
+                let userCart = await  db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectId(userId)})
+                console.log("usercart ;'",userCart);
+                console.log("usercart length ;'",userCart.products.length);
+                if(userCart.products.length >0){
 
+                
                 const TotalAmount = await db.get().collection(collection.CART_COLLECTION).aggregate([
                    
                     {
@@ -196,10 +201,14 @@ module.exports = {
              
                 
               
-                response.TotalAmount = TotalAmount
+                response.TotalAmount = TotalAmount[0].total
                
-                resolve(TotalAmount[0].total)
-                
+                resolve(response.TotalAmount)
+            }else{
+                console.log("here else case");
+                response.TotalAmount = 0
+                resolve(response.TotalAmount)
+            }
                
             
             })
@@ -367,7 +376,8 @@ console.log('total amount :',TotalAmount[0].total);
           
             
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                resolve(response.insertedId)
+                // db.get().collection(collection.CART_COLLECTION).deleteOne({user:ObjectId(order.userId)})
+                resolve()
       
                
             })
@@ -395,18 +405,21 @@ console.log('total amount :',TotalAmount[0].total);
             )
         })
      },
-         deleteCartPro : (proId)=>{
-         console.log("proid :",proId);
-           return new Promise((resolve,reject)=>{
-           
-            db.get().collection(collection.CART_COLLECTION).updateOne(
-                {_id:ObjectId(proId)},{$pull:{products:{_id:ObjectId(proId)}}}
-            )
-           })
+        //  deleteCartPro : (proId)=>{
+        //     console.log("this is id model :",proId);
+        //    return new Promise((resolve,reject)=>{
+        //     db.get().collection(collection.CART_COLLECTION).updateOne(
+        //         {_id:ObjectId(proId)},{$pull:{products:{_id:ObjectId(proId)}}}
+        //     )
+        //    }).then((response)=>{
+        //     resolve()
+        //    })
            
 
             
              
          }
     
-}
+
+        
+                

@@ -6,7 +6,7 @@ const categoryBasedModel = require('../../models/userHelper/categoryBasedModel')
 
 const categoryBased = (req,res)=>{
     let userData = req.session.user
-    let catName = (req.query.catName)   
+    const catName = (req.query.catName)   
     if(userData){
         categoryHelper.getAllCategories().then((CategoryDetails) => {
             categoryBasedModel.getCategoryProduct(catName).then(async(products)=>{
