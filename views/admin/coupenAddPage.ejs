@@ -92,7 +92,7 @@
                 <%= coupen[i].discount %>
               </td>
               </td>
-              <td style="border-color: black; border-style: solid;"><button class="btn btn-danger">DELETE</button></td>
+              <td style="border-color: black; border-style: solid;"><a href="/admin/deleteCoupen?id=<%=coupen[i]._id %>"><button class="btn btn-danger" >DELETE</button></a></td>
               </td>
 
               
@@ -125,18 +125,18 @@
     });
 
 
-    function deleteCoupen(coupenId) {
-      fetch("/admin/deleteCoupen", {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/JSON'
-        },
-        body: JSON.stringify({
-          coupenId
-        })
-      }).then(() => {
-        window.location.href = '/adminCoupen'
+    // function deleteCoupen(coupenId) {
+    //   fetch("/admin/deleteCoupen", {
+    //     method: 'DELETE',
+    //     headers: {
+    //       'Content-Type': 'application/JSON'
+    //     },
+    //     body: JSON.stringify({
+    //       coupenId
+    //     })
+    //   }).then(() => {
+    //     window.location.href = '/adminCoupenPage'
 
-      })
-    }
+    //   })
+    // }
   </script>

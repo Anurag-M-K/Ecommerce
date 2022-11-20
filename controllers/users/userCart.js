@@ -23,22 +23,28 @@ let cart =  async(req,res)=>{
     let userData = req.session.user;
     let cartCount = null;
     req.session.loggedIn
-   
+   let total = 0;
   
     if(userData){
         cartCount = await userHelper.getCartCount(req.session.user._id)
         let products =await userHelper.getCartProducts(req.session.user._id)
-console.log("products mk :",products);
+
         let totalAmount = 0
         if(products.length>0){
-            totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
+            totalAmount = 0
+          
+            totalAmount  = await userCartHelper.getTotalAmount(req.session.user._id)
             // let subTotal = await userCartHelper.subTotal(req.session.user._id)
           
         }
       
 
+
+console.log("TOTOSL :",totalAmount);
        
-          
+          if(products.length<0){
+            totalAmount = 0
+          }
         
         categoryHelper.getAllCategories().then((CategoryDetails) => {
             res.render('users/cart',{user:true,admin:false,userData,products,cartCount,totalAmount,CategoryDetails})
@@ -57,7 +63,7 @@ console.log("products mk :",products);
 
  const productCount = (req,res,next)=>{
     let userData = req.session.user
-    console.log("userdata ",userData);
+;
     userHelper.changeProductQuantity(req.body ).then(async(response)=>{
         
          userHelper.getTotalAmount(userData._id).then((result)=>{
@@ -65,8 +71,7 @@ console.log("products mk :",products);
             // userCartHelper.subTotal(userData._id).then((sub)=>{
                 let totalAmount = result.totalAmount
                 // let subTotal = sub.subTotal
-                
-                // console.log("subtOTak :",subTotal);
+            
                 res.json({response,result})
             // })
             
@@ -77,13 +82,12 @@ console.log("products mk :",products);
 
  const deleteCartProduct = (req,res)=>{
  
- 
+ let userData = req.session.user._id
    let item = req.query.item
- 
-
- console.log("item id : ",item);
-    userHelper.deleteCartPro(item).then((response)=>{
-        
+   console.log("item :",item);
+   console.log("userData :",userData);
+    userHelper.deleteCartProducts(item,userData).then((response)=>{
+        console.log("this is delete check ");
         res.redirect('/users/cart')
     })
 

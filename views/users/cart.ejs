@@ -1,28 +1,28 @@
 <body style="    overflow-x: hidden;">
-	
 
-	
-<div class="privacy bg-light" >
-	<div class="container py-xl-4 py-lg-2">
-		<!-- tittle heading -->
-		<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-			<span>C</span>art
-		</h3>
-		<!-- //tittle heading -->
-	
 
+
+	<div class="privacy bg-light">
+		<div class="container py-xl-4 py-lg-2">
+			<!-- tittle heading -->
+			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+				<span>C</span>art
+			</h3>
+			<!-- //tittle heading -->
 
 
 
 
-<!-- ----------------------------------------------------------Table for cart details------------------------------------------------------->
+
+
+			<!-- ----------------------------------------------------------Table for cart details------------------------------------------------------->
 
 
 
 
-			<div class="table-responsive" >
+			<div class="table-responsive">
 				<table class="timetable_sub" id="cartTable">
-					<thead >
+					<thead>
 						<tr>
 							<th>Sl No</th>
 							<th>Product Name</th>
@@ -33,128 +33,233 @@
 							<th>Remove</th>
 						</tr>
 					</thead>
-						<tbody>
-							<% if(products.length>0) { %>
+					<tbody>
+						<% if(products.length>0) { %>
 							<% for(var i=0; i<products.length; i++) { %>
-							
+
 								<tr>
-								 
-									<td style="border: 1px solid #000000;"> <%= i+1 %> </td>
-									<td style="border: 1px solid #000000;"> <%= products[i].products.productName %> </td>
-									<td style="border: 1px solid #000000;"> <img src="/images/<%= products[i].products.Pitcure %>" style="width:50px ; height:50px;" alt=""></td>
-									<td style="border: 1px solid #000000;"> <%= products[i].products.Price %>  </td>
-							
+
 									<td style="border: 1px solid #000000;">
-									<button class="cart-item-count mr-3 btn btn-secondary" onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',-1,'<%= userData._id %>',)" >-</button> 
-								   <span id="<%= products[i].products._id %>"><%= products[i].quantity %></span> 
-									<input disabled type="text" value="<%= products[i].quantity %>" style="width: 1%; flex: 1 1 auto; background: #f5f5f5; border: 0; padding: 0 5px;" id="<%= products[i].quantity %>">
-								   <button type="submit" class="cart-item-count ml-3 btn btn-secondary" onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>')" >+</button></td>
-								   <td style="border: 1px solid #000000;"><span id="subTotal" class="subTotal"></span> </td>
-								   <td style="border: 1px solid #000000;"> <a href='/users/deleteCartProduct/?item=<%= products[i].item %>'  class="btn btn-danger">Delete</a>  </td>
-								
+										<%= i+1 %>
+									</td>
+									<td style="border: 1px solid #000000;">
+										<%= products[i].products.productName %>
+									</td>
+									<td style="border: 1px solid #000000;"> <img
+											src="/images/<%= products[i].products.Pitcure %>"
+											style="width:50px ; height:50px;" alt=""></td>
+									<td style="border: 1px solid #000000;">
+										<%= products[i].products.Price %>
+									</td>
+
+									<td style="border: 1px solid #000000;">
+										<button class="cart-item-count mr-3 btn btn-secondary"
+											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',-1,'<%= userData._id %>',)">-</button>
+										<span id="<%= products[i].products._id %>">
+											<%= products[i].quantity %>
+										</span>
+										<input disabled type="text" value="<%= products[i].quantity %>"
+											style="width: 1%; flex: 1 1 auto; background: #f5f5f5; border: 0; padding: 0 5px;"
+											id="<%= products[i].quantity %>">
+										<button type="submit" class="cart-item-count ml-3 btn btn-secondary"
+											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>')">+</button>
+									</td>
+									<td style="border: 1px solid #000000;"><span id="subTotal" class="subTotal"></span>
+									</td>
+									<td style="border: 1px solid #000000;"> <a
+											href='/users/deleteCartProduct?item=<%= products[i].item %>'
+											class="btn btn-danger">Delete</a> </td>
+
 								</tr>
-							
+
 								<% } %>
-							<% } else { %>
-								<h2>Cart is empty</h2>
-							<% } %>
+									<% } else { %>
+										<h2>Cart is empty</h2>
+										<% } %>
 
 
-								<div>
+											<div>
 
-								</div>
-						</tbody>
-						
-						
-					
+											</div>
+					</tbody>
+
+
+
 				</table>
 				<br>
-				<div class="d-grid gap-2 d-md-flex justify-content-md-end m-2">
-					<div style="border: 1px solid #000000; padding: 10px;
-					padding-top: 9px;
-					border: 1px solid #000000;
-					border-radius: 8px;">Total:RS. <span id="totalAmount" class="totalAmount"><%= totalAmount %></span></div>
-					<a href="/placeOrder" class="btn btn-success btn-md active" role="button" aria-pressed="true">Place Order</a>
-					</div> 
+
+
+
+
+
+
+
+
+
+				<div class="card border mb-5 ">
+					<form class="mb-5" action="">
+						<div class="input-group">
+							<input type="text" class="form-control p-4" placeholder="Coupon Code" name="coupon_Code">
+							<span id="message"></span>
+							<div class="input-group-append">
+								<button class="btn btn-primary" onclick="applyCoupon()">Apply Coupon</button>
+							</div>
+						</div>
+					</form>
+					<div class="card-header bg-secondary border-0">
+						<h4 class="font-weight-semi-bold  text-center text-light m-0">Cart Summary</h4>
+					</div>
+					<div class="card-body">
+						<div class="d-flex justify-content-between mb-3 pt-1">
+							<h6 class="font-weight-medium">Subtotal</h6>
+							<h6 id="subTotal" class="totalAmount"><%= totalAmount %>
+							</h6>
+						</div>
+						<div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Discount</h6>
+                            <h6 id="discount" class="totalAmount">0
+                            </h6>
+                        </div>
+						<div class="d-flex justify-content-between">
+							<h6 class="font-weight-medium">Shipping</h6>
+							<h6 class="font-weight-medium">
+							</h6>
+						</div>
+					</div>
+					<div class="card-footer border-secondary bg-transparent">
+						<div class="d-flex justify-content-between mt-2">
+							<h5 class="font-weight-bold">Total</h5>
+							<h5 id="totalAmount" class="totalAmount">RS:
+								<%= totalAmount %>
+							</h5>
+						</div>
+						<a href="/placeOrder" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
-		
+
 		<div style="height:300px">
 
 		</div>
 		<script>
-			$(document).ready( function () {
-			  $('#cartTable').DataTable();
-		  } );
-		  </script>
-			
-		  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-<!-- footer -->
-<script>
-function changeQuantity(cartId,proId,count,userData){
-	
-	let quantity = parseInt(document.getElementById(proId).innerHTML)
-	count = parseInt(count)
-	$.ajax({
-	
-		url:'/change-product-quantity',
-		data:{
-			USER:userData,
-			cart:cartId,
-			product:proId,
-			count:count,
-			quantity:quantity
-		},
-		method:'post',
-		success:(response)=>{
-			if(response.response.removeProduct){
-				console.log("response"+response.response.removeProduct);
-				alert("Product Removed from cart")
-				
-				location.reload()
-			}else{
-				console.log("response check",response);
-				document.getElementById(proId).innerHTML=quantity+count
-				document.getElementById("totalAmount").innerHTML = response.result 
-				console.log("this is totala mount :",response.result);
-				//routil ninn pass cheythath ivide successinte ullil
-				//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
-				console.log("response.result",response.sub);
-				document.getElementById('subTotal').innerHTML = response.sub
-				
+			$(document).ready(function () {
+				$('#cartTable').DataTable();
+			});
+		</script>
+
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+		<!-- footer -->
+		<script>
+			function changeQuantity(cartId, proId, count, userData) {
+
+				let quantity = parseInt(document.getElementById(proId).innerHTML)
+				count = parseInt(count)
+				$.ajax({
+
+					url: '/change-product-quantity',
+					data: {
+						USER: userData,
+						cart: cartId,
+						product: proId,
+						count: count,
+						quantity: quantity
+					},
+					method: 'post',
+					success: (response) => {
+						if (response.response.removeProduct) {
+							console.log("response" + response.response.removeProduct);
+							alert("Product Removed from cart")
+
+							location.reload()
+						} else {
+							console.log("response check", response);
+							document.getElementById(proId).innerHTML = quantity + count
+							document.getElementById("totalAmount").innerHTML = response.result
+							console.log("this is totala mount :", response.result);
+							//routil ninn pass cheythath ivide successinte ullil
+							//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
+							console.log("response.result", response.sub);
+							document.getElementById('subTotal').innerHTML = response.sub
+
+						}
+
+					}
+				})
 			}
-			
-		}
-	})
-}
-//fetch
-function removeProduct(cartId,productId){
-	fetch('/removeCartProduct',
-	{
-		method:'delete',
-		headers:{'content-type':'application/json'},
-		body:JSON.stringify({
-			cart:cartId,
-			product:productId
-		})
-	}).then((response)=>{
-		window.location.reload()
-	})
-}
+			//fetch
+			function removeProduct(cartId, productId) {
+				fetch('/removeCartProduct',
+					{
+						method: 'delete',
+						headers: { 'content-type': 'application/json' },
+						body: JSON.stringify({
+							cart: cartId,
+							product: productId
+						})
+					}).then((response) => {
+						window.location.reload()
+					})
+			}
 
-// function deleteCartItem(cartProductId,cartId){
-// 	fetch('/deleteCartProduct',{
-// 		method:'delete',
-// 		headers:{'content-type':'application/json'},
-// 		body:JSON.stringify({
-// 			product : cartProductId,
-// 			cart:cartId
-// 		})
-// 	}).then((response)=>{
-// 		window.location.reload()
-// 	})
-// }
 
-</script>
+
+
+
+			function applyCoupen () {
+				let code = document.getElementById("coupen_Code").value.toUpperCase()
+				let messageCoupen = document.getElementById('message')
+				fetch('/cart/applyCoupen',{
+					method:"post",
+					headers:{'content-type':'application/json'},
+					body:JSON.stringify({code})
+				}).then(res => res.json()).then(data => {
+					let cartTotalAmount = data.totalAmount
+					if(data.noCoupen){
+						let message = `<span style="color:red"><i class="las la-times"></i>Invalid Coupen Code</span>`			
+						messageCoupen.innerHTML = message
+					} else if (data.expiry){
+						let message = `<span style="color: red;"><i class="las la-times"></i>Coupon Expired</span>`
+						messageCoupen.innerHTML = message
+					} else {
+						let discounted = document.getElementById('discount').innerHTML = (cartTotalAmount * data.discount)/100
+						docment.getElementById('totalAmount').innerHTML = cartTotalAmount - discount
+						let message = `<span style="color: green;"><i class="las la-check"></i>Coupon valid</span>`
+						messageCoupen.innerHTML = message
+					}
+				})
+
+
+			}
+			// function applyCoupon(total){
+			// 	let couponCode = document.getElementById('coupenCode').value.toUpperCase()
+			// 	let message = document.getElementById('coupenMessage')
+			// 	let discountDisplay = doucment.getElementById('discountId')
+			// 	let finalTotal = document.getElementById('final_total')
+			// 	fetch('/cart/applyCoupen',{
+			// 		method:"post",
+			// 		headers:{'content-type':'application/json'},
+			// 		body:JSON.stringify(
+			// 			{couponCode}
+			// 		)
+			// 	}).then(res => res.json()).then(data){
+			// 		if(data.coupenStatus == true){
+			// 			message.innerHTML = ""
+			// 			discountDisplay.innerHTML = data.discount
+			// 			finalTotal.innerHTML=data.discountTotal
+			// 		}else{
+			// 			message.innerHTML = 'COUPEN NOT ACCEEPTALN'
+			// 			discountDisplay.innerHTML = data.discount
+			// 			finalTotal.innerHTML = data.discountTotal
+			// 		}
+		
+			// 	}
+			// }
+
+
+		</script>
 
 </body>

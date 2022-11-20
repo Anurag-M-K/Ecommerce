@@ -1,19 +1,16 @@
 const express = require('express')
 const router = express.Router();
 const usersController = require('../controllers/users/usersController')
-const userDoLogin = require('../models/helpers/user-helper')
-const nodemailer = require("nodemailer")
 const userCart = require('../controllers/users/userCart')
 const userCheckOut = require('../controllers/users/userCheckOut')
 const userSinglePage = require('../controllers/users/userSinglePage')
 const navButtons = require('../controllers/users/navButtons')
 const categoryBasedPage = require("../controllers/users/categoryBasedPage")
 const usersOrderList = require("../controllers/users/usersOrderList")
-const userOrderHelper = require('../models/userHelper/userOrderHelper')
 const order = require('../controllers/users/order');
-const razorPayModel = require('../models/userHelper/razorPayModel');
 const profile = require('../controllers/users/profile')
 const wishlistController = require('../controllers/users/wishlistController')
+const coupenController = require('../controllers/users/userCoupenController')
 const verifyLogin = (req,res,next)=>{
     if(req.session.loggedIn){
         next()
@@ -39,10 +36,16 @@ router.post('/checkOtp',usersController.checkOtp)
 
 //cart
 router.get('/add-to-cart/:id',userCart.addToCart)
+router.post('/cart/applyCoupen',coupenController.applyCoupen)
 router.get('/users/cart',userCart.cart)
 router.post('/change-product-quantity',userCart.productCount)
 router.delete('/removeCartProduct')
 router.get('/users/deleteCartProduct/',userCart.deleteCartProduct)
+
+
+
+
+
 
 //wishlist
 router.get('/add-to-wishlist/:id',wishlistController.addTowishlist)
@@ -91,6 +94,8 @@ router.get('/toWishlist',profile.toWishlist)
 router.get('/edit-profile',profile.edtitProfile)
 router.post('/users/editUserDetails',profile.updateProfile)
 
+
+//coupen
 
 
 

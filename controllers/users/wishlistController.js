@@ -13,12 +13,16 @@ const wish = async(req,res)=>{
     let userData = req.session.user;
     if(req.session.loggedIn){
         let cartCount = await wishlistModel.getwishlistCount(req.session.user._id)
-        let products = await wishlistModel.getWishlistProducts(req.session.user._id)
        let  wishlistCount = await wishlistModel.getwishlistCount(req.session.user._id)
+      
+       wishlistModel.getWishlistProducts(req.session.user._id).then((products)=>{
+
+        console.log("whsin:"+products[1].products.productName);
         categoryHelper.getAllCategories().then((CategoryDetails)=>{
              res.render('users/wishlist',{user:true,admin:false,CategoryDetails,products,userData,wishlistCount,cartCount})
         
         })
+    })
            
     }else{
         res.redirect("/userslogin",{user:false,admin:false,userData})
@@ -28,8 +32,10 @@ const wish = async(req,res)=>{
 
 const deleteProduct = (req,res)=>{
     let proId = req.query.id
-  
-    wishlistModel.deleteWishlistProduct(proId).then((response)=>{
+   let  userData = req.session.user._id
+  console.log("delteing wishilist :",proId);
+  console.log("userId :",userData);
+    wishlistModel.deleteWishlistProduct(proId,userData).then((response)=>{
       
         res.redirect('/users/wishList')
     })

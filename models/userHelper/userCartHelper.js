@@ -349,7 +349,7 @@ return new Promise(async(resovle,reject)=>{
                     }
                 }
             ]).toArray()
-console.log('total amount :',TotalAmount[0].total);
+
 
 
             let status = order['payment-method']==='COD'?'placed':'pending'
@@ -405,20 +405,20 @@ console.log('total amount :',TotalAmount[0].total);
             )
         })
      },
-        //  deleteCartPro : (proId)=>{
-        //     console.log("this is id model :",proId);
-        //    return new Promise((resolve,reject)=>{
-        //     db.get().collection(collection.CART_COLLECTION).updateOne(
-        //         {_id:ObjectId(proId)},{$pull:{products:{_id:ObjectId(proId)}}}
-        //     )
-        //    }).then((response)=>{
-        //     resolve()
-        //    })
-           
-
+      
+     deleteCartProducts : (item,userId)=>{
+return new Promise((resolve,reject)=>{
+    db.get().collection(collection.CART_COLLECTION)
+    .updateOne({user:ObjectId(userId)},{$pull:{products:{item:ObjectId(item)}}}).then((response)=>{
+        resolve(response)
+    })
+})
+    }
             
              
          }
+
+
     
 
         

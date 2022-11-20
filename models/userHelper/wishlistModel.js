@@ -80,6 +80,7 @@ module.exports = {
             ]).toArray()
 
             resolve(wishlistItem)
+       
            
         })
     },
@@ -94,12 +95,12 @@ module.exports = {
 
         })
     },
-    deleteWishlistProduct : (proId)=>{
+    deleteWishlistProduct : (proId,userId)=>{
        
         return new Promise((resolve, reject) => {
             console.log(proId)
             db.get().collection(collection.WISHLIST_COLLECTION)
-                .updateOne({ _id: ObjectId(proId) },
+                .updateOne({ user: ObjectId(userId) },
                     {
                         $pull  : { products: { item: ObjectId(proId) } }
                     }
@@ -109,6 +110,7 @@ module.exports = {
                 })
                 
         })
+ 
       
         
     }

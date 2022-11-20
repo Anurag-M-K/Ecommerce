@@ -15,7 +15,15 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let coupen = await db.get().collection(collection.COUPEN_COLLECTION).find().toArray()
             resolve(coupen)
-            console.log("model getcoupen :",coupen);
+           
+        })
+    },
+    deleteCoupen :(id)=>{
+        console.log("id model : : :",id);
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.COUPEN_COLLECTION).deleteOne({_id:objectId(id)}).then((response)=>{
+                resolve(response)
+            })
         })
     }
 
