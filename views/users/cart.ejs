@@ -129,13 +129,13 @@
 					<div class="card-footer border-secondary bg-transparent">
 						<div class="d-flex justify-content-between mt-2">
 							<h5 class="font-weight-bold">Total</h5>
-							<h5 id="final_total" class="totalAmount">RS:<%
-								let finalTotal = totalAmount+(5/100)*(totalAmount) %>
+							<h5 id="final_total" class="totalAmount">
+								RS:<% let finalTotal = totalAmount+(5/100)*(totalAmount) %>
 								
 								<%= finalTotal %>
 							</h5>
 						</div>
-						<a href="/placeOrder?amount=<%= finalTotal %>" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+						<button class="btn btn-primary" onclick="proceedToCheckOut('<%= totalAmount %>')">Proceed To CheckOut</button>
 					</div>
 				</div>
 
@@ -187,6 +187,20 @@
 					}
 				})
 
+
+			}
+
+			function proceedToCheckOut(totalAmount){
+				let coupenCode = ""
+				coupenCode = document.getElementById('coupenCode').value.toUpperCase()
+				fetch('/cart/proceedTocheckOut',{
+					method:'post',
+					headers:{'content-type':'application/json'},
+					body:JSON.stringify({coupenCode,totalAmount})
+				}).then(res => res.json()).then((data)=>{
+					window.alert(data)
+					location.href = '/addressPayment?finalTotal='+data
+				})
 
 			}
 			function changeQuantity(cartId, proId, count, userData) {

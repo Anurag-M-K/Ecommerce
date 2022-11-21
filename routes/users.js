@@ -57,7 +57,7 @@ router.get('/users/deleteWishlist',wishlistController.deleteProduct)
 
 
 //checkout
-router.get('/users/checkOut',userCheckOut.checkoutPage)
+// router.get('/addressPayment',userCheckOut.showCheckoutPage)
 router.post('/place-order',userCheckOut.checkOut)
 
 //category based page
@@ -73,7 +73,7 @@ router.get('/contact',navButtons.contactUs)
 router.get('/about',navButtons.aboutPage)
 
 //plceorder
-router.get('/placeOrder',userCheckOut.payment)
+router.get('/addressPayment',userCheckOut.payment)
 router.get('/orderPlaced',usersOrderList.orderSuccess)
 router.get('/view-order-products',order.viewOrderProducts)
 
@@ -95,7 +95,8 @@ router.get('/edit-profile',profile.edtitProfile)
 router.post('/users/editUserDetails',profile.updateProfile)
 
 
-//coupen
+
+router.post('/cart/proceedTocheckOut',userCheckOut.checkingOutPage)
 
 
 

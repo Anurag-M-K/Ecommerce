@@ -17,6 +17,7 @@ const applyCoupen = async(req,res)=>{
  
    await userCoupenModel.getDiscount(coupenDetails,TOTAL).then((response)=>{
     console.log("response controller :",response);
+    
     res.json(response)
    })
 
