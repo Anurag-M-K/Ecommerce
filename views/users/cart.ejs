@@ -97,15 +97,15 @@
 
 
 				<div class="card border mb-5 ">
-					<form class="mb-5" action="">
+				
 						<div class="input-group">
-							<input type="text" class="form-control p-4" placeholder="Coupon Code" name="coupon_Code">
-							<span id="message"></span>
+							<input type="text" class="form-control p-4" id="coupenCode"  name="couponCode" placeholder="Coupon Code" name="couponCode">
+							<span id="couponMessage"></span>
 							<div class="input-group-append">
 								<button class="btn btn-primary" onclick="applyCoupon()">Apply Coupon</button>
 							</div>
 						</div>
-					</form>
+					
 					<div class="card-header bg-secondary border-0">
 						<h4 class="font-weight-semi-bold  text-center text-light m-0">Cart Summary</h4>
 					</div>
@@ -116,24 +116,26 @@
 							</h6>
 						</div>
 						<div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Discount</h6>
+                            <h6 class="font-weight-medium">Discount % </h6>
                             <h6 id="discount" class="totalAmount">0
                             </h6>
                         </div>
 						<div class="d-flex justify-content-between">
 							<h6 class="font-weight-medium">Shipping</h6>
-							<h6 class="font-weight-medium">
+							<h6 class="font-weight-medium">5%
 							</h6>
 						</div>
 					</div>
 					<div class="card-footer border-secondary bg-transparent">
 						<div class="d-flex justify-content-between mt-2">
 							<h5 class="font-weight-bold">Total</h5>
-							<h5 id="totalAmount" class="totalAmount">RS:
-								<%= totalAmount %>
+							<h5 id="final_total" class="totalAmount">RS:<%
+								let finalTotal = totalAmount+(5/100)*(totalAmount) %>
+								
+								<%= finalTotal %>
 							</h5>
 						</div>
-						<a href="/placeOrder" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+						<a href="/placeOrder?amount=<%= finalTotal %>" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
 					</div>
 				</div>
 
@@ -153,7 +155,40 @@
 		<script type="text/javascript" charset="utf8"
 			src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 		<!-- footer -->
+
+
+
+
+
+
 		<script>
+			function applyCoupon () {
+				let coupenCode = document.getElementById("coupenCode").value.toUpperCase()
+				let message = document.getElementById("couponMessage")
+				let discountDisplay = document.getElementById("discount")
+				let finalTotal = document.getElementById("final_total")
+				fetch('/cart/applyCoupen',{
+					method:"post",
+					headers:{'Content-Type':'application/json'},
+					body:JSON.stringify({coupenCode})
+				}).then(res => res.json()).then(data => {
+					
+					if(data.coupenStatus == true){
+						console.log("rezched if");
+						console.log("if statement :",data.coupenStatus);
+						message.innerHTML = "";
+						discountDisplay.innerHTML = data.discount
+						finalTotal.innerHTML = data.discountedTotal
+					}else{
+						console.log("rezched else");
+						message.innerHTML = 'coupon not acceptable'
+						discountDisplay.innerHTML = data.discount
+						finalTotal.innerHTML = data.discountedTotal
+					}
+				})
+
+
+			}
 			function changeQuantity(cartId, proId, count, userData) {
 
 				let quantity = parseInt(document.getElementById(proId).innerHTML)
@@ -192,7 +227,14 @@
 			}
 			//fetch
 			function removeProduct(cartId, productId) {
-				fetch('/removeCartProduct',
+				swal({
+					title:"DELETE!",
+					text:"Do you want to delete product?",
+					icon:"warning",
+					buttons:["Cancel","Ok"]
+				}).then(val =>{
+					if(val){
+						fetch('/removeCartProduct',
 					{
 						method: 'delete',
 						headers: { 'content-type': 'application/json' },
@@ -203,37 +245,16 @@
 					}).then((response) => {
 						window.location.reload()
 					})
-			}
-
-
-
-
-
-			function applyCoupen () {
-				let code = document.getElementById("coupen_Code").value.toUpperCase()
-				let messageCoupen = document.getElementById('message')
-				fetch('/cart/applyCoupen',{
-					method:"post",
-					headers:{'content-type':'application/json'},
-					body:JSON.stringify({code})
-				}).then(res => res.json()).then(data => {
-					let cartTotalAmount = data.totalAmount
-					if(data.noCoupen){
-						let message = `<span style="color:red"><i class="las la-times"></i>Invalid Coupen Code</span>`			
-						messageCoupen.innerHTML = message
-					} else if (data.expiry){
-						let message = `<span style="color: red;"><i class="las la-times"></i>Coupon Expired</span>`
-						messageCoupen.innerHTML = message
-					} else {
-						let discounted = document.getElementById('discount').innerHTML = (cartTotalAmount * data.discount)/100
-						docment.getElementById('totalAmount').innerHTML = cartTotalAmount - discount
-						let message = `<span style="color: green;"><i class="las la-check"></i>Coupon valid</span>`
-						messageCoupen.innerHTML = message
 					}
 				})
-
-
+				
 			}
+
+
+
+
+
+			
 			// function applyCoupon(total){
 			// 	let couponCode = document.getElementById('coupenCode').value.toUpperCase()
 			// 	let message = document.getElementById('coupenMessage')

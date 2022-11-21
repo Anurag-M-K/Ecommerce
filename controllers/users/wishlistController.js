@@ -33,8 +33,7 @@ const wish = async(req,res)=>{
 const deleteProduct = (req,res)=>{
     let proId = req.query.id
    let  userData = req.session.user._id
-  console.log("delteing wishilist :",proId);
-  console.log("userId :",userData);
+
     wishlistModel.deleteWishlistProduct(proId,userData).then((response)=>{
       
         res.redirect('/users/wishList')

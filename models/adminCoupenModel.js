@@ -7,7 +7,9 @@ var objectId = require('mongodb').ObjectId
 
 module.exports = {
     addCoupen :(coupenData,callback)=>{
-        db.get().collection(collection.COUPEN_COLLECTION).insertOne(coupenData).then((response)=>{
+        console.log("coupen data :",coupenData);
+       coupenData.discount =  parseInt(coupenData.discount) 
+                db.get().collection(collection.COUPEN_COLLECTION).insertOne(coupenData).then((response)=>{
             callback(response)
         })
     },

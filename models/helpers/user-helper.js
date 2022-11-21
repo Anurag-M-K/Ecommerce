@@ -72,8 +72,7 @@ module.exports = {
         })
     },
     updateUserDetails:(userData,bodyData)=>{
-        console.log("checking model userdata :",userData);
-        console.log("checking model bodyData :",bodyData);
+       
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.USER_COLLECTION).updateOne({_id:ObjectId(userData._id)},
                 {
