@@ -21,15 +21,15 @@
 			class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
 		  >
 		   <div class="m-5 p-5">
-			<form  method="post" action="/login"style="width: 23rem" onsubmit="return otpvalidation()">
+			<form  method="post" action="/login"style="width: 23rem" onsubmit="return loginValidation()">
 			 <label for="otp verification"><h5 class="text-white">Username</h5></label><br>
-			 <input type="text" id="name" name="username" placeholder="Enter your username" aria-label="Large" class="form-control" ><br><br>
-			 <span id="usernameError"></span>
+			 <input type="text" id="name" name="username" placeholder="Enter your username" aria-label="Large" class="form-control" ><span id="usernameError" class="text-danger"></span><br><br>
+			 
   
 			 <label for="otp verification"><h5 class="text-white">Password</h5></label><br>
-			 <input type="Password" id="pass" name="Password" your placeholder=" Enter your Password" aria-label="Large" class="form-control" class="input"  ><br><br>
+			 <input type="Password" id="pass" name="Password" your placeholder=" Enter your Password" aria-label="Large" class="form-control" class="input"  ><span id="passwordError" class="text-danger"></span><br><br>
 			 
-			 <span id="passwordError"></span>
+			 
   
 		  
 			 <input type="submit"  class="btn btn-success rounded-pill">
@@ -51,18 +51,18 @@
   
   
   <script>
-	function validation(){
+	function loginValidation(){
 	  let flag = 0;
-	  let username = document.getElementById('namee').value.trim()
-	  let password = document.getElementById('password').value.trim()
+	  let username = document.getElementById('name').value.trim()
+	  let password = document.getElementById('pass').value.trim()
   
 	  if(username==""){
-		document.getElementById('usernameError').innerHTML = 'username required'
+		document.getElementById('usernameError').innerHTML = 'Username required'
   
 		flag = 1
   
-	  }else if(username.length < 3 ){
-		document.getElementById('usernameError').innerHTML = ' enter atleast 3 charecter'
+	  }else if(username.length < 4 ){
+		document.getElementById('usernameError').innerHTML = ' Enter valid user name'
 		flag = 1
 	  }else{
 		document.getElementById('usernameError').innerHTML = ""

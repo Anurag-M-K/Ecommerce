@@ -21,25 +21,25 @@
             <div
               class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5" >
              <div class="m-5 p-5">
-              <form action="/users/editUserDetails" method="post"  style="width: 23rem  ;  margin-top: -4rem;" onsubmit="return validation()">
+              <form action="/users/editUserDetails" method="post"  style="width: 23rem  ;  margin-top: -4rem;" onsubmit="return profileValidation()">
                <label for="otp verification"><h5 class="text-white">First Name</h5></label><br>
-               <input type="text" id="name" name="Name" placeholder="First Name" aria-label="Large" class="form-control" ><br><br>
-               <span id="usernameError"></span>
+               <input type="text" id="name" name="Name" placeholder="First Name" aria-label="Large" class="form-control" >    <span id="usernameError" class="text-danger"></span><br><br>
+           
     
                <label for="otp verification"><h5 class="text-white">Last Name</h5></label><br>
-               <input type="text" id="name" required name="Lname"Enter your placeholder="Last Name" aria-label="Large" class="form-control" ><br><br>
+               <input type="text" id="name" name="Lname"Enter your placeholder="Last Name" aria-label="Large" class="form-control" ><br><br>
                
     
                
            
   
                <label for="otp verification"><h5 class="text-white">Email Address</h5></label><br>
-               <input type="email"  required id="mail" name="Email" placeholder="Email" aria-label="Large" class="form-control" ><br><br>
-               <span id="emailError"></span>
+               <input type="email"   id="Email" name="Email" placeholder="Email" aria-label="Large" class="form-control" ><span id="emailError" class="text-danger"></span><br><br>
+               
             
                
                <label for="otp verification"><h5 class="text-white">Mobile</h5></label><br>
-               <input type="number"  required id="mobile" name="mobile" placeholder="New Mobile No." name="mobile" aria-label="Large" class="form-control" ><br><br>
+               <input type="number"   id="mobile" name="mobile" placeholder="New Mobile No." name="mobile" aria-label="Large" class="form-control" ><span id="mobileError" class="text-danger"></span><br><br>
                
              
   
@@ -63,11 +63,11 @@
     
     
   <script>
-      function validation(){
+      function profileValidation(){
       let flag=0
       let username= document.getElementById('name').value.trim()
-      let email = document.getElementById('mail').value.trim()      
-      let password = document.getElementById('pass').value.trim()
+      let email = document.getElementById('Email').value.trim()      
+      let mobile = document.getElementById('mobile').value.trim()
     
     
       if(username==''){
@@ -87,11 +87,11 @@
           document.getElementById('emailError').innerHTML=""
       }
     
-      if(password==''){
-          document.getElementById('passwordError').innerHTML="Password Required"
+      if(mobile==''){
+          document.getElementById('mobileError').innerHTML="Mobile number Required"
           flag=1
       }else{
-          document.getElementById('passwordError').innerHTML=""
+          document.getElementById('mobileError').innerHTML=""
       }
     
       if(flag==1){

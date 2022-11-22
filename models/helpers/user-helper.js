@@ -83,8 +83,39 @@ module.exports = {
                     }
                 }).then((response)=>{
                     resolve(response)
-                    console.log("checking response :",response);
+                   
                 })
+        })
+    },
+    addAddress :(details,userId)=>{
+        let addobj = {
+            name:details.name,
+            mobile:details.mobile,
+            address:details.address,
+            pincode:details.pincode,
+            emailAddress:details.emailAddress
+        }
+
+        return new Promise(async(resolve,reject  )=>{
+            let userAddress = await db.get().collection(collection.USER_ADDRESS_COLLECTION).findOne({user:ObjectId(userId)}) 
+            if(userAddress){
+                db.get().collection(collection.USER_ADDRESS_COLLECTION)
+                .updateOne({user:ObjectId(userId)},{
+                    $push:{details:addobj}
+                }).then((response)=>{
+                    resolve()
+                })
+            }else{
+                let addressObj = {
+                    user:ObjectId(userId),
+                    details:[addobj]
+                }
+                db.get().collection(collection.USER_ADDRESS_COLLECTION).insertOne(addressObj).then((response)=>{
+                    resolve()
+                    
+                })
+            }
+           
         })
     }
     

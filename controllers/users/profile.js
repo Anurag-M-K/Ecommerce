@@ -1,4 +1,6 @@
+const userAddressHelper = require('../../models/helpers/user-helper')
 const userHelper = require('../../models/userHelper/userCartHelper')
+
 const categoryHelper = require('../../models/categoryHelper')
 const userCartHelper = require("../../models/userHelper/userCartHelper")
 const userProfileModel = require('../../models/helpers/user-helper')
@@ -59,6 +61,27 @@ const updateProfile = (req,res)=>{
 }
 
 
+const address =  async(req,res)=>{
+    let userData = req.session.user
+ 
+   
+
+    let  cartCount = await  userHelper.getCartCount(req.session.user._id)
+    let products =await userCartHelper.getCartProducts(req.session.user._id)
+    categoryHelper.getAllCategories().then((CategoryDetails) => {
+    res.render('users/addressAddPage',{user:true,admin:false,userData,cartCount,products,CategoryDetails})
+    })
+}
+
+const addressAdd = (req,res)=>{
+    console.log("req.body",req.body);
+    let userData = req.session.user._id
+    userAddressHelper.addAddress(req.body,userData).then((response)=>{
+       res.redirect('/')
+    })
+}
+
+
 module.exports = {
     profilePage,
     toOrder,
@@ -66,5 +89,7 @@ module.exports = {
     logOutProfile,
     toWishlist,
     edtitProfile,
-    updateProfile
+    updateProfile,
+    address,
+    addressAdd
 }

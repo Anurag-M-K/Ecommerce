@@ -98,4 +98,10 @@ router.post('/addCoupen',adminCoupenController.addCoupen)
 router.get('/deleteCoupen',adminCoupenController.deleteCoupen)
 
 
+//page not found 
+router.use((req,res,next)=>{
+    res.status(404).render('users/404' ,{admin:false,user:false})
+    next()
+})
+
 module.exports = router

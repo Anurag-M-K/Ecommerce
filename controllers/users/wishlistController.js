@@ -16,8 +16,6 @@ const wish = async(req,res)=>{
        let  wishlistCount = await wishlistModel.getwishlistCount(req.session.user._id)
       
        wishlistModel.getWishlistProducts(req.session.user._id).then((products)=>{
-
-        console.log("whsin:"+products[1].products.productName);
         categoryHelper.getAllCategories().then((CategoryDetails)=>{
              res.render('users/wishlist',{user:true,admin:false,CategoryDetails,products,userData,wishlistCount,cartCount})
         

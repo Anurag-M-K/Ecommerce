@@ -10,7 +10,7 @@ module.exports = {
         let proObj = {
             item:ObjectId(proId),
             quantity:1,
-            image:ObjectId(imgId) //////////////////////made change////////////////////////////////////////////////////////
+            image:ObjectId(imgId)
             
            
 

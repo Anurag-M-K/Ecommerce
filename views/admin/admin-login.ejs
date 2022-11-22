@@ -13,13 +13,13 @@
 
 <body>
     <div class="login-dark">
-        <form action="/admin/home-admin" method="post"  onsubmit="return validation()">
+        <form action="/admin/home-admin" method="post"  onsubmit="return adminValidation()">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="text-center font-weight-bold mb-2 text-">Admin Login</div>
             <div class="form-group"><input class="form-control" type="text" name="username" id="user" placeholder="username"></div>
-            <span id="usernameError"></span>
-            <div class="form-group"><input class="form-control" type="password" name="password" id="password"placeholder="Password"></div>
+            <span id="usernameError" class="text-danger"></span>
+            <div class="form-group"><input class="form-control" type="password" name="password" id="password"placeholder="Password"></div><span id="passwordError" class="text-danger"></span>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div><a href="#" class="forgot">Forgot your email or password?</a></form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,7 +29,7 @@
 </html>
 
 <script>
-        function validation(){
+        function adminValidation(){
         let flag=0
         let username1= document.getElementById('user').value.trim()
         
@@ -40,7 +40,7 @@
           document.getElementById('usernameError').innerHTML="Username Required"
           flag=1
         }else if(username1.length<4){
-          document.getElementById('usernameError').innerHTML="Enter atleast 3 character"
+          document.getElementById('usernameError').innerHTML="Enter valid username"
           flag=1
         }else{
           document.getElementById('usernameError').innerHTML=""
@@ -53,7 +53,7 @@
             flag=1
 
         }else if(password1.length<4){
-            document.getElementById("passwordError").innerHTML = "enter atleast 4 chaerecters"
+            document.getElementById("passwordError").innerHTML = "enter valid password"
         }
         
         else

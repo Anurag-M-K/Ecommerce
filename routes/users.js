@@ -93,10 +93,13 @@ router.get('/logoutFromProfile',profile.logOutProfile)
 router.get('/toWishlist',profile.toWishlist)
 router.get('/edit-profile',profile.edtitProfile)
 router.post('/users/editUserDetails',profile.updateProfile)
-
+router.get('/addressaddPage',profile.address)
+router.post('/add-address',profile.addressAdd)
 
 
 router.post('/cart/proceedTocheckOut',userCheckOut.checkingOutPage)
+
+
 
 
 

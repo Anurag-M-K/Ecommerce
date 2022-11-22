@@ -23,27 +23,28 @@
 		   <div class="m-5 p-5">
 			<form action="/signup" method="post"  style="width: 23rem  ;  margin-top: -4rem;" onsubmit="return validation()">
 			 <label for="otp verification"><h5 class="text-white">First Name</h5></label><br>
-			 <input type="text" id="name" name="Name" placeholder="First Name" aria-label="Large" class="form-control" ><br><br>
-			 <span id="usernameError"></span>
+			 <input type="text" id="name"  name="Name" placeholder="First Name" aria-label="Large" class="form-control" > <span id="usernameError" class="text-danger"></span><br><br>
+			
   
 			 <label for="otp verification"><h5 class="text-white">Last Name</h5></label><br>
-			 <input type="text" id="name" required name="Lname"Enter your placeholder="Last Name" aria-label="Large" class="form-control" ><br><br>
+			 <input type="text" id="lname"  name="Lname"Enter your placeholder="Last Name" aria-label="Large" class="form-control" ><br><br>
 			 
   
              
 			 <label for="otp verification"><h5 class="text-white">Phone</h5></label><br>
-			 <input type="number"  required name="Phone" placeholder="Mobile NUmber" aria-label="Large" class="form-control" ><br><br>
+			 <input type="number" id="Phone"  name="Phone" placeholder="Mobile NUmber" aria-label="Large" class="form-control" ><br><br>
+       <span id="phone" class="text-danger"></span>
 			 
 
              <label for="otp verification"><h5 class="text-white">Email Address</h5></label><br>
-			 <input type="email"  required id="mail" name="Email" placeholder="Email" aria-label="Large" class="form-control" ><br><br>
-             <span id="emailError"></span>
+			 <input type="email"  id="mail" name="Email" placeholder="Email" aria-label="Large" class="form-control" >   <span id="emailError" class="text-danger"></span><br><br>
+          
 		  
 
              
              <label for="otp verification"><h5 class="text-white">Password</h5></label><br>
-			 <input type="password"  required id="pass" name="Password" placeholder="Password" aria-label="Large" class="form-control" ><br><br>
-             <span id="passwordError"></span>
+			 <input type="password"   id="pass" name="Password"  placeholder="Password" aria-label="Large" class="form-control" > <span id="passwordError" class="text-danger"></span><br><br>
+            
 
 			 <input type="submit" value="Signup" class="btn btn-success rounded-pill">
 			</form>
@@ -66,11 +67,11 @@
   
 <script>
     function validation(){
-    let flag=0
+      let flag=0
     let username= document.getElementById('name').value.trim()
     let email = document.getElementById('mail').value.trim()      
     let password = document.getElementById('pass').value.trim()
-  
+   
   
     if(username==''){
       document.getElementById('usernameError').innerHTML="Username Required"
@@ -94,6 +95,13 @@
         flag=1
     }else{
         document.getElementById('passwordError').innerHTML=""
+    }
+
+    if(Phone==""){
+      documetn.getElementById('hone').innerHTML = "Mobile number required"
+      flag=1
+    }else{
+      document.getElementById("Phone").innerHTML = ""
     }
   
     if(flag==1){
