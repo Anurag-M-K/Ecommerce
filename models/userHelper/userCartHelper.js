@@ -265,6 +265,7 @@ return new Promise(async(resovle,reject)=>{
      },
      
        placeOrder : (order,total,userId)=>{
+        console.log("order check :",order);
         return new  Promise(async(resolve,reject)=>{
 
             
@@ -356,10 +357,10 @@ return new Promise(async(resovle,reject)=>{
             
             let orderObj = {
                 deliveryDetails:{
-                    name:order.name,
-                    mobile:order.mobile,
-                    address:order.address,
-                    pincode:order.pincode,
+                    // name:order.name,
+                    // mobile:order.option1.mobile,
+                    address:order.option1,
+                    // pincode:order.option1.pincode,
                     orderStatus:status,
                     userId : ObjectId(order.userId),
                     paymentMethod:order['payment-method'],

@@ -117,6 +117,15 @@ module.exports = {
             }
            
         })
+    },
+    getAddress :(userId)=>{
+        console.log("userId",userId);
+        return new Promise(async(resolve,reject)=>{
+const addressList = await db.get().collection(collection.USER_ADDRESS_COLLECTION).findOne({user:ObjectId(userId)})
+    resolve(addressList)
+    console.log("response : : :",addressList);
+})
+       
     }
     
 }

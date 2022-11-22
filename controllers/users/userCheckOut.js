@@ -2,6 +2,7 @@ const userHelper = require('../../models/userHelper/userCartHelper')
 const categoryHelper = require("../../models/categoryHelper")
 const razorPayModel = require('../../models/userHelper/razorPayModel')
 const userCoupenModel = require('../../models/userHelper/userCoupenModel')
+const userAddressHelper = require('../../models/helpers/user-helper')
 
 const showCheckoutPage = (req,res)=>{
     let userData = req.session.user
@@ -16,12 +17,13 @@ const   payment = async (req,res)=>{
     console.log("sdfshdf",totalAmount);
 
     if(req.session.user){
-        // let totalAmount = await userHelper.getTotalAmount(req.session.user._id)
-       
+    
+       let addressList = await userAddressHelper.getAddress(req.session.user._id)
+       console.log("ADDRESSLIST :",addressList);
         let products = await userHelper.getCartProducts(req.session.user._id)
             let  cartCount = await  userHelper.getCartCount(req.session.user._id)
             categoryHelper.getAllCategories().then((CategoryDetails) => {
-                res.render('users/addressPayment',{user:true,admin:false,userData,cartCount,products,totalAmount,CategoryDetails})
+                res.render('users/addressPayment',{user:true,admin:false,userData,cartCount,products,totalAmount,CategoryDetails,addressList})
             })
         
     }
@@ -31,7 +33,9 @@ const checkOut = async(req,res)=>{
   
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
     if(totalPrice >0)
+    console.log("hrere om cjecm:",req.body);
    userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((orderId)=>{
+    
   
     if(req.body['payment-method']==='COD'){
         res.json({codSuccess:true})

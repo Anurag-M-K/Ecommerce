@@ -1,15 +1,39 @@
 <!-- --------------------------------------------------Payment-------------------------------------- -->
+
 <body style="    overflow-x: hidden;">
-	
-
-<section class="bg-light" style="overflow: hidden;">
-
-	<div class="container bg-light " >
-		<div class="row ">
 
 
+	<section class="bg-light" style="overflow: hidden;">
+<form action="" id="checkout-form">
+		<div class="container bg-light ">
+			<div class="row ">
+				<form action="" class=" mt-5" style="background-color:#d7d7d7 ;">
 
-		<div class="container col-md-6 mt-5" style="    padding-bottom: 113px;">
+					<div class="form-check my-2 mx-2">
+						<% for (var i=0; i<addressList.details.length;i++) { %>
+							<input type="radio" 
+							value="<%= addressList.details[i].name %>, <%= addressList.details[i].mobile %>,<%= addressList.details[i].address %>
+							<%= addressList.details[i].pincode %>" 
+							class="form-check-input" id="check1" name="option1" value="something" >
+							<label class="form-check-label" for="check1">
+
+								<div>
+									<%= addressList.details[i].name %> - <%= addressList.details[i].mobile %>
+								</div>
+								<div>
+									<%= addressList.details[i].address %> - <%= addressList.details[i].pincode %>
+								</div><br>
+								<% } %>
+							</label>
+					</div>
+
+				 <!-- class="mb-3">	<button type="submit" class="btn btn-primary ">Submit</button>  -->
+				 <div class="px-3 py-3"><a href="/addressaddPage" class="btn btn-primary ">Add New Address</a></div> 
+			</div>
+
+					<!-- Sjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiijjjjjjjjjjjjjjjjjjjjjjjjjjjj -->
+
+					<!-- <div class="container col-md-6 mt-5" style="    padding-bottom: 113px;">
 			
 			<form action="" id="checkout-form" style="    margin-bottom: 152px;">
 				<div class="row" z>
@@ -26,131 +50,132 @@
 					
 					<input type="text" name="userId" style="display:none ;"   id=""   value="<%= userData._id %>">
 				</div>
-		</div>
-		<div class="col-md-5">
-			<br><br><br>
-			<div class="container mt-5  checkout ">
-				<h5>Total Amount : RS. <%= totalAmount %>
-				</h5>
-				<hr>
-				<div class="payment">
-					<p>Payment Method</p>
-					<label for="" class="radio-inline">
-						<input type="radio" name="payment-method" value="COD" checked>COD
-					</label>
-					<label for=" " class="radio-inline mt-2">
-						<input type="radio" name="payment-method" value="ONLINE">Online Payment
-					</label>
-					<button class="btn btn-primary float-right" type="submit">Checkout</button>
-					
-				</div>
+		</div> -->
+					<div class="col-md-5">
+						<br><br><br>
+						<div class="container mt-5  checkout ">
+							<h5>Total Amount : RS. <%= totalAmount %>
+							</h5>
+							<hr>
+							<div class="payment">
+								<p>Payment Method</p>
+								<label for="" class="radio-inline">
+									<input type="radio" name="payment-method" value="COD" checked>COD
+								</label>
+								<label for=" " class="radio-inline mt-2">
+									<input type="radio" name="payment-method" value="ONLINE">Online Payment
+								</label>
+								<input type="text" name="userId" style="display:none ;"   id=""   value="<%= userData._id %>">
+								<button class="btn btn-primary float-right" type="submit">Checkout</button>
+
+							</div>
+						</div>
+					</div>
 			</div>
+			</form>
+
 		</div>
-	</div>
-	</form>
 
-	</div>
+		<br><br><br>
 
-	<br><br><br>
-	
-</div>
-	</div>
-</section>
+		</div>
+		</div>
+	</section>
 
 
-<script>
-	$("#checkout-form").submit((e) => {
-		e.preventDefault()
-		$.ajax({
-			url: "/place-order",
-			method: "post",
-			data: $('#checkout-form').serialize(),
-			success: (response) => {
-				// alert(response)
-				if (response.codSuccess) {
-					window.location.href = '/orderPlaced'
-				} else {
-					alert(response)
-					razorPayPayment(response)
+	<script>
+		$("#checkout-form").submit((e) => {
+			e.preventDefault()
+			$.ajax({
+				url: "/place-order",
+				method: "post",
+				data: $('#checkout-form').serialize(),
+				success: (response) => {
+					// alert(response)
+					if (response.codSuccess) {
+						window.location.href = '/orderPlaced'
+					} else {
+						alert(response)
+						razorPayPayment(response)
+					}
 				}
-			}
 
 
-		})
-	});
+			})
+		});
 
-	function razorPayPayment(order) {
-		var options = {
-			"key": "rzp_test_ZzZWhbQTjsVswA", // Enter the Key ID generated from the Dashboard
-			"amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-			"currency": "INR",
-			"name": "Anurag",
-			"description": "Test Transaction",
-			"image": "https://example.com/your_logo",
-			"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-			"handler": function (response) {
+		function razorPayPayment(order) {
+			var options = {
+				"key": "rzp_test_ZzZWhbQTjsVswA", // Enter the Key ID generated from the Dashboard
+				"amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+				"currency": "INR",
+				"name": "Anurag",
+				"description": "Test Transaction",
+				"image": "https://example.com/your_logo",
+				"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+				"handler": function (response) {
 
-				verifyPayment(response, order)
+					verifyPayment(response, order)
 
-			},
+				},
 
-			"callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-			"prefill": {
-				"name": "Gaurav Kumar",
-				"email": "gaurav.kumar@example.com",
-				"contact": "9999999999"
-			},
-			"notes": {
-				"address": "Razorpay Corporate Office"
-			},
-			"theme": {
-				"color": "#3399cc"
-			}
-		};
-		var rzp1 = new Razorpay(options);
-		rzp1.open();
-	}
-
-	function verifyPayment(payment, order) {
-		$.ajax({
-			url: '/verify-payment',
-			data: {
-				payment,
-				order
-			},
-			method: 'post',
-			success: (response) => {
-				if (response.status) {
-					
-					window.location.href = '/orderPlaced',
-					deliveryDetails.status("placed")
-				} else {
-
-					alert('Payment failed')
+				"callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+				"prefill": {
+					"name": "Gaurav Kumar",
+					"email": "gaurav.kumar@example.com",
+					"contact": "9999999999"
+				},
+				"notes": {
+					"address": "Razorpay Corporate Office"
+				},
+				"theme": {
+					"color": "#3399cc"
 				}
-			}
-		})
-	}
-</script>
-<style>
-	input[type=radio] {
-		width: 20px;
-		height: 20px;
-	}
+			};
+			var rzp1 = new Razorpay(options);
+			rzp1.open();
+		}
 
-	label.radio-inline {
-		display: flex;
-		align-items: center;
-	}
+		function verifyPayment(payment, order) {
+			$.ajax({
+				url: '/verify-payment',
+				data: {
+					payment,
+					order
+				},
+				method: 'post',
+				success: (response) => {
+					if (response.status) {
 
-	.checkout {
-		border: 1px solid;
-		border-radius: 3px;
-		padding: 30px;
-	}
+						window.location.href = '/orderPlaced',
+							deliveryDetails.status("placed")
+					} else {
 
-	.payment {
-		padding-bottom: 16px;
-	}
-</style>
+						alert('Payment failed')
+					}
+				}
+			})
+		}
+	</script>
+	<style>
+		input[type=radio] {
+			width: 20px;
+			height: 20px;
+		}
+
+		label.radio-inline {
+			display: flex;
+			align-items: center;
+		}
+
+		.checkout {
+			border: 1px solid;
+			border-radius: 3px;
+			padding: 30px;
+		}
+
+		.payment {
+			padding-bottom: 16px;
+		}
+	</style>
 </body>

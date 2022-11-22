@@ -77,7 +77,7 @@ const addressAdd = (req,res)=>{
     console.log("req.body",req.body);
     let userData = req.session.user._id
     userAddressHelper.addAddress(req.body,userData).then((response)=>{
-       res.redirect('/')
+       res.redirect('/addressaddPage')
     })
 }
 
