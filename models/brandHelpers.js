@@ -24,5 +24,12 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    checkProducts :(brandId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let brandDetails = await db.get().collection(collection.BRAND_COLLECTION).findOne({_id:ObjectId(brandId)})
+            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find({brandName:brandDetails._brand})
+            resolve(products)
+        })
     }
 }

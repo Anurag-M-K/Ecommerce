@@ -57,8 +57,46 @@
             </td>
 
 
-            <td class="text-center" style="border-color: black;     width: 8rem;"><a
-                href="/admin/deleteBrand?id=<%= Brand[i]._id %> " class="btn  btn-danger align-content-end">Delete</a>
+            <td class="text-center" style="border-color: black;     width: 8rem;"><button class="btn btn-danger" onclick="deleteBrand('<%= Brand[i]._id %>')">DELETE</button>
             </td>
           </tr>
           <% } %>
+
+
+          <script>
+            function  deleteBrand(brandId){
+              swal({
+                title:"DELETE",
+                text:"DO YOU WANT TO DELETE THIS BRAND",
+                icon:"warning",
+                buttons:["CANCEL","OK"]
+              }).then(val=>{
+                if(val){
+                  fetch('/admin/deleteBrand?id='+brandId,
+                  {
+                    method:'delete',
+                  }).then(res=> res.json()).then(data => {
+                    if(data.status){
+                      swal({
+                        title:"SUCCESS",
+                        text:"BRAND SUCCESSFULLY DELTED",
+                        icon:"success",
+                        button:'OK'
+                      }).then(val=>{
+                        location.reload()
+                      })
+                    }else{
+                      swal({
+                        title:"WARNING",
+                        text:"CATEGOORY ALREADY IN USE",
+                        icon:"SUCCESS",
+                        button:"OK"
+                      }).then(val=>{
+                        location.reload()
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          </script>

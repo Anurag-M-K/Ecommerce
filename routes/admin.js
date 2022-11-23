@@ -63,7 +63,7 @@ router.get('/orderId',adminUserController.viewProducts)
 //-------------------------------------------BRAND DETAILS----------------------------------------------------------------------------//
 router.post("/brandCategory", adminBrandController.addBrandController);
 router.post("/brandCategory", adminBrandController.brandSaveDatabaseController);
-router.get("/deleteBrand", adminBrandController.deleteBrandController);
+router.delete("/deleteBrand", adminBrandController.deleteBrandController);
 router.get("/brandCategory", adminBrandController.brandController);
 
 
@@ -77,13 +77,13 @@ router.delete('/deleteCategory',adminCategory.deleteCategoryController)
 //********************************************************PRODUCT DETAILS***************************************************************//
 router.post('/addProduct',upload.single('productImage'),adminProductController.productAdding)
 router.get('/product',adminProductController.productPage)
-router.get('/deleteProduct',adminProductController.productDelete)
+// router.get('/deleteProduct',adminProductController.productDelete)
 router.get("/addProductPage", adminProductController.productForm);
 router.post('/updateProductDetails',upload.single('productImage'),adminProductController.updateProductDetailsAction)
 router.get('/addProductPage',adminProductController.adminAddProductPage)
 router.post('/adminAddNewProduct',upload.single('productImage'),adminProductController.productAdding)
 router.get('/showEditProductPage',adminProductController.updateProductDetails)
-
+router.delete('/deleteProduct',adminProductController.productDelete)
 
 //**********************************************************Admin Banner***************************************************************** */
 router.get('/adminBanner',adminBannerController.showBannerPage)

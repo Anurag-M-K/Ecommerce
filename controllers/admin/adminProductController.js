@@ -50,10 +50,17 @@ const productPage = (req,res)=>{
 // delete product
 
 const productDelete = (req,res)=>{
-    productHelper.deleteProducts(req.query.id).then((response)=>{
+    let proId = req.query.id
+    console.log("product id :",proId);
+    productHelper.deleteProducts(proId).then((response)=>{
         res.redirect("/admin/product");
-    })
+     })
+   
+        
+
 }
+
+
 
 
 

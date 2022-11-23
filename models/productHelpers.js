@@ -30,8 +30,8 @@ module.exports = {
         })
     },
     deleteProducts:(id)=>{
-        return new Promise(async(resolve,reject)=>{
-            await db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id:ObjectId(id)}).then((response)=>{
+        return new Promise((resolve,reject)=>{
+             db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id:ObjectId(id)}).then((response)=>{
                 resolve(response)
             })
         })
@@ -57,6 +57,12 @@ module.exports = {
             db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id:ObjectId(id)}).then((product)=>{
                 resolve(product)
             })
+        })
+    },
+    checkProducts : (proId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let productDetails = await db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id:ObjectId(proId)})
+            let products = await db.get().collection(collections.PRODUCT_COLLECTION).find({})
         })
     }
       

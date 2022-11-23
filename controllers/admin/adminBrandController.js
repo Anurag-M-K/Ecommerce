@@ -1,3 +1,4 @@
+const { response } = require('express');
 const brandHelpers = require('../../models/brandHelpers')
 
 //adding brand
@@ -17,11 +18,22 @@ const addBrandController = (req, res) => {
 
   
 //delteing brand
-const deleteBrandController = (req, res) => {
-    brandHelpers.deleteBrand(req.query.id).then((response) => {
-      res.redirect("brandCategory");
-    });
-  };
+const deleteBrandController = async(req, res) => {
+  let brandId = req.query.id
+  console.log("brand id :",brandId);
+  await brandHelpers.checkProducts(brandId).then((products)=>{
+if(products.length>0){
+  response.status = false;
+  res.json(response)
+}else{
+  brandHelpers.deleteBrand(brandId).then((response)=>{
+    response.status = true
+    res.json(response)
+  })
+}
+})
+  
+};
 
 
   // brand button
