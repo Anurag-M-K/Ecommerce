@@ -72,7 +72,9 @@ db.connect((err)=>{
 
 app.use('/',usersRouter)
 app.use('/admin',adminRouter)
-
+app.get('*',(req,res)=>{
+    res.render('users/404',{admin:false,user:false})
+})
 app.listen(process.env.PORT,()=>{
     console.log("server started");
 })

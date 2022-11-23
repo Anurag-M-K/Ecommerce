@@ -39,7 +39,7 @@ const adminLogoutControllers = (req,res)=>{
       if(err){
           res.send('error')
       }else{
-          res.redirect('/admin')
+          res.render("admin/admin-login", { admin: false, user: false })
       }
   })
 }
