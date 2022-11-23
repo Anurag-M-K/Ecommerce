@@ -100,18 +100,48 @@ aria-hidden="true"
   });
 
 
-  function deleteBanner(bannerId){
-    fetch("/admin/deleteBanner",{
-      method: 'DELETE',
-      headers: {
-        'Content-Type':'application/JSON'
-      },
-      body:JSON.stringify({
-        bannerId
-      })
-    }).then(()=>{
-      window.location.href='/adminBannerPage'
+  // function deleteBanner(bannerId){
+  //   fetch("/admin/deleteBanner",{
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type':'application/JSON'
+  //     },
+  //     body:JSON.stringify({
+  //       bannerId
+  //     })
+  //   }).then(()=>{
+  //     window.location.href='/adminBannerPage'
     
+  //   })
+  // }
+
+  function deleteBanner(bannerId){
+    console.log("banner id fetch:",bannerId);
+    swal({
+      title:'DELETE',
+      text:'DO YOU WANT TO DELETE THIS CATEGORY',
+      icon :'warning',
+      buttons:["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+        fetch('/admin/deleteBanner',
+        {
+          method:'delete',
+          headers:{'content-type':'application/JSON'},
+          body:JSON.stringify({
+            bannerId
+          })
+        }).then(
+          swal({
+            title:'SUCCESS',
+            text:'BANNER SUCCESSFULLY DELETED',
+            icon:'success',
+            button:'OK'
+          }).then(val=>{
+            location.reload()
+          })
+        )
+      }
     })
   }
 </script>
