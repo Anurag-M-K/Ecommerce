@@ -7,7 +7,7 @@ var objectId = require('mongodb').ObjectId
 
 module.exports = {
     addCoupen :(coupenData,callback)=>{
-        console.log("coupen data :",coupenData);
+       
        coupenData.discount =  parseInt(coupenData.discount) 
                 db.get().collection(collection.COUPEN_COLLECTION).insertOne(coupenData).then((response)=>{
             callback(response)
@@ -23,10 +23,10 @@ module.exports = {
     deleteCoupen :(id)=>{
         console.log("id model : : :",id);
         return new Promise((resolve,reject)=>{
-            db.get().collection(collection.COUPEN_COLLECTION).deleteOne({_id:objectId(id)}).then((response)=>{
-                resolve(response)
+            db.get().collection(collection.COUPEN_COLLECTION).deleteOne({_id:objectId(id)})
+                resolve()
             })
-        })
+        
     }
 
 }

@@ -96,7 +96,7 @@ router.get("/adminBannerPage",adminBannerController.bannerRedirect)
 
 router.get('/coupen',adminCoupenController.coupenPage)
 router.post('/addCoupen',adminCoupenController.addCoupen)
-router.get('/deleteCoupen',adminCoupenController.deleteCoupen)
+router.delete('/deleteCoupen',adminCoupenController.deleteCoupen)
 
 
 //page not found 

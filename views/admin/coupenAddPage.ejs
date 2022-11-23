@@ -92,7 +92,7 @@
                 <%= coupen[i].discount %>
               </td>
               </td>
-              <td style="border-color: black; border-style: solid;"><a href="/admin/deleteCoupen?id=<%=coupen[i]._id %>"><button class="btn btn-danger" >DELETE</button></a></td>
+              <td style="border-color: black; border-style: solid;"><button class="btn btn-danger" onclick="deleteCoupen('<%= coupen[i]._id %>')">DELETE</button></td>
               </td>
 
               
@@ -108,6 +108,33 @@
   </div>
   </div>
   <script>
+
+
+function deleteCoupen (coupenId){
+  swal({
+    title:'delete',
+    text:"DO YOU WANT TO DELETE THIS COUPEN",
+    icon:'warning',
+    buttons:['CANCEL','OK']
+  }).then(val=>{
+    if(val){
+      fetch('/admin/deleteCoupen?id='+coupenId,
+      {
+        method:'delete'
+      }).then({
+        title:'SUCCESS',
+        text:'COUPEN SUCCESSFULLY DELETED',
+        icon:'success',
+        button:'OK'
+      }).then(val=>{
+        location.reload()
+      })
+    }
+  })
+}
+
+
+
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
     sidebarBtn.onclick = function () {
