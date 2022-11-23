@@ -70,7 +70,8 @@ router.get("/brandCategory", adminBrandController.brandController);
 /******************************************************CATEGORY DETAILS*******************************************************************/
 router.get("/adminCategory", adminCategory.catogoryPageController);
 router.post("/adminCategory", adminCategory.addCategoryController);
-router.get("/deleteCategory", adminCategory.deleteCategoryController);
+// router.get("/deleteCategory", adminCategory.deleteCategoryController);
+router.delete('/deleteCategory',adminCategory.deleteCategoryController)
 
 
 //********************************************************PRODUCT DETAILS***************************************************************//

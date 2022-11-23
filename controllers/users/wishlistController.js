@@ -23,7 +23,7 @@ const wish = async(req,res)=>{
     })
            
     }else{
-        res.redirect("/userslogin",{user:false,admin:false,userData})
+        res.redirect("/userslogin")
     }
 }
 
@@ -38,8 +38,16 @@ const deleteProduct = (req,res)=>{
     })
 }
 
+const addToCartWishlist = (req,res)=>{
+    console.log("req.paramas",req.params.id);
+    userHelper.addToCartWishlist(req.params.id,req.session.user._id).then(()=>{
+        res.json({status:true})
+    })
+}
+
 module.exports = {
     addTowishlist,
     wish,
-    deleteProduct
+    deleteProduct,
+    addToCartWishlist
 }

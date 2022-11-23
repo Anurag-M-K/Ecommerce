@@ -30,9 +30,10 @@
                             <div class="text-danger"><div class="d-flex flex-row-reverse pr-5"><a href="/users/deleteWishlist?id=<%= products[i].products._id %>"><i class="fa-sharp fa-solid fa-trash"></i></a></div>
                          
                                 RS:<%= products[i].products.Price %>     
-                            </div><br>
+                            </div>
                             <div >
-                            In Stock:<%= products[i].products.Quantity %>
+                            <button onclick="addToCart('<%= products[i]._id %>')" class="btn btn-primary">Add to
+								cart</button>
                            </div>
                             
                         </div>
@@ -53,7 +54,21 @@
 
 
 <script>
-    
+    	function addToCart(proId) {
+				$.ajax({
+					url: '/addtocartWishList/' + proId,
+					method: 'get',
+					success: (response) => {
+                        console.log("response :",response);
+						if (response.status) {
+							let count = $('#cart-count').html()
+							count = parseInt(count) + 1
+							$("#cart-count").html(count)
+						}
+
+					}
+				})
+			}
 </script>
 
 

@@ -11,7 +11,7 @@
               <tr>
                 <th scope="col text-light" style="color:white ;">OrderId</th>
                 <th scope="col" style="color:white ;">Order Date</th>
-                <th scope="col" style="color:white ;">Costumer Name</th>
+                <th scope="col" style="color:white ;">Costumer Address</th>
                 <th scope="col" style="color:white ;">Order status</th>
                 <th scope="col" style="color:white ;">Payment Method</th>
                 <th scope="col"style="color:white ;">Expected Delivery</th>
@@ -21,10 +21,10 @@
             <tbody>
                 <% for(var i=0;i<orderList.length;i++) { %>
               <tr>
-               
+                                                                                                                                 
               <td  style="border-color: black;"> <a href="/admin/orderId?id=<%= orderList[i]._id %>"> <%= orderList[i]._id %></td></a>
                 <td  style="border-color: black;" ><%= orderList[i].deliveryDetails.date %></td>
-                <td  style="border-color: black;"><%= orderList[i].deliveryDetails.name %></td>
+                <td  style="border-color: black;"><%= orderList[i].deliveryDetails.address %></td>
                 <td  style="border-color: black;"><%= orderList[i].deliveryDetails.status %></td>
                 <td  style="border-color: black;"><%= orderList[i].deliveryDetails.paymentMethod %></td>
                 <td  style="border-color: black;"> <%= orderList[i].deliveryDetails.expected_Date %></td>

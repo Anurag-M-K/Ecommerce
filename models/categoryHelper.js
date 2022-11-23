@@ -16,11 +16,12 @@ getAllCategories:()=>{
     })
 },
 
-deleteCategory:(id)=>{
+deleteCategory:(catId)=>{
     return new Promise(async(resolve,reject)=>{
-       await db.get().collection(collection.CATEGORIES_COLLECTION).deleteOne({_id:objectId(id)}).then((response)=>{
-            console.log("category "+response);
+       await db.get().collection(collection.CATEGORIES_COLLECTION).deleteOne({_id:objectId(catId)}).then((response)=>{
+          
             resolve(response)
+            console.log("deltee reponse ,",response);
         })
     })
 },
@@ -32,6 +33,14 @@ editCategory:(catId,Categories)=>{
             category:Categories._category
             }
         })
+    })
+},
+checkProducts : (catId)=>{
+    return new Promise(async(resolve,reject)=>{
+        let categoryDetails = await db.get().collection(collection.CATEGORIES_COLLECTION).findOne({_id:objectId(catId)})
+        let products = await db.get().collection(collection.PRODUCT_COLLECTION).find({Category:categoryDetails._category}).toArray()
+        resolve(products)
+        
     })
 }
 

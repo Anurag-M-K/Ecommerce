@@ -1,4 +1,5 @@
 const ObjectId = require('mongodb').ObjectID
+const { ObjectID } = require('bson')
 const { response } = require('express')
 const collection = require("../../config/collection")
 const db = require("../../config/connection")
@@ -96,9 +97,46 @@ module.exports = {
          
 
             resolve(cartItems)
+            console.log("new checkn :",cartItems);
        
         })
        
+    },
+    addToCartWishlist : (userId)=>{
+
+        return new Promise(async(resolve,reject)=>{
+            const cartWishItem =await db.get().collection(collection.WISHLIST_COLLECTION).aggregate([
+              { 
+                 $match:{user:ObjectId(userId)}
+              },
+              {
+
+                $unwind:'$products'
+              },
+              {
+                $project:{
+                    item : '$products.item',
+                    quantity:'$products.quantity'
+
+               }
+              },
+              {
+                $lookup:{
+                    from:collection.PRODUCT_COLLECTION,
+                    localField:'item',
+                    foreignField:'_id',
+                    as:'products'
+                }
+              },
+              {
+                $project:{
+                    item:1,quantity:1,products:{$arrayElemAt:['$products',0]}
+                }
+              }
+            ]).toArray()
+            resolve(cartWishItem)
+            console.log("cartWishItems"+cartWishItem);
+        })
     },
     getCartCount : (userId)=>{
         return new Promise(async(resolve,reject)=>{
@@ -150,8 +188,7 @@ module.exports = {
             return new Promise(async(resolve,reject)=>{
 
                 let userCart = await  db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectId(userId)})
-                console.log("usercart ;'",userCart);
-                console.log("usercart length ;'",userCart.products.length);
+              
                 if(userCart.products.length >0){
 
                 

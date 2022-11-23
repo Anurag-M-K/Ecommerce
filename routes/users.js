@@ -51,6 +51,7 @@ router.get('/users/deleteCartProduct/',userCart.deleteCartProduct)
 router.get('/add-to-wishlist/:id',wishlistController.addTowishlist)
 router.get('/users/wishList',wishlistController.wish)
 router.get('/users/deleteWishlist',wishlistController.deleteProduct)
+router.get('/addtocartWishList/:id',wishlistController.addToCartWishlist)
 
 
 

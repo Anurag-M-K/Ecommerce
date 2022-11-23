@@ -16,10 +16,21 @@ const catogoryPageController = (req, res) => {
   };
 
 
-  const deleteCategoryController = (req, res) => {
-    categoryHelper.deleteCategory(req.query.id).then((response) => {
-      res.redirect("/admin/admincategory");
-    });
+  const deleteCategoryController = async(req, res) => {
+    let catId = req.query.id
+    await categoryHelper.checkProducts(catId).then((products)=>{
+      if(products.length > 0){
+        response.status = false;
+        res.json(response)
+      }else{
+        categoryHelper.deleteCategory(catId).then((response)=>{
+          response.status = true;
+          res.json(response)
+        })
+      }
+
+    })
+   
   };
   
 

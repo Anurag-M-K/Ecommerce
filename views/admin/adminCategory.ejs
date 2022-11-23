@@ -57,8 +57,7 @@
 
             <td  style="border-color: black;"> <a href="/admin/editCategory<%= Categories[i]._id%>"
                 class="btn btn-primary align-content-end">Edit</a></td>
-            <td style="border-color: black;"><a href="/admin/deleteCategory?id=<%= Categories[i]._id %> "
-                class="btn  btn-danger align-content-end">Delete</a></td>
+            <td style="border-color: black;"><button class="btn btn-danger" onclick="deleteCategory('<%= Categories[i]._id %>')">Delete</button></td>
           </tr>
 
           <% } %>
@@ -77,4 +76,43 @@
   myModal.addEventListener('shown.bs.modal', function () {
     myInput.focus()
   })
+
+ 
+
+   function deleteCategory(catId){
+    swal({
+      title:"DELETE",
+      text:'DO YOU WANT TO DELETE THIS CATEGORY',
+      icon:"warning",
+      buttons:["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+        fetch('/admin/deleteCategory?id='+catId,
+        {
+          method:'delete'
+        }).then(res=> res.json()).then(data=>{
+          console.log(data);
+          if(data.status){
+            swal({
+              title:'SUCCESS',
+              text:"CATEGORY SUCCESSFULLY DELETED",
+              icon:"success",
+              button:"OK"
+            }).then(val=>{
+              location.reload()
+            })
+          }else{
+            swal({
+              title:"WARNING",
+              text:"CATEGORY ALREADY IN USE",
+              icon:'success',
+              button:"OK"
+            }).then(val=>{
+              location.reload()
+            })
+          }
+        })
+      }
+    })
+  }
 </script>
