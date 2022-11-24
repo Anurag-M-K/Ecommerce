@@ -18,7 +18,7 @@ const addCoupen = (req,res)=>{
 
 const deleteCoupen = (req,res)=>{
     let coupenId = req.query.id
-    console.log("id delete :",coupenId);
+    
     adminCoupenModel.deleteCoupen(coupenId).then(()=>{
         
         res.redirect('/admin/coupen')

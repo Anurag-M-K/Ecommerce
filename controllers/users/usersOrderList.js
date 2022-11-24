@@ -3,6 +3,7 @@ const userCartHelper = require("../../models/userHelper/userCartHelper")
 const userOrderHelper = require('../../models/userHelper/userOrderHelper')
 
 const orderSuccess = async(req,res)=>{
+ 
    let userData = req.session.user
    if(req.session.loggedIn){
       
@@ -35,8 +36,9 @@ const orderList = async (req,res)=>{
   }
   let products =await userCartHelper.getCartProducts(req.session.user._id)
  
- 
+ console.log("id:",req.session.user._id);
   let productList =await userOrderHelper.getUserOrders(req.session.user._id)
+  
   let totalAmount = await userCartHelper.getTotalAmount(req.session.user._id)
            
 

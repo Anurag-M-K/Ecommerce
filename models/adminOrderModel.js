@@ -26,7 +26,7 @@ module.exports = {
                 resolve(user)
                
             }else{
-                console.log("empty");
+               
                 resolve({ordersEmpty:true})
             }
         })

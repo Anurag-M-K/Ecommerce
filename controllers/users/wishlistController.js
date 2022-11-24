@@ -39,8 +39,8 @@ const deleteProduct = (req,res)=>{
 }
 
 const addToCartWishlist = (req,res)=>{
-    console.log("req.paramas",req.params.id);
-    userHelper.addToCartWishlist(req.params.id,req.session.user._id).then(()=>{
+    
+    userHelper.addToCart(req.params.id,req.session.user._id).then(()=>{
         res.json({status:true})
     })
 }

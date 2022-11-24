@@ -174,14 +174,11 @@
 				}).then(res => res.json()).then(data => {
 					
 					if(data.coupenStatus == true){
-						console.log("rezched if");
-						console.log("if statement :",data.coupenStatus);
 						message.innerHTML = "";
 						discountDisplay.innerHTML = data.discount
 						finalTotal.innerHTML = data.discountedTotal
 					}else{
-						console.log("rezched else");
-						message.innerHTML = 'coupon not acceptable'
+						alert("coupen not acceptable")
 						discountDisplay.innerHTML = data.discount
 						finalTotal.innerHTML = data.discountedTotal
 					}

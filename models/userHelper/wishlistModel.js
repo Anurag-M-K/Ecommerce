@@ -98,7 +98,7 @@ module.exports = {
     deleteWishlistProduct : (proId,userId)=>{
        
         return new Promise((resolve, reject) => {
-            console.log(proId)
+           
             db.get().collection(collection.WISHLIST_COLLECTION)
                 .updateOne({ user: ObjectId(userId) },
                     {

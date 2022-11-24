@@ -18,13 +18,13 @@ let cart = async (req, res) => {
   if (userData) {
     cartCount = await userHelper.getCartCount(req.session.user._id);
     let products = await userHelper.getCartProducts(req.session.user._id);
-    console.log(products);
+   
     let totalAmount = 0;
     if (products.length > 0) {
       totalAmount = 0;
       totalAmount = await userCartHelper.getTotalAmount(req.session.user._id);
     }
-    console.log("TOTOSL :", totalAmount);
+    
 
     if (products.length < 0) {
       totalAmount = 0;
@@ -63,10 +63,8 @@ const productCount = (req, res, next) => {
 const deleteCartProduct = (req, res) => {
   let userData = req.session.user._id;
   let item = req.query.item;
-  console.log("item :", item);
-  console.log("userData :", userData);
+ 
   userHelper.deleteCartProducts(item, userData).then((response) => {
-    console.log("this is delete check ");
     res.redirect("/users/cart");
   });
 };

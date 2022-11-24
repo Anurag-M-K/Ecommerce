@@ -2,7 +2,7 @@ const adminOrderModel = require("../../models/adminOrderModel")
 
 const orderStatus = (req,res)=>{
     adminOrderModel.getOrderStatusCount().then((response)=>{
-        console.log("order status response :",response);
+      
         let pending;
         let placed;
      
@@ -18,7 +18,7 @@ const orderStatus = (req,res)=>{
             //     cancelled = values.count
             }
         }
-        console.log("pending :",pending,placed)
+        
         res.render('admin/admin-panel',{admin:true,user:false,pending,placed})
         
     })

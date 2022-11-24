@@ -1,5 +1,3 @@
-<!-- --------------------------------------------------Payment-------------------------------------- -->
-
 <body style="    overflow-x: hidden;">
 
 
@@ -20,7 +18,6 @@
 							<%= addressList.details[i].pincode %>" 
 							class="form-check-input" id="check1" name="option1" value="something" >
 							<label class="form-check-label" for="check1">
-
 								<div>
 									<%= addressList.details[i].name %> - <%= addressList.details[i].mobile %>
 								</div>
@@ -49,7 +46,6 @@
 					<input type="text" class="form-control mb-3 "  required id="address" placeholder="Address" name="address"></div>
 					<div class="mb-3"><input type="text" class="form-control" required id="pincode" placeholder="Pincode" name="pincode"></div>
 					<div class="mb-3"><input type="text" class="form-control" id="mobile" placeholder="Mobile" required name="mobile"></div>
-
 					
 					
 					<input type="text" name="userId" style="display:none ;"   id=""   value="<%= userData._id %>">
@@ -90,6 +86,7 @@
 	<script>
 		$("#checkout-form").submit((e) => {
 			e.preventDefault()
+			
 			$.ajax({
 				url: "/place-order",
 				method: "post",
@@ -101,13 +98,11 @@
 					} else {
 						alert(response)
 						razorPayPayment(response)
+						
 					}
 				}
-
-
 			})
 		});
-
 		function razorPayPayment(order) {
 			var options = {
 				"key": "rzp_test_ZzZWhbQTjsVswA", // Enter the Key ID generated from the Dashboard
@@ -118,11 +113,8 @@
 				"image": "https://example.com/your_logo",
 				"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
 				"handler": function (response) {
-
 					verifyPayment(response, order)
-
 				},
-
 				"callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
 				"prefill": {
 					"name": "Gaurav Kumar",
@@ -139,7 +131,6 @@
 			var rzp1 = new Razorpay(options);
 			rzp1.open();
 		}
-
 		function verifyPayment(payment, order) {
 			$.ajax({
 				url: '/verify-payment',
@@ -154,7 +145,6 @@
 						window.location.href = '/orderPlaced',
 							deliveryDetails.status("placed")
 					} else {
-
 						alert('Payment failed')
 					}
 				}
@@ -166,18 +156,15 @@
 			width: 20px;
 			height: 20px;
 		}
-
 		label.radio-inline {
 			display: flex;
 			align-items: center;
 		}
-
 		.checkout {
 			border: 1px solid;
 			border-radius: 3px;
 			padding: 30px;
 		}
-
 		.payment {
 			padding-bottom: 16px;
 		}

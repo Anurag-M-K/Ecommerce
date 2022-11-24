@@ -11,7 +11,7 @@ var instance = new Razorpay({
 
 module.exports = {
   generateRazorPay:(orderId,total)=>{
-    console.log("total and orfer id :"+orderId,+"         "+total );
+   
         return new Promise((resolve,reject)=>{
             var options = {
                 amount: total * 100,

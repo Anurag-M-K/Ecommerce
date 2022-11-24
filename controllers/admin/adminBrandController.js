@@ -20,7 +20,7 @@ const addBrandController = (req, res) => {
 //delteing brand
 const deleteBrandController = async(req, res) => {
   let brandId = req.query.id
-  console.log("brand id :",brandId);
+ 
   await brandHelpers.checkProducts(brandId).then((products)=>{
 if(products.length>0){
   response.status = false;

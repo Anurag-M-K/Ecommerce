@@ -11,7 +11,7 @@ module.exports = {
             }
         ]).toArray()
         resolve(products)
-        console.log("model peodiucts",products);
+       
        })
     }
 }

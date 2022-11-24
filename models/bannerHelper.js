@@ -17,7 +17,7 @@ module.exports = {
     })
    },
    deleteBanner : (bannerId)=>{
-    console.log("banner id in model ",bannerId);
+  
     return new Promise((resolve,reject)=>{
         db.get().collection(collection.BANNER_COLLECTION).deleteOne({_id:ObjectId(bannerId)}).then((response)=>{
             resolve(response)

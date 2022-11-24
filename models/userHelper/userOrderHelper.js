@@ -8,9 +8,9 @@ const db = require("../../config/connection")
 module.exports = {
     
      getUserOrders : (userId)=>{
-        console.log("userI");
+        
         return new Promise(async(resolve,reject)=>{
-            let productList = await db.get().collection(collection.ORDER_COLLECTION).find({userId:ObjectId(userId)}).toArray()
+            let productList = await db.get().collection(collection.ORDER_COLLECTION).find({userId:(userId)}).toArray()
          
             
             

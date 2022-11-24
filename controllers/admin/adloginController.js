@@ -18,7 +18,7 @@ const adminLoginAction = async(req, res) => {
   let productCount = await count.productCount()
   let brandCount = await count.brandCount()
   let orderCount = await count.orderCount()
-  console.log("userCount:",orderCount)
+ 
   adminLogin.adminDoLogin(req.body).then((response) => {
     if (response.status) {
       req.session.loggedIn = true;

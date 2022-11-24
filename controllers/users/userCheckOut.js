@@ -14,12 +14,12 @@ const showCheckoutPage = (req,res)=>{
 const   payment = async (req,res)=>{
     let userData = req.session.user 
     let totalAmount=req.query.finalTotal
-    console.log("sdfshdf",totalAmount);
+    
 
     if(req.session.user){
     
        let addressList = await userAddressHelper.getAddress(req.session.user._id)
-       console.log("ADDRESSLIST :",addressList);
+     
         let products = await userHelper.getCartProducts(req.session.user._id)
             let  cartCount = await  userHelper.getCartCount(req.session.user._id)
             categoryHelper.getAllCategories().then((CategoryDetails) => {
@@ -28,14 +28,18 @@ const   payment = async (req,res)=>{
         
     }
     }
+    //her razorepay working
    
 const checkOut = async(req,res)=>{
   
     let totalPrice = await userHelper.getTotalAmount(req.body.userId)
-    if(totalPrice >0)
-    console.log("hrere om cjecm:",req.body);
-   userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((orderId)=>{
     
+   let finalPrice= totalPrice - req.body.discountedTotal 
+
+    if(totalPrice >0)
+   userHelper.placeOrder(req.body,totalPrice,req.body.userId).then((orderId)=>{
+    orderId = orderId.insertedId
+  
   
     if(req.body['payment-method']==='COD'){
         res.json({codSuccess:true})
@@ -52,14 +56,14 @@ const checkOut = async(req,res)=>{
 
 
 const verifyingPayment = (req,res)=>{
-    console.log("checkcing body ",req.body);
+
    
 
     razorPayModel.verifyPayment(req.body).then(()=>{ 
       
         razorPayModel.changePaymentStatus(req.body.order.receipt).then(()=>{
           
-            console.log('payment successfull');
+          
             res.json({status:true})
         })
 
@@ -74,20 +78,28 @@ const verifyingPayment = (req,res)=>{
 
 
 const checkingOutPage = async(req,res)=>{
-    let finalTotal = req.body.finalTotal
+    let finalTotal = (req.body.totalAmount)
+  
     let details = req.body
+    details.finalTotal = parseInt(details.totalAmount)
     if(details.coupenCode===''){
-        finalTotal = details.finalTotal +(5/100)*details.finalTotal
+    
+        let shippingCharge = (5/100)*details.totalAmount
+        finalTotal = parseInt(details.totalAmount) + shippingCharge
+      
+   
         res.json(finalTotal)
     }else{
         let coupenDetails = await userCoupenModel.getCoupenDetails(details.coupenCode)
         if(coupenDetails){
             await userCoupenModel.getDiscount(coupenDetails,details.totalAmount).then((response)=>{
                 finalTotal = response.discountedTotal
-                res.json(response.discountedTotal)
+                finalTotal = Math.round(finalTotal)
+                res.json(finalTotal)
             })
         }else{
-            finalTotal = details.totalAmount + (5/100)*details.totalAmount
+            let shippingCharge = (5/100)*details.finalTotal
+            finalTotal = details.totalAmount + shippingCharge
             res.json(finalTotal)
 
         }

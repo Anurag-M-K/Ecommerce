@@ -12,7 +12,7 @@ module.exports = {
             let coupenDetails = await db.get().collection(collection.COUPEN_COLLECTION)
             .findOne({coupenCode:coupenCode})
             resolve(coupenDetails)
-            console.log("coupen details :",coupenDetails);
+          
         })
     },
     getDiscount :(coupenDetails,total)=>{
@@ -32,7 +32,7 @@ module.exports = {
                     response.coupenStatus = true
                     response.discount = discount
                     resolve(response)
-                    console.log("response :",response);
+                   
 
                 }else{
                     response.coupenStatus = false

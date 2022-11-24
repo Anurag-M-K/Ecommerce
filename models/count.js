@@ -6,7 +6,7 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let userCount =await db.get().collection(collection.USER_COLLECTION).find().count()
             resolve(userCount)
-            console.log("count of users:",userCount)
+         
         })
     },
     categoryCount:()=>{

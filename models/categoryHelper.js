@@ -21,7 +21,7 @@ deleteCategory:(catId)=>{
        await db.get().collection(collection.CATEGORIES_COLLECTION).deleteOne({_id:objectId(catId)}).then((response)=>{
           
             resolve(response)
-            console.log("deltee reponse ,",response);
+         
         })
     })
 },

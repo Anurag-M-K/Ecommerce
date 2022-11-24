@@ -5,7 +5,7 @@ const userHelper = require('../../models/userHelper/userCartHelper')
 
 const viewOrderProducts = async(req,res)=>{
     let id = req.query
-    console.log(id);
+  
     let userData = req.session.user
     let cartCount = null;
     if (req.session.userLoggedIn) {
@@ -19,9 +19,9 @@ const viewOrderProducts = async(req,res)=>{
        
     categoryHelper.getAllCategories().then(async(CategoryDetails) => {
      userOrderHelper.getOneOrderProduct(id).then((orderList)=>{
-        console.log('orderlist : ',orderList);
+       
 
-        console.log('orderList DELIVERDETAIS  products:',orderList[0].deliveryDetails);
+       
          res.render('users/view-order-products',{user:true,admin:false,orderList,userData,cartCount,totalAmount,products,CategoryDetails})
     })
 

@@ -5,7 +5,7 @@ const collection = require('../config/collection')
 
 module.exports = {
     blockUser : (userId)=>{
-        console.log(userId);
+    
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.USER_COLLECTION).updateOne({
                 _id:ObjectId(userId)
@@ -21,7 +21,7 @@ module.exports = {
         })
     },
     unBlockUser : (userId)=>{
-        console.log("here model page ");
+      
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.USER_COLLECTION).updateOne({
                 _id:ObjectId(userId)

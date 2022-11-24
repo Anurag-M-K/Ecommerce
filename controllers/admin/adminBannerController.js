@@ -25,7 +25,7 @@ const bannerRedirect = (req,res)=>{
 
 const deleteBanner = (req,res)=>{
     let id = req.body.bannerId
-    console.log('banner id ',id);
+   
     bannerHelper.deleteBanner(id).then((response)=>{
        res.redirect('/adminBanner')
     })

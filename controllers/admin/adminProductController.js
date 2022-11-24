@@ -51,7 +51,7 @@ const productPage = (req,res)=>{
 
 const productDelete = (req,res)=>{
     let proId = req.query.id
-    console.log("product id :",proId);
+    
     productHelper.deleteProducts(proId).then((response)=>{
         res.redirect("/admin/product");
      })

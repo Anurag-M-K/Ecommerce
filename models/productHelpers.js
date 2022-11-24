@@ -24,7 +24,7 @@ module.exports = {
     getProductDetails:(id)=>{
         return new Promise((resolve,reject)=>{
            db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id:ObjectId(id)}).then((products)=>{
-               console.log(products);
+           
                 resolve(products)
             })
         })

@@ -54,7 +54,7 @@ module.exports = {
                 db.get().collection(collection.CART_COLLECTION).insertOne(cartObj).then((response)=>{
                     
                     resolve()
-                    console.log("usercrt : "+userCart);
+                    
                 })
             }
         })
@@ -97,7 +97,7 @@ module.exports = {
          
 
             resolve(cartItems)
-            console.log("new checkn :",cartItems);
+          
        
         })
        
@@ -135,7 +135,7 @@ module.exports = {
               }
             ]).toArray()
             resolve(cartWishItem)
-            console.log("cartWishItems"+cartWishItem);
+          
         })
     },
     getCartCount : (userId)=>{
@@ -242,7 +242,7 @@ module.exports = {
                
                 resolve(response.TotalAmount)
             }else{
-                console.log("here else case");
+              
                 response.TotalAmount = 0
                 resolve(response.TotalAmount)
             }
@@ -302,7 +302,7 @@ return new Promise(async(resovle,reject)=>{
      },
      
        placeOrder : (order,total,userId)=>{
-        console.log("order check :",order);
+      
         return new  Promise(async(resolve,reject)=>{
 
             
@@ -392,8 +392,9 @@ return new Promise(async(resovle,reject)=>{
 
             let status = order['payment-method']==='COD'?'placed':'pending'
             
-            let orderObj = { userId : ObjectId(order.userId),
+            let orderObj = { userId : (order.userId),
                 deliveryDetails:{
+                   
                     // name:order.name,
                     // mobile:order.option1.mobile,
                     address:order.option1,
@@ -414,11 +415,13 @@ return new Promise(async(resovle,reject)=>{
           
             
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                // db.get().collection(collection.CART_COLLECTION).deleteOne({user:ObjectId(order.userId)})
-                resolve()
-      
-               
+        
+                resolve(response)
+        
             })
+        //     let orderId = await   db.get().collection(collection.ORDER_COLLECTION).findOne({userId:userId})
+        //    resolve(orderId)
+        //    console.log("orderId new :",orderId);
         })
          
      },
