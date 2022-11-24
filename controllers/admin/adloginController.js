@@ -1,6 +1,7 @@
 
 const adminLogin = require("../../models/helpers/admin-helper");
-
+const count = require('../../models/count');
+const { CURSOR_FLAGS } = require("mongodb");
 
 
 
@@ -9,13 +10,21 @@ const loginview = (req, res) => {
   res.render("admin/admin-login", { admin: false, user: false });
 };
 
-const adminLoginAction = (req, res) => {
+
+//3456789876543456789098765recvhjk5esxcvbnm,.-0987654321qwsdf
+const adminLoginAction = async(req, res) => {
+  let userCount = await count.userCount()
+  let categoryCount = await count.categoryCount()
+  let productCount = await count.productCount()
+  let brandCount = await count.brandCount()
+  let orderCount = await count.orderCount()
+  console.log("userCount:",orderCount)
   adminLogin.adminDoLogin(req.body).then((response) => {
     if (response.status) {
       req.session.loggedIn = true;
       req.session.user = response.user;
 
-      res.render("admin/admin-panel", { admin: true, user: false });
+      res.render("admin/admin-panel", { admin: true, user: false,userCount,categoryCount,productCount,brandCount ,orderCount});
     } else {
       res.redirect("/admin");
     }

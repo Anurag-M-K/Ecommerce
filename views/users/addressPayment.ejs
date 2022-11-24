@@ -5,11 +5,15 @@
 
 	<section class="bg-light" style="overflow: hidden;">
 <form action="" id="checkout-form">
-		<div class="container bg-light ">
+		<div class="container-fluid bg-light ">
 			<div class="row ">
+				
+
+				<div class="col-md-6">
+
 				<form action="" class=" mt-5" style="background-color:#d7d7d7 ;">
 
-					<div class="form-check my-2 mx-2">
+					<div class="form-check my-2 mx-2 mt-5 ml-5">
 						<% for (var i=0; i<addressList.details.length;i++) { %>
 							<input type="radio" 
 							value="<%= addressList.details[i].name %>, <%= addressList.details[i].mobile %>,<%= addressList.details[i].address %>
@@ -28,7 +32,7 @@
 					</div>
 
 				 <!-- class="mb-3">	<button type="submit" class="btn btn-primary ">Submit</button>  -->
-				 <div class="px-3 py-3"><a href="/addressaddPage" class="btn btn-primary ">Add New Address</a></div> 
+				 <div class="px-3 py-3 ml-5"><a href="/addressaddPage" class="btn btn-primary ">Add New Address</a></div> 
 			</div>
 
 					<!-- Sjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiijjjjjjjjjjjjjjjjjjjjjjjjjjjj -->
@@ -54,7 +58,7 @@
 					<div class="col-md-5">
 						<br><br><br>
 						<div class="container mt-5  checkout ">
-							<h5>Total Amount : RS. <%= totalAmount %>
+							<h5 class="text-bold">Total Amount : RS. <%= totalAmount %>
 							</h5>
 							<hr>
 							<div class="payment">
@@ -65,8 +69,8 @@
 								<label for=" " class="radio-inline mt-2">
 									<input type="radio" name="payment-method" value="ONLINE">Online Payment
 								</label>
-								<input type="text" name="userId" style="display:none ;"   id=""   value="<%= userData._id %>">
-								<button class="btn btn-primary float-right" type="submit">Checkout</button>
+								<input type="text" name="userId" style="display:none ;"   id=""   value="<%= userData._id %>"><br>
+								<div><button class="btn btn-primary float-right" type="submit">Checkout</button></div>
 
 							</div>
 						</div>

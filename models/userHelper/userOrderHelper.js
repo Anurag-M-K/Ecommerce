@@ -8,17 +8,32 @@ const db = require("../../config/connection")
 module.exports = {
     
      getUserOrders : (userId)=>{
+        console.log("userI");
         return new Promise(async(resolve,reject)=>{
-            let productList = await db.get().collection(collection.ORDER_COLLECTION).find().toArray()
+            let productList = await db.get().collection(collection.ORDER_COLLECTION).find({userId:ObjectId(userId)}).toArray()
          
             
             
             resolve(productList)
+            console.log("productList",productList);
           
           
             
         })
     },
+    // getOrderList: (userId) => {
+    //     return new Promise(async (resolve, reject) => {
+    //         let productList = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+    //             {
+    //                 $group: {_id:{useId:{userId}}}
+    //             },
+    //         ]).toArray()
+    //         resolve(productList)
+    //         console.log("PRPPOSUCTLIST",productList);
+
+    //     })
+    // },
+    
     getOrderProducts : (orderId)=>{
         return new Promise(async(resolve,reject)=>{
             let orderItem = await db.get().collection(collection.ORDER_COLLECTION).aggregate([

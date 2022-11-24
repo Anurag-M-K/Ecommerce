@@ -59,6 +59,26 @@ module.exports = {
           
         
         })
+    },
+    getOrderStatusCount : ()=>{
+        return new Promise(async(resolve,reject)=>{
+            let status = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $group:{
+                        _id:{status:'$deliveryDetails.status'},
+                        count:{$count:{}}
+                    }
+                },
+                {
+                    $project:{
+                        '_id.status':1,
+                        count:1
+                    }
+                }
+            ]).toArray()
+            resolve(status)
+        })
+
     }
 
 }

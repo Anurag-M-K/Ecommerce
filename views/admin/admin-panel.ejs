@@ -11,7 +11,7 @@
         <p class="text-primary">Category</p>
         <span class="material-icons-outlined text-blue">inventory_2</span>
       </div>
-      <span class="text-primary font-weight-bold">12</span>
+      <span class="text-primary font-weight-bold"><%= categoryCount %></span>
     </div>
 
     <div class="card border-light">
@@ -19,7 +19,7 @@
         <p class="text-primary">Products</p>
         <span class="material-icons-outlined text-orange">add_shopping_cart</span>
       </div>
-      <span class="text-primary font-weight-bold">83</span>
+      <span class="text-primary font-weight-bold"><%= productCount %></span>
     </div>
 
     <div class="card border-light ">
@@ -27,7 +27,7 @@
         <p class="text-primary">Orders</p>
         <span class="material-icons-outlined text-green">shopping_cart</span>
       </div>
-      <span class="text-primary font-weight-bold">79</span>
+      <span class="text-primary font-weight-bold"></span>
     </div>
 
     <div class="card border-light">
@@ -35,7 +35,7 @@
         <p class="text-primary">Users</p>
         <span class="material-icons-outlined text-red">notification_important</span>
       </div>
-      <span class="text-primary font-weight-bold">24</span>
+      <span class="text-primary font-weight-bold"><%= userCount %></span>
     </div>
    
   
@@ -43,7 +43,7 @@
 
   </div>
   <section>
-    <div style="width: 50rem; height:50rem"> 
+    <div style="width:35rem; height:35rem"> 
   
       <canvas id="myChart">
         
@@ -68,7 +68,7 @@
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [19, 19, 3, 5, 2, 3],
         borderWidth: 1
       }]
     },

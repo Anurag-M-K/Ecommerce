@@ -10,7 +10,7 @@ const multer = require('multer');
 const adminBannerController = require('../controllers/admin/adminBannerController');
 const userManagementHelper = require("../models/userManagementHelper");
 const adminCoupenController = require('../controllers/admin/adminCoupenController')
-
+const adminPanelController = require('../controllers/admin/adminPanelController')
 
 //Multer Start
 const storage = multer.diskStorage({
@@ -105,4 +105,5 @@ router.use((req,res,next)=>{
     next()
 })
 
+router.get('/orderCount',adminPanelController.orderStatus)
 module.exports = router

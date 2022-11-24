@@ -392,14 +392,14 @@ return new Promise(async(resovle,reject)=>{
 
             let status = order['payment-method']==='COD'?'placed':'pending'
             
-            let orderObj = {
+            let orderObj = { userId : ObjectId(order.userId),
                 deliveryDetails:{
                     // name:order.name,
                     // mobile:order.option1.mobile,
                     address:order.option1,
                     // pincode:order.option1.pincode,
                     orderStatus:status,
-                    userId : ObjectId(order.userId),
+                   
                     paymentMethod:order['payment-method'],
                     date:new Date(),
                     expected_Date: new Date(+ new Date() + 7 * 35 * 24 * 60 * 1000),
