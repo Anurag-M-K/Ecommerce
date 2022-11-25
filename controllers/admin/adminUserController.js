@@ -38,11 +38,24 @@ const userManagement = (req, res) => {
     let proId = req.query.id
 
 adminOrderModel.getAllOrderedPoducts(proId).then((orderProducts)=>{
+
+    console.log("order list :",orderProducts[0].deliveryDetails.products.productDetails.pitcure);
  
 
 
   res.render('admin/orderProductsPage',{admin:true,user:false,orderProducts})
+  
 })
+
+  }
+
+
+
+  const updateOrderDetails = (req,res)=>{
+    let status = req.body
+    adminOrderModel.updateOrderDetails(status).then((response)=>{
+      res.send(response)
+    })
 
   }
 
@@ -56,5 +69,6 @@ adminOrderModel.getAllOrderedPoducts(proId).then((orderProducts)=>{
     userBlock,
     userUnblock,
     orderPage,
-    viewProducts
+    viewProducts,
+    updateOrderDetails  
   }

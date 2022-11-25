@@ -1,43 +1,88 @@
-
 <main class="main-container">
-    <div class="main-title">
-      <p class="font-weight-bold">Order Details</p>
-    </div>
-
-<div class="container">
-    <div class="row align-items-start">
-        <% for (var i = 0;i<orderProducts.length ; i++ ) { %>
-      <div class="col bg-light border rounded pt-2">
-        <h3>Delivery Address</h3>
-        <div><%= orderProducts[i].deliveryDetails.address %></div>
-        <div><%= orderProducts[i].deliveryDetails.pincode %></div>
-        <div><%= orderProducts[i].deliveryDetails.mobile %></div>
-      </div>
-      <div class="col bg-light border rounded pt-2 " style="    padding-bottom: 48px;">
-        <div><h3>Payment Method</h3>
-        </div>
-        <div><%= orderProducts[i].deliveryDetails.paymentMethod %></div>
-      </div>
-      <div class="col bg-light border rounded pt-2" style="    padding-bottom: 24px;">
-        <div><h3>Expected Date</h3></div>
-        <div><%= orderProducts[i].deliveryDetails.expected_Date %></div>
-      </div>
-      <div class="col bg-light border rounded pt-2 pb-5" style="    padding-bottom: 24px;">
-        <div><h3>Total Amount</h3></div>
-        <div><%= orderProducts[i].deliveryDetails.TotalAmount.total %></div>
-      </div>
-    </div>
-   
-    </div>
+  <div class="main-title">
+    <p class="font-weight-bold">Order Details</p>
   </div>
-  <% } %>
+
+  <div class="container">
+
+    <!--  -->
+    <div class="row">
+<% for(var i=0;i<orderProducts.length;i++) { %>
+      <div class="col-sm-2 pr-0">
+        <div class="mb-2" style=" background-color:#eef3f7">
+        
+          <img style="width:11rem ; height:10rem;" src="/images/<%=orderProducts[i].deliveryDetails.products.productDetails.Pitcure  %>" alt="sdfsfsfsfd">
+        </div>
+      </div>
+      <div class="col-sm-10 bg-light mb-2">
+        <br>
+        <div class="pl-3">
+          <h5 style="
+            font-weight: bold;"><%= orderProducts[i].deliveryDetails.products.productDetails.productName %></h5>
+          <br>
+
+          <div>
+            <h6>
+              <span><i class="fa-solid fa-star text-success"></i></span>(154)
+            </h6>
+          </div>
+
+          <div class="text-danger">
+            <div class="d-flex flex-row-reverse pr-5"><a href=""><i class="fa-sharp fa-solid fa-trash"></i></a></div>
+
+            RS:<%= orderProducts[i].deliveryDetails.products.productDetails.Price %>
+          </div>
+          <div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <% } %>
+      <br>
 
 
+     
+    </div>
+<br>
+    <div>
+    <h5 class="fw-bold" >Status Update</h5>
+    </div>
+    <form id="statusForm" action="" style="text-align: left;" class="mb-2">
+      <input style="display: none;" type="" name="id" value="<%= orderProducts[0]._id %>">
+      <div class="mt-4">
+          
+          <select name="status" id="" class="mb-3 bg-success"
+              style="border-radius: 50px; padding: 7px 10px; color: #fff;" value="<%= orderProducts[0].deliveryDetails.status %>"> 
+              <option selected>ordered</option>
+              <option value="Packed">packed</option>
+              <option value="Shipped">shipped</option>
+              <option value="Delivered">delivered</option>
+              <option value="Cancelled">cancelled</option>
+              <option value="Placed">Placed</option>
+          </select>
+       
+      </div>
+      <input class="btn btn-primary" type="submit" value="Update">
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
 
-
-
-		
-
-	
-	</div>
-</div>
+  <script>
+    const statusForm = document.getElementById('statusForm');
+    statusForm.addEventListener('submit',(e)=>{
+      e.preventDefault()
+      const formData = new FormData(statusForm);
+      const data = Object.fromEntries(formData);
+      fetch('/admin/orders/statusUpdate',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify(data)
+      }).then(res => res.json()).then(response =>{
+        window.location='/admin/orders'
+      })
+    })
+  </script>

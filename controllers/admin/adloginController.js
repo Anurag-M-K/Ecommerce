@@ -11,7 +11,7 @@ const loginview = (req, res) => {
 };
 
 
-//3456789876543456789098765recvhjk5esxcvbnm,.-0987654321qwsdf
+
 const adminLoginAction = async(req, res) => {
   let userCount = await count.userCount()
   let categoryCount = await count.categoryCount()

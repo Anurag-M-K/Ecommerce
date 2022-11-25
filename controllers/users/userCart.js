@@ -2,7 +2,7 @@ const { Router } = require("express");
 const userCartHelper = require("../../models/userHelper/userCartHelper");
 const userHelper = require("../../models/userHelper/userCartHelper");
 const categoryHelper = require("../../models/categoryHelper");
-
+const adminCoupenModel = require('../../models/adminCoupenModel')
 const addToCart = (req, res) => {
   userHelper.addToCart(req.params.id, req.session.user._id).then(() => {
     res.json({ status: true });
@@ -24,11 +24,13 @@ let cart = async (req, res) => {
       totalAmount = 0;
       totalAmount = await userCartHelper.getTotalAmount(req.session.user._id);
     }
+
     
 
     if (products.length < 0) {
       totalAmount = 0;
     }
+    adminCoupenModel.getCoupen().then((coupen)=>{
 
     categoryHelper.getAllCategories().then((CategoryDetails) => {
       res.render("users/cart", {
@@ -39,6 +41,8 @@ let cart = async (req, res) => {
         cartCount,
         totalAmount,
         CategoryDetails,
+        coupen
+      })
       });
     });
   } else {

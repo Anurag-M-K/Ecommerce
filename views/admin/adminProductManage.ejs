@@ -23,7 +23,7 @@
       <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
         <a href="/admin/addProductPage" class="btn btn-success">Add Product</a>
         </div>
-        <table class="table table-bordered" style="border: 1px solid black; margin-top: 15px;" id="productsTable">
+        <table class="table table-striped table-bordered" style="border: 1px solid black; margin-top: 15px;" id="productsTable">
           <thead class="bg-secondary">
             <tr>
               <th>S.NO</th>
@@ -38,7 +38,7 @@
           </thead >
           <tbody style="border: 1px solid black; margin-top: 15px;" >
               <% for(var i=0;i<products.length;i++) { %>
-            <tr >
+            <tr style="border-color: black;">
               <td style="border-color: black;"> <%= i+1 %> </td>
               <td style="border-color: black;"> <%= products[i].brandName %> </td>
               <td style="border-color: black;"> <%= products[i].productName %> </td>

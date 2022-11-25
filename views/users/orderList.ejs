@@ -36,7 +36,7 @@
             </tr>
           </thead >
           <tbody >
-              <% for(var i=0;i<productList.length;i++) { %>
+              <% for(var i=productList.length-1 ; i>=0;i--) { %>
             <tr>
               
               <td> <%=productList[i].deliveryDetails.date %> </td>
@@ -45,7 +45,7 @@
               <td> <%= productList[i].deliveryDetails.TotalAmount[0].total %></td>
               <td><%= productList[i].deliveryDetails.paymentMethod %></td>
               <td> <%= productList[i].deliveryDetails.expected_Date %></td>
-              <td><%= productList[i].deliveryDetails.status %> </td>
+              <td><%= productList[i].status %> </td>
               <td>
                 <a href="/view-order-products?id=<%=productList[i]._id %>" class="btn btn-primary"> View products </a>
               </td>
