@@ -11,7 +11,7 @@ const adminBannerController = require('../controllers/admin/adminBannerControlle
 const userManagementHelper = require("../models/userManagementHelper");
 const adminCoupenController = require('../controllers/admin/adminCoupenController')
 const adminPanelController = require('../controllers/admin/adminPanelController')
-
+const reportController = require('../controllers/admin/reportController')
 //Multer Start
 const storage = multer.diskStorage({
     destination: './public/images',
@@ -62,6 +62,8 @@ router.post('/userManagement/unblock',adminUserController.userUnblock)
 router.get('/orders',adminUserController.orderPage)
 router.get('/orderId',adminUserController.viewProducts)
 router.post('/orders/statusUpdate',adminUserController.updateOrderDetails)
+
+router.get('/sales',reportController.getSalesReports)
 //-------------------------------------------BRAND DETAILS----------------------------------------------------------------------------//
 router.post("/brandCategory", adminBrandController.addBrandController);
 router.post("/brandCategory", adminBrandController.brandSaveDatabaseController);

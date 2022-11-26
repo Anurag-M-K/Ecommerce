@@ -56,7 +56,7 @@ module.exports = {
                 }
             ]).toArray()
             resolve(orderProducts)
-            console.log("here product lidt :",orderProducts);
+          
           
         
         })
@@ -82,11 +82,11 @@ module.exports = {
 
     },
     updateOrderDetails :(data)=>{
-        console.log("data status:",data);
+  
     return new Promise((resolve,reject)=>{
         let orderId = data.id
         let status = data.status
-        console.log("status:",status);
+       
         db.get().collection(collection.ORDER_COLLECTION).updateOne(
             {
                 _id:objectId(orderId)

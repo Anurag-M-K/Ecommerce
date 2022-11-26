@@ -3,6 +3,7 @@ const userManagementHelper = require('../../models/userManagementHelper')
 const adminOrderModel = require('../../models/adminOrderModel');
 const { orderList } = require("../users/usersOrderList");
 const userCartHelper = require('../../models/userHelper/userCartHelper');
+const filerModel = require('../../models/filerModel')
 const userManagement = (req, res) => {
     adminHelper.showUser(req.body).then((userDetails) => {
       res.render("admin/user-management", { userDetails,admin:true,user:false});
@@ -25,10 +26,12 @@ const userManagement = (req, res) => {
 
   const orderPage = (req,res)=>{
      adminOrderModel.getOrders().then((orderList)=>{
+   
      
+       
      
       res.render('admin/adminOrder',{admin:true,user:false,orderList})
-
+    
      })
     
  
@@ -39,7 +42,7 @@ const userManagement = (req, res) => {
 
 adminOrderModel.getAllOrderedPoducts(proId).then((orderProducts)=>{
 
-    console.log("order list :",orderProducts[0].deliveryDetails.products.productDetails.pitcure);
+
  
 
 

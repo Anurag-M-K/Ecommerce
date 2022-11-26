@@ -392,6 +392,7 @@ module.exports = {
       let orderObj = {
         userId: order.userId,
         status: status,
+        date: new Date().toLocaleDateString("en-US"),
         deliveryDetails: {
           // name:order.name,
           // mobile:order.option1.mobile,
@@ -400,8 +401,8 @@ module.exports = {
           orderStatus: status,
 
           paymentMethod: order["payment-method"],
-          date: new Date().toLocaleString(),
-          expected_Date: new Date(+new Date() + 7 * 35 * 24 * 60 * 1000).toLocaleString(),
+          date: new Date().toLocaleDateString("en-US"),
+          expected_Date: new Date(+new Date() + 7 * 35 * 24 * 60 * 1000).toLocaleDateString("en-US"),
           products: cartProducts,
 
           TotalAmount: TotalAmount,
