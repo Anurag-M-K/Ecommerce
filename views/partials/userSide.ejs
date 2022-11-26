@@ -32,7 +32,86 @@
 
 <body>
 
-  <div class="agile-main-top">
+
+
+  <!-- nav -->
+
+  <nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="/">Cric Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-light " aria-current="page" href="/homeButton">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/about">About Us</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <% if(userData) { %>
+
+            <div class="btn-group">
+
+              <button type="button" style="margin-left: 48px;" type="button" class="btn btn-danger dropdown-toggle  "  data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <%= userData.Name %>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/logout">Logout</a></li><br>
+              </ul>
+            </div>
+            <% } else { %>
+              <div class="btn-group" >
+
+                <button type="button" style="    width: 100%;    padding-left: 39px;
+                padding-right: 39px;" type="button"  class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                  aria-expanded="false">Account
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/usersLogin">Log IN</a></li><br>
+                  <li><a class="dropdown-item" href="/header/usersignup">Register</a></li><br>
+                </ul>
+              </div>
+              <% } %>
+        </form>
+        <li><a href="/users/cart">
+          <span class="btn btn-dark" onclick="cartMessage()" ><i class="fas fa-shopping-cart "></i>Cart
+              <span class="badge badge-success mb-1" id="cart-count">
+                <%- cartCount %>
+              </span></span></a></li>
+
+              <a href="/users/profile">
+                <span class="btn btn-dark ml-2" ><i
+                      class="fa-regular fa-user "></i></i> <span class="badge badge-success mb-1"
+                      id="cart-count"></span></span></a>
+
+                      <a style="" href="/users/wishList">
+                        <span class="btn btn-dark ml-2 " ><i class="fa-solid fa-heart"></i></i> <span class="badge badge-success mb-1"
+                              id="wishlist-count"></span></span></a>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="agile-main-top">
     <div class="container-fluid px-0">
       <div class="row main-top-w3l py-2">
         <div class="col-lg-4 header-most-top">
@@ -114,7 +193,7 @@
       </div>
 
     </div>
-    </div>
+    </div> -->
 
 
 
@@ -122,7 +201,7 @@
 
   <!-- //home  section  -->
 
-  <div class="navbar-inner border">
+  <!-- <div class="navbar-inner border">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="agileits-navi_search">
@@ -178,7 +257,7 @@
       </nav>
     </div>
 
-  </div>
+  </div> -->
 
 
 

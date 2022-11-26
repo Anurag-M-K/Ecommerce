@@ -19,12 +19,18 @@ const   payment = async (req,res)=>{
     if(req.session.user){
     
        let addressList = await userAddressHelper.getAddress(req.session.user._id)
-     
+       if(addressList){
         let products = await userHelper.getCartProducts(req.session.user._id)
-            let  cartCount = await  userHelper.getCartCount(req.session.user._id)
-            categoryHelper.getAllCategories().then((CategoryDetails) => {
-                res.render('users/addressPayment',{user:true,admin:false,userData,cartCount,products,totalAmount,CategoryDetails,addressList})
-            })
+        let  cartCount = await  userHelper.getCartCount(req.session.user._id)
+        categoryHelper.getAllCategories().then((CategoryDetails) => {
+            res.render('users/addressPayment',{user:true,admin:false,userData,cartCount,products,totalAmount,CategoryDetails,addressList})
+        })
+
+       }else{
+        res.redirect('/addressaddPage')
+       }
+     
+     
         
     }
     }

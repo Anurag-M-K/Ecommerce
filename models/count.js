@@ -33,5 +33,30 @@ module.exports = {
             let orderCount =await db.get().collection(collection.ORDER_COLLECTION).find().count()
             resolve(orderCount)
         })
+    },
+    placedCount:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let placedCount =  await db.get().collection(collection.ORDER_COLLECTION).find({status:'placed'}).count()
+            resolve(placedCount)
+
+        })
+    },
+    shippedCount:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let shippedCount = await db.get().collection(collection.ORDER_COLLECTION).find({status:'shipped'}).count()
+            resolve(shippedCount)
+        })
+    },
+    deliveredCount:()=>{
+        return new Promise((resolve,reject)=>{
+            let deliveredCount = db.get().collection(collection.ORDER_COLLECTION).find({status:'delivered'}).count()
+            resolve(deliveredCount)
+        })
+    },
+    cancelCount:()=>{
+        return new Promise(async(resolve,reject)=>{
+           let cancelCount = await db.get().collection(collection.ORDER_COLLECTION).find({status:'cancelled'}).count()
+            resolve(cancelCount)
+        })
     }
 }

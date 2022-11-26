@@ -1,4 +1,4 @@
-<body style="    overflow-x: hidden;">
+
 	
 
 <style>
@@ -7,47 +7,126 @@
     height: 39px;
     border-radius: 8px;
 	}
+	.main-content{
+	width: 50%;
+	border-radius: 20px;
+	box-shadow: 0 5px 5px rgba(0,0,0,.4);
+	margin: 5em auto;
+	display: flex;
+}
+.company__info{
+	background-color: #008080;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #fff;
+}
+.fa-android{
+	font-size:3em;
+}
+@media screen and (max-width: 640px) {
+	.main-content{width: 90%;}
+	.company__info{
+		display: none;
+	}
+	.login_form{
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+@media screen and (min-width: 642px) and (max-width:800px){
+	.main-content{width: 70%;}
+}
+.row > h2{
+	color:#008080;
+}
+.login_form{
+	background-color: #fff;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+form{
+	padding: 0 2em;
+}
+.form__input{
+	width: 100%;
+	border:0px solid transparent;
+	border-radius: 0;
+	border-bottom: 1px solid #aaa;
+	padding: 1em .5em .5em;
+	padding-left: 2em;
+	outline:none;
+	margin:1.5em auto;
+	transition: all .5s ease;
+}
+.form__input:focus{
+	border-bottom-color: #008080;
+	box-shadow: 0 0 5px rgba(0,80,80,.4); 
+	border-radius: 4px;
+}
+.btn{
+	transition: all .5s ease;
+	width: 70%;
+	border-radius: 30px;
+	color:#008080;
+	font-weight: 600;
+	background-color: #fff;
+	border: 1px solid #008080;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+.btn:hover, .btn:focus{
+	background-color: #008080;
+	color:#fff;
+}
 </style>
-<section class="vh-100 bg-dark text-white">
-	<div class="container-fluid">
-	  <div class="row">
-		<div class="col-sm-6 text-black ">
-		  <div class="px-5 ms-xl-4 mt-5">
-			
-			<span class="h1 fw-bold mb-5 m-5 p-5 text-white">LOGIN </span>
-		  </div>
-  
-		  <div
-			class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
-		  >
-		   <div class="m-5 p-5">
-			<form  method="post" action="/login"style="width: 23rem" onsubmit="return loginValidation()">
-			 <label for="otp verification"><h5 class="text-white">Username</h5></label><br>
-			 <input type="text" id="name" name="username" placeholder="Enter your username" aria-label="Large" class="form-control" ><span id="usernameError" class="text-danger"></span><br><br>
-			 
-  
-			 <label for="otp verification"><h5 class="text-white">Password</h5></label><br>
-			 <input type="Password" id="pass" name="Password" your placeholder=" Enter your Password" aria-label="Large" class="form-control" class="input"  ><span id="passwordError" class="text-danger"></span><br><br>
-			 
-			 
-  
-		  
-			 <input type="submit"  class="btn btn-success rounded-pill">
-			</form>
-		   </div>
-		  </div>
+<body>
+	<!-- Main Content -->
+	<div class="container-fluid bg-light	">
+		<div class="row main-content bg-success text-center">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo MB-3"><img class="mb-3" style="width:10rem ; height:10rem;" src="https://www.picng.com/upload/cricket/png_cricket_57066.png" alt=""></span>
+				<h4 class="company_title fw-bold">Cric Store</h4>
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+						<h2>Log In</h2>
+					</div>
+					<div class="row">
+						<form method="post"  action="/login"onsubmit="return loginValidation()" control="" class="form-group">
+							<div class="row">
+								<input type="text" id="name" name="username" class="form__input" placeholder="Username"><span id="usernameError" class="text-danger"></span><br><br>
+							</div>
+							<div class="row">
+								<!-- <span class="fa fa-lock"></span> -->
+								<input type="password" id="pass" name="Password" class="form__input" placeholder="Password"><span id="passwordError" class="text-danger"></span><br><br>
+							</div>
+							<div class="row">
+								<input type="checkbox" name="remember_me" id="remember_me" class="">
+								<label for="remember_me">Remember Me!</label>
+							</div>
+							<div class="row justify-content-center" >
+								<input type="submit" value="Submit" class="btn">
+							</div>
+						</form>
+					</div>
+					<div class="row">
+						<p>Don't have an account? <a href="/header/usersignup">Register Here</a></p>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-6 px-0 d-none d-sm-block">
-		  <img
-			src="https://w0.peakpx.com/wallpaper/613/558/HD-wallpaper-virat-kohli-icc-ind-vs-aus-india-latest-virat-kohli.jpg"
-			alt="Login image"
-			class="w-100 vh-100"
-			style="object-fit: cover; object-position: left"
-		  />
-		</div>
-	  </div>
 	</div>
-  </section>
+	<!-- Footer -->
+
+</body>
+
+
   
   
   <script>
