@@ -2,7 +2,7 @@ const { Router } = require("express");
 const userCartHelper = require("../../models/userHelper/userCartHelper");
 const userHelper = require("../../models/userHelper/userCartHelper");
 const categoryHelper = require("../../models/categoryHelper");
-const adminCoupenModel = require('../../models/adminCoupenModel')
+const adminCoupenModel = require("../../models/adminCoupenModel");
 const addToCart = (req, res) => {
   userHelper.addToCart(req.params.id, req.session.user._id).then(() => {
     res.json({ status: true });
@@ -18,31 +18,31 @@ let cart = async (req, res) => {
   if (userData) {
     cartCount = await userHelper.getCartCount(req.session.user._id);
     let products = await userHelper.getCartProducts(req.session.user._id);
-   
+let cart  = await userCartHelper.getCart(req.session.user._id)
+console.log("getcart:",cart);
     let totalAmount = 0;
     if (products.length > 0) {
       totalAmount = 0;
       totalAmount = await userCartHelper.getTotalAmount(req.session.user._id);
     }
 
-    
-
     if (products.length < 0) {
       totalAmount = 0;
     }
-    adminCoupenModel.getCoupen().then((coupen)=>{
-
-    categoryHelper.getAllCategories().then((CategoryDetails) => {
-      res.render("users/cart", {
-        user: true,
-        admin: false,
-        userData,
-        products,
-        cartCount,
-        totalAmount,
-        CategoryDetails,
-        coupen
-      })
+    console.log("cart Products:",products);
+    adminCoupenModel.getCoupen().then((coupen) => {
+      categoryHelper.getAllCategories().then((CategoryDetails) => {
+        res.render("users/cart", {
+          user: true,
+          admin: false,
+          userData,
+          products,
+          cartCount,
+          totalAmount,
+          CategoryDetails,
+          coupen,
+          cart
+        });
       });
     });
   } else {
@@ -53,13 +53,12 @@ let cart = async (req, res) => {
 const productCount = (req, res, next) => {
   let userData = req.session.user;
   userHelper.changeProductQuantity(req.body).then(async (response) => {
+    console.log("here controller response check :",response);
     userHelper.getTotalAmount(userData._id).then((result) => {
-      // userCartHelper.subTotal(userData._id).then((sub)=>{
+      console.log("here controller response check :",response);
       let totalAmount = result.totalAmount;
-      // let subTotal = sub.subTotal
 
       res.json({ response, result });
-      // })
     });
   });
 };
@@ -67,7 +66,7 @@ const productCount = (req, res, next) => {
 const deleteCartProduct = (req, res) => {
   let userData = req.session.user._id;
   let item = req.query.item;
- 
+
   userHelper.deleteCartProducts(item, userData).then((response) => {
     res.redirect("/users/cart");
   });

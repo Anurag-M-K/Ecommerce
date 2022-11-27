@@ -157,8 +157,11 @@ module.exports = {
     });
   },
   changeProductQuantity: (details) => {
+    details.USER = parseInt(details.USER)
+    details.Price = parseInt(details.Price)
     details.count = parseInt(details.count);
     details.quantity = parseInt(details.quantity);
+    console.log("details:",details);
     return new Promise((resolve, reject) => {
       if (details.count == -1 && details.quantity == 1) {
         db.get()
@@ -182,6 +185,7 @@ module.exports = {
             },
             {
               $inc: { "products.$.quantity": details.count },
+              $set:{'products.$.sumOfProducts':(details.quantity + details.count)*details.USER }
             }
           )
           .then((response) => {
@@ -456,4 +460,30 @@ module.exports = {
         });
     });
   },
-};
+  getCart:(id)=>{
+    console.log("id",id);
+    return new Promise(async(resolve,reject)=>{
+      let cart = await db.get().collection(collection.CART_COLLECTION).find({user:ObjectId(id)}).toArray()
+
+
+
+
+      let cartpro = await db.get().collection(collection.CART_COLLECTION).aggregate([
+        {
+          $match:{user:ObjectId(id)}
+        },
+       
+        {
+          $unwind:'$products'
+        }
+      ]).toArray()
+        resolve(cartpro)
+        console.log("sdgsdfgsdfg",cartpro);
+      })
+
+
+     
+    
+    }
+  }
+

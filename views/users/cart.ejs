@@ -55,7 +55,7 @@
 
 									<td style="border: 1px solid #000000;">
 										<button class="cart-item-count mr-3 btn btn-secondary"
-											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',-1,'<%= userData._id %>',)">-</button>
+											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',-1,'<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>','<%= userData._id %>')">-</button>
 										<span id="<%= products[i].products._id %>">
 											<%= products[i].quantity %>
 										</span>
@@ -63,13 +63,15 @@
 											style="width: 1%; flex: 1 1 auto; background: #f5f5f5; border: 0; padding: 0 5px;"
 											id="<%= products[i].quantity %>">
 										<button type="submit" class="cart-item-count ml-3 btn btn-secondary"
-											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>')">+</button>
+											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>','<%= userData._id %>')">+</button>
 									</td>
-									<td style="border: 1px solid #000000;"><span id="subTotal" class="subTotal"></span>
+									<td style="border: 1px solid #000000;"><%= cart[i].products.sumOfProducts %>
 									</td>
 									<td style="border: 1px solid #000000;"> <a
 											href='/users/deleteCartProduct?item=<%= products[i].item %>'
 											class="btn btn-danger">Delete</a> </td>
+											
+												
 
 								</tr>
 
@@ -247,7 +249,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 				})
 
 			}
-			function changeQuantity(cartId, proId, count, userData) {
+			function changeQuantity(cartId, proId, count, userData,Price,total) {
 
 				let quantity = parseInt(document.getElementById(proId).innerHTML)
 				count = parseInt(count)
@@ -259,23 +261,23 @@ myModal.addEventListener('shown.bs.modal', function () {
 						cart: cartId,
 						product: proId,
 						count: count,
-						quantity: quantity
+						quantity: quantity,
+						Price:Price
 					},
 					method: 'post',
 					success: (response) => {
 						if (response.response.removeProduct) {
-							console.log("response" + response.response.removeProduct);
-							alert("Product Removed from cart")
-
+						location.reload()
 							location.reload()
 						} else {
-							console.log("response check", response);
-							document.getElementById(proId).innerHTML = quantity + count
+							let countt =document.getElementById(proId).innerHTML = quantity + count
+							document.getElementById(total).innerHTML = countt *USER
+			 				document.getElementById(proId).innerHTML = quantity + count
 							document.getElementById("totalAmount").innerHTML = response.result
-							console.log("this is totala mount :", response.result);
+							
 							//routil ninn pass cheythath ivide successinte ullil
 							//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
-							console.log("response.result", response.sub);
+							
 							document.getElementById('subTotal').innerHTML = response.sub
 
 						}
