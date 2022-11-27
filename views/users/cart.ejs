@@ -163,7 +163,7 @@
 				<div class="d-flex justify-content-between mt-2">
 					<h5 class="font-weight-bold mt-4">Total</h5>
 					<h5 id="final_total" class="totalAmount">
-						RS:<% let finalTotal = totalAmount+(5/100)*(totalAmount) %>
+						RS:<% var finalTotal = totalAmount+(5/100)*(totalAmount) %>
 						
 						<%= finalTotal %>
 					</h5>
@@ -226,8 +226,8 @@ myModal.addEventListener('shown.bs.modal', function () {
 						finalTotal.innerHTML = data.discountedTotal
 					}else{
 						alert("coupen not acceptable")
-						discountDisplay.innerHTML = data.discount
-						finalTotal.innerHTML = data.discountedTotal
+						discountDisplay.innerHTML = 0
+						finalTotal.innerHTML = TotalAmount
 					}
 				})
 
