@@ -4,10 +4,10 @@ const { ObjectId } = require('mongodb')
 const { userSignupBcrypt } = require('../controllers/users/usersController')
 const bcrypt = require('bcrypt')
 module.exports = {
-    addProduct: (imageID,productionData)=>{
+    addProduct: (file_url,imageID,productionData)=>{
         return new Promise(async(resolve,reject)=>{
             parseInt("Price")
-            db.get().collection(collections.PRODUCT_COLLECTION).insertOne(imageID,productionData).then((data)=>{
+            db.get().collection(collections.PRODUCT_COLLECTION).insertOne(file_url,imageID,productionData).then((data)=>{
              
                 resolve.apply(data)
              
@@ -36,7 +36,11 @@ module.exports = {
             })
         })
     },
-    updateProductDetails : (productId,productDetails,productImage )=>{
+    updateProductDetails : (file_url,productId,productDetails,productImage )=>{
+        console.log("log",productDetails)
+       
+       
+        
         return new Promise((resolve,reject)=>{
             db.get().collection(collections.PRODUCT_COLLECTION).updateOne({_id:ObjectId(productId)},{
                 $set:{
@@ -45,10 +49,13 @@ module.exports = {
                     Category:productDetails.Category,
                     brandName:productDetails.brandName,
                     Quantity :parseInt( productDetails.Quantity),
+                    file_url:file_url,
                     Pitcure: productImage,
+                    
                 },
             }).then((response)=>{
                 resolve(response)
+                console.log("response ofn image :",response);
             })
         })
     },

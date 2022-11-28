@@ -23,6 +23,7 @@ const productForm = (req, res) => {
     productHelper.addProduct({
         
         Pitcure: req.file.filename,
+        file_url:req.file.path,
         productName,
         Price,
         Category,
@@ -106,9 +107,14 @@ const updateProductDetails = async(req,res)=>{
 const updateProductDetailsAction = (req,res)=>{
 
         let id = req.body.id;
-        let newProductData = req.body;
+        const obj = JSON.parse(JSON.stringify(req.body))
+        // let newProductData = req.body;
+        console.log("log",obj)
         let newImageId = req.file.filename;
-        productHelper.updateProductDetails(id,newProductData,newImageId).then(()=>{
+        console.log( newImageId);
+        console.log("path ",req.file.path);
+        let file_url = req.file.path
+        productHelper.updateProductDetails(file_url,id,obj,newImageId).then(()=>{
             productHelper.getAllProducts().then((products)=>{
                 res.render('admin/adminProductManage',{
                     

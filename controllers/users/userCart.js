@@ -18,8 +18,8 @@ let cart = async (req, res) => {
   if (userData) {
     cartCount = await userHelper.getCartCount(req.session.user._id);
     let products = await userHelper.getCartProducts(req.session.user._id);
-let cart  = await userCartHelper.getCart(req.session.user._id)
-console.log("getcart:",cart);
+    // let cart  = await userCartHelper.getCart(req.session.user._id)
+
     let totalAmount = 0;
     if (products.length > 0) {
       totalAmount = 0;
@@ -29,7 +29,7 @@ console.log("getcart:",cart);
     if (products.length < 0) {
       totalAmount = 0;
     }
-    console.log("cart Products:",products);
+
     adminCoupenModel.getCoupen().then((coupen) => {
       categoryHelper.getAllCategories().then((CategoryDetails) => {
         res.render("users/cart", {
@@ -41,7 +41,7 @@ console.log("getcart:",cart);
           totalAmount,
           CategoryDetails,
           coupen,
-          cart
+          cart,
         });
       });
     });
@@ -53,12 +53,15 @@ console.log("getcart:",cart);
 const productCount = (req, res, next) => {
   let userData = req.session.user;
   userHelper.changeProductQuantity(req.body).then(async (response) => {
-    console.log("here controller response check :",response);
+    console.log("here :",req.body.total);
     userHelper.getTotalAmount(userData._id).then((result) => {
-      console.log("here controller response check :",response);
       let totalAmount = result.totalAmount;
-
-      res.json({ response, result });
+     
+userCartHelper.getCart(req.session.user._id).then((cart)=>{
+ 
+  res.json({ response, result});
+})
+   
     });
   });
 };

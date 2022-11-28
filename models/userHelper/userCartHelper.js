@@ -157,11 +157,11 @@ module.exports = {
     });
   },
   changeProductQuantity: (details) => {
-    details.USER = parseInt(details.USER)
+    
     details.Price = parseInt(details.Price)
     details.count = parseInt(details.count);
     details.quantity = parseInt(details.quantity);
-    console.log("details:",details);
+    console.log("details:",details.Price);
     return new Promise((resolve, reject) => {
       if (details.count == -1 && details.quantity == 1) {
         db.get()
@@ -184,12 +184,18 @@ module.exports = {
               "products.item": ObjectId(details.product),
             },
             {
-              $inc: { "products.$.quantity": details.count },
-              $set:{'products.$.sumOfProducts':(details.quantity + details.count)*details.USER }
+              $inc: {
+                 "products.$.quantity": details.count
+                 },
+              $set:{
+                'products.$.sumOfProducts':(details.quantity + details.count)*details.Price
+               }
             }
           )
           .then((response) => {
             resolve({ status: true });
+            console.log("response  from mmodel :",response);
+            
           });
       }
     });

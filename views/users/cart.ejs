@@ -47,7 +47,7 @@
 										<%= products[i].products.productName %>
 									</td>
 									<td style="border: 1px solid #000000;"> <img
-											src="/images/<%= products[i].products.Pitcure %>"
+											src="<%= products[i].products.file_url %>"
 											style="width:50px ; height:50px;" alt=""></td>
 									<td style="border: 1px solid #000000;">
 										<%= products[i].products.Price %>
@@ -55,7 +55,7 @@
 
 									<td style="border: 1px solid #000000;">
 										<button class="cart-item-count mr-3 btn btn-secondary"
-											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',-1,'<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>','<%= userData._id %>')">-</button>
+											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',-1,'<%= userData._id %>','<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>')">-</button>
 										<span id="<%= products[i].products._id %>">
 											<%= products[i].quantity %>
 										</span>
@@ -63,9 +63,11 @@
 											style="width: 1%; flex: 1 1 auto; background: #f5f5f5; border: 0; padding: 0 5px;"
 											id="<%= products[i].quantity %>">
 										<button type="submit" class="cart-item-count ml-3 btn btn-secondary"
-											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>','<%= userData._id %>')">+</button>
+											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>','<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>')">+</button>
 									</td>
-									<td style="border: 1px solid #000000;"><%= cart[i].products.sumOfProducts %>
+							
+									<td id="<%= products[i].sumOfProducts %>" style="border: 1px solid #000000;"><%= products[i].sumOfProducts %>
+										
 									</td>
 									<td style="border: 1px solid #000000;"> <a
 											href='/users/deleteCartProduct?item=<%= products[i].item %>'
@@ -93,7 +95,7 @@
 		</div>
 
 		<div class="col-sm">
-			<div class="card border mr-5 mt-4 mb-5 " style="     margin-left: -6rem;   width: 25rem;">
+			<div class="card border mr-5 mt-4 mb-5 " style="margin-left: -6rem;   width: 25rem;">
 				
 				<div class="input-group">
 					<input type="text" class="form-control p-4" id="coupenCode"  name="couponCode" placeholder="Coupon Code" name="couponCode">
@@ -113,11 +115,11 @@
 				<div class="mt-2">
 					<!-- Button trigger modal -->
 				<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> -->
-				<a href="" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">View Coupons</a>	
+				<a href="" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">View Coupon details</a>	
 				  <!-- </button> -->
 				  
 				  <!-- Modal -->
-				  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="margin-top:11rem ;">
 					<div class="modal-dialog">
 					  <div class="modal-content border">
 						<div class="modal-header">
@@ -131,6 +133,10 @@
 							
 							<% } %>
 						</div>
+						<div>
+							<h6  class="ml-3 text-danger">Coupon only valid for amount between 5k-50k</h6>
+						
+						</div>
 						<div class="modal-footer">
 						  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 						 
@@ -141,7 +147,7 @@
 				
 				</div> 	
 			
-			<div class="card-header bg-secondary border-0 mt-2">
+			<div class="card-header bg-dark border-0 mt-2">
 				<h4 class="font-weight-semi-bold  text-center text-light m-0">Cart Summary</h4>
 			</div>
 			<div class="card-body">
@@ -250,7 +256,6 @@ myModal.addEventListener('shown.bs.modal', function () {
 
 			}
 			function changeQuantity(cartId, proId, count, userData,Price,total) {
-
 				let quantity = parseInt(document.getElementById(proId).innerHTML)
 				count = parseInt(count)
 				$.ajax({
@@ -262,18 +267,22 @@ myModal.addEventListener('shown.bs.modal', function () {
 						product: proId,
 						count: count,
 						quantity: quantity,
-						Price:Price
+						Price:Price,
+						total:(quantity+count)*Price
 					},
 					method: 'post',
 					success: (response) => {
+						console.log("here total:",response);
 						if (response.response.removeProduct) {
 						location.reload()
-							location.reload()
+							
 						} else {
 							let countt =document.getElementById(proId).innerHTML = quantity + count
-							document.getElementById(total).innerHTML = countt *USER
-			 				document.getElementById(proId).innerHTML = quantity + count
-							document.getElementById("totalAmount").innerHTML = response.result
+							
+							document.getElementById(total).innerHTML = "$" + countt * Price
+							
+			 			
+							document.getElementById("totalAmount").innerHTML = response.totalAmount
 							
 							//routil ninn pass cheythath ivide successinte ullil
 							//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.

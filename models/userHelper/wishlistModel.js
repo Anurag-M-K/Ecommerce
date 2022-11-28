@@ -8,7 +8,7 @@ module.exports = {
         let proObj = {
             item:ObjectId(proId),
             quantity:1,
-            image:ObjectId(imgId)
+            file_url:ObjectId(imgId)
         }
 
         return new Promise(async(resolve,reject)=>{

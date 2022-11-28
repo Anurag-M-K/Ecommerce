@@ -8,7 +8,7 @@
 			
 			
 			<div   class=" d-md-flex justify-content-md-end"></div>
-			<img src="/images/<%= products[i].Pitcure %>" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
+			<img src="<%= products[i].file_url %>" class="card-img-top" style="width:15rem ; height:15rem;" alt="...">
 			<a href="/users/singlePage?id=<%= products[i]._id %>">	<div class="card-body">
 			  <h5 class="card-title text-center"><%= products[i].productName %>
 			  <p class="card-text text-danger fs-4 fw-bold">RS:<%= products[i].Price %> </p>

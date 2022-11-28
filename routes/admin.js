@@ -12,30 +12,36 @@ const userManagementHelper = require("../models/userManagementHelper");
 const adminCoupenController = require('../controllers/admin/adminCoupenController')
 const adminPanelController = require('../controllers/admin/adminPanelController')
 const reportController = require('../controllers/admin/reportController')
+
 //Multer Start
-const storage = multer.diskStorage({
-    destination: './public/images',
-    filename:(req, file, cb)=>{
-        cb(null, Date.now()+file.originalname)
-    }
-})
-const upload = multer({
-    storage: storage,
-    fileFilter:(req,file,cb)=>{
-        if(
-            file.mimetype == 'image/jpeg'|| 
-            file.mimetype == 'image/jpg'||
-            file.mimetype == 'image/png' ||
-            file.mimetype == 'image/gif' ||
-            file.mimetype == 'image/webp'
-        ){
-            cb(null, true)
-        }else{
-            cb(null, false)
-            cb(new Error('only jpeg, jpg,png,gif and webp'))
-        }
-    }
-})
+const {storage} = require('../cloudinary/index')
+const upload = multer({ storage });
+
+
+
+// const storage = multer.diskStorage({
+//     destination: './public/images',
+//     filename:(req, file, cb)=>{
+//         cb(null, Date.now()+file.originalname)
+//     }
+// })
+// const upload = multer({
+//     storage: storage,
+//     fileFilter:(req,file,cb)=>{
+//         if(
+//             file.mimetype == 'image/jpeg'|| 
+//             file.mimetype == 'image/jpg'||
+//             file.mimetype == 'image/png' ||
+//             file.mimetype == 'image/gif' ||
+//             file.mimetype == 'image/webp'
+//         ){
+//             cb(null, true)
+//         }else{
+//             cb(null, false)
+//             cb(new Error('only jpeg, jpg,png,gif and webp'))
+//         }
+//     }
+// })
 //Multer End
 
 

@@ -6,7 +6,7 @@
         <% for(var i=0;i<orderList.length;i++) { %>
           <div class="col-4">
           <div class="card mt-5 mb-5" style="width: 18rem; border-left: 7px solid #ffffff; ">
-            <img src="../images/<%= orderList[i].deliveryDetails.products.productDetails.Pitcure %>" class="card-img-top"
+            <img src="<%= orderList[i].deliveryDetails.products.productDetails.file_url %>" class="card-img-top"
               style="width:15rem ; height:15rem;" alt="image here">
             <div class="card-body">
               <h5 class="card-title text-center fw-bold">

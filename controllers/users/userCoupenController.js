@@ -8,7 +8,7 @@ const applyCoupen = async (req, res) => {
   let coupenCode = req.body.coupenCode;
   let totalAmount = await userCartHelper.getTotalAmount(userData._id);
   let TOTAL = totalAmount;
-  if (coupenCode && TOTAL >= 5000) {
+  if (coupenCode && TOTAL >= 5000 && TOTAL < 50000) {
     let coupenDetails = await userCoupenModel.getCoupenDetails(coupenCode);
     
       await userCoupenModel
