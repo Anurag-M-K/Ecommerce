@@ -94,7 +94,8 @@ router.get('/addProductPage',adminProductController.adminAddProductPage)
 router.post('/adminAddNewProduct',upload.single('productImage'),adminProductController.productAdding)
 router.get('/showEditProductPage',adminProductController.updateProductDetails)
 router.delete('/deleteProduct',adminProductController.productDelete)
-
+router.post('/adminProductManage/softDelete',adminProductController.softDelete)
+router.post('/adminProductManage/instock',adminProductController.stock)
 //**********************************************************Admin Banner***************************************************************** */
 router.get('/adminBanner',adminBannerController.showBannerPage)
 router.post('/addNewBanner',upload.single("bannerImage"),adminBannerController.addBanner)

@@ -38,7 +38,7 @@ const userHomePage = async(req, res) => {
   if(req.session.user){
  cartCount = await userHelpers.getCartCount(req.session.user._id)
   }
-  productHelpers.getAllProducts().then((products) => {
+  productHelpers.getAllProductsForUser().then((products) => {
     bannerHelper.showBanner().then((banners) => {
       categoryHelper.getAllCategories().then((CategoryDetails) => {
            res.render("users/userHome", {

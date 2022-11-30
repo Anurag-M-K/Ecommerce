@@ -28,7 +28,8 @@ const productForm = (req, res) => {
         Price,
         Category,
         brandName,
-        Quantity
+        Quantity,
+        state:'active'
         
     }).then((response)=>{
         
@@ -38,9 +39,11 @@ const productForm = (req, res) => {
 
 const productPage = (req,res)=>{
     productHelper.getAllProducts().then((products)=>{
+     
+            res.render('admin/adminProductManage',{admin:true,user:false,products})
+     
         
-    res.render('admin/adminProductManage',{admin:true,user:false,products})
-
+  
     })
 }
 
@@ -108,13 +111,10 @@ const updateProductDetailsAction = (req,res)=>{
 
         let id = req.body.id;
         const obj = JSON.parse(JSON.stringify(req.body))
-        // let newProductData = req.body;
-        console.log("log",obj)
-        let newImageId = req.file.filename;
-        console.log( newImageId);
-        console.log("path ",req.file.path);
         let file_url = req.file.path
-        productHelper.updateProductDetails(file_url,id,obj,newImageId).then(()=>{
+        let newImageId =  req.file.filename;
+        productHelper.updateProductDetails(file_url,id,obj,newImageId).then(()=>{  
+           
             productHelper.getAllProducts().then((products)=>{
                 res.render('admin/adminProductManage',{
                     
@@ -126,6 +126,24 @@ const updateProductDetailsAction = (req,res)=>{
 }
 
 
+
+
+const softDelete = (req,res)=>{
+    const proDetails = req.query.id
+    console.log("prodetails",req.query.id);
+    productHelper.softDelete(proDetails).then((response)=>{
+        res.json({status:true})
+    })
+}
+
+
+const stock = (req,res)=>{
+    const proDetails = req.query.id
+    console.log("id",proDetails)
+    productHelper.InStock(proDetails).then((response)=>{
+        res.json({status:true})
+    })
+}
 
 
 
@@ -146,7 +164,10 @@ const updateProductDetailsAction = (req,res)=>{
 
     updateProductDetails,
 
-    updateProductDetailsAction
+    updateProductDetailsAction,
+
+    softDelete,
+    stock
 
     
   

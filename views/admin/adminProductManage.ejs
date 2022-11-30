@@ -46,7 +46,12 @@
               <td style="border-color: black;"> <%= products[i].Quantity %></td>
               <td style="border-color: black;"> <img src="<%= products[i].file_url %>" style="width:75px ; height:50px;" alt=""></td>
              <td style="border-color: black;"> <a href="/admin/showEditProductPage?id=<%= products[i]._id %>" class="btn btn-success">Edit</a>  </td>
-             <td style="border-color: black;"> <button class="btn btn-danger" onclick="deleteProduct('<%= products[i]._id %>')">DELETE</button>  </td>
+             <td style="border-color: black;">
+              <% if(products[i].state=='active') { %> <button class="btn btn-warning" onclick="deleteProduct('<%= products[i]._id %>')" >Out Of Stock</button>
+            <% } else { %>
+              <button class="btn btn-success" onclick="inStock('<%= products[i]._id%>')" >Stock</button>
+              <% } %>
+            </td>
              </tr>
             <% } %>
           
@@ -65,31 +70,54 @@
 } );
 
 
+
+// function deleteProduct(proId){
+//   swal({
+//     title:"DELETE",
+//     text:'DO YOU WANT TO DELETE THIS CATEGORY',
+//     icon :'warning',
+//     buttons:["CANCEL","OK"],
+//   }).then(val=>{
+//     if(val){
+//       fetch('/admin/deleteProduct?id='+proId,
+//       {
+//         method:'delete'
+//       }).then(
+//         swal({
+//           title:'SUCCESS',
+//           text:'PRODUCT SUCCESSFULLY DELETED',
+//           icon:"success",
+//           button:'OK'
+//         }).then(val=>{
+//           location.reload()
+//         })
+//       )
+//     }
+//   })
+// }
 function deleteProduct(proId){
-  swal({
-    title:"DELETE",
-    text:'DO YOU WANT TO DELETE THIS CATEGORY',
-    icon :'warning',
-    buttons:["CANCEL","OK"],
-  }).then(val=>{
-    if(val){
-      fetch('/admin/deleteProduct?id='+proId,
-      {
-        method:'delete'
-      }).then(
-        swal({
-          title:'SUCCESS',
-          text:'PRODUCT SUCCESSFULLY DELETED',
-          icon:"success",
-          button:'OK'
-        }).then(val=>{
-          location.reload()
-        })
-      )
-    }
+  fetch('/admin/adminProductManage/softDelete?id='+proId,{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify()
+  }).then(()=>{
+    window.location.reload();
+  }).cath((error)=>{
+    console.error('error:',error)
   })
 }
 
+function inStock(proId){
+  fetch('/admin/adminProductManage/instock?id='+proId,{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify()
+  }).then(()=>{
+    window.location.reload()
+  }).catch((error)=>{
+    console.error('error',error)
+  })
+}
 
 
 
