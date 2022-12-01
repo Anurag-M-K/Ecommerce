@@ -3,8 +3,8 @@ const wishlistModel = require('../../models/userHelper/wishlistModel')
 const userHelper = require('../../models/userHelper/userCartHelper')
 
 const addTowishlist = (req,res)=>{
-    let file_url = req.file.path
-    wishlistModel.addToWishlist(file_url,req.params.id,req.session.user._id).then(()=>{
+    
+    wishlistModel.addToWishlist(req.params.id,req.session.user._id).then(()=>{
         res.json({status:true})
     }) 
 }

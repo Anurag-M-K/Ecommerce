@@ -50,7 +50,7 @@
 </head>
 
 
-<body class="bg-light  " style="    overflow-x: hidden ;">
+<body class="  " style="background-color: whitesmoke;    overflow-x: hidden ;">
 
 
 
@@ -66,7 +66,7 @@
 
 	<!-------------------------------------------------- banner --------------------------------------------------->
 
-	<div class="container-fluid mt-3 " style="overflow: hidden;">
+	<div class="container-fluid mt-3 " id="ban" style="overflow: hidden;">
 <div class="row">
 		<div class="col-md-12">
 			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -106,6 +106,19 @@
 	</div>  	
 	</div>
 	<style>
+
+			@media screen and (max-width: 912px) {
+.text-block {
+    display: none;
+  }
+}
+@media screen and (max-width: 762px) {
+#row {
+    margin-left:-3rem ;
+  }
+}
+
+		
 		.container-fluid {
 			position: relative;
 			font-family: Arial;
@@ -129,6 +142,7 @@
 			margin-left: -81rem;
 			margin-top: 25rem;
 		}
+		
 	</style>
 
 
@@ -202,18 +216,18 @@
 
 			<!-- ---------------------------------------------------------------------------------- -->
 
-			<div class="container-fluid">
-				<div class="row row-cols-1 row-cols-md-3 g-4 mr-5">
+			<div class="container-fluid	">
+				<div class="row row-cols-1 row-cols-md-3 " id="row" >
 					
 <!-- <div class="col-lg-12"> -->
 					<% for (var i=0 ; i<products.length ; i++) { %>
 						<div class="card"
-							style="width: 18rem; border: 1px ;border:1px solid black; border-radius: 2rem; padding: 1rem; margin-right: 3rem;    margin-bottom: 3rem;"
+							style="width: 18rem; border: 1px ; border-radius: 2rem; padding: 1rem; margin-right: 3rem; margin-left: inherit;    margin-bottom: 3rem;"
 							>
 
 
 							<div class=" d-md-flex justify-content-md-end"></div>
-							<img src="<%= products[i].file_url %>" class="card-img-top ml-3"
+							<img class="img-fluid" src="<%= products[i].file_url %>" class="card-img-top ml-3"
 								style="width:13rem ; height:13rem;" alt="...">
 							<a href="/users/singlePage?id=<%= products[i]._id %>">
 								<div class="card-body">
@@ -393,7 +407,7 @@
 					url: '/add-to-wishlist/' + proId,
 					method: 'get',
 					success: (response) => {
-						if (response.stauts) {
+						if (response.status) {
 							let count = $('#wishlist-count').html()
 							count = parseInt(count) + 1
 							$('#wishlist-count').html(count)
