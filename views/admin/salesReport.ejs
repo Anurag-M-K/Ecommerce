@@ -1,12 +1,12 @@
 
 <main class="main-container bg-light">
     <div class="main-title  ">
-      <p class="font-weight-bold text-center">Orders</p>
+      <p class="font-weight-bold text-center"></p>
     </div>
   
   <div class="container" id="content">
     <div>
-        <button class="btn btn-warning" onclick="printSalesReport()">Print</button>
+        <button class="btn btn-warning" onclick="generatePDF()">Download</button>
     </div>
           <table id="order-table" class="table table-striped table-bordered"  style="border: 1px solid black; margin-top: 15px;">
               <thead class="bg-secondary">
@@ -49,4 +49,16 @@
   
   
   
- 
+ <script>
+  function generatePDF (){
+    const element = document.getElementById("order-table");
+    var opt = {
+      margin : 1,
+      filename: 'orderReportPdf_example.pdf',
+      image: { type: 'png', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+    }
+    html2pdf().set(opt).from(element).save();
+  }
+ </script>

@@ -30,7 +30,7 @@
 							<th>Image</th>
 							<th>Price</th>
 							<th>Quantity</th>
-							<th>Total</th>
+							<!-- <th>Total</th> -->
 							<th>Remove</th>
 						</tr>
 					</thead>
@@ -66,9 +66,6 @@
 											onclick="changeQuantity('<%= products[i]._id%>','<%= products[i].products._id %>',1,'<%= userData._id %>','<%= products[i].products.Price %>','<%= products[i].sumOfProducts %>')">+</button>
 									</td>
 							
-									<td id="<%= products[i].sumOfProducts %>" style="border: 1px solid #000000;"><%= products[i].sumOfProducts %>
-										
-									</td>
 									<td style="border: 1px solid #000000;"> <a
 											href='/users/deleteCartProduct?item=<%= products[i].item %>'
 											class="btn btn-danger">Delete</a> </td>
@@ -268,7 +265,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 						count: count,
 						quantity: quantity,
 						Price:Price,
-						total:(quantity+count)*Price
+						// total:(quantity+count)*Price
 					},
 					method: 'post',
 					success: (response) => {
@@ -282,10 +279,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 							document.getElementById(total).innerHTML = "$" + countt * Price
 							
 			 			
-							document.getElementById("totalAmount").innerHTML = response.totalAmount
-							
-							//routil ninn pass cheythath ivide successinte ullil
-							//pass cheytha response.resdult enn vilikkanam.. bcz avdnn ividekk pass cheythath result aaanu.
+							document.getElementById("final_total").innerHTML = response.totalAmount
 							
 							document.getElementById('subTotal').innerHTML = response.sub
 
@@ -294,7 +288,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 					}
 				})
 			}
-			//fetch
+			
 			function removeProduct(cartId, productId) {
 				swal({
 					title:"DELETE!",
@@ -324,30 +318,7 @@ myModal.addEventListener('shown.bs.modal', function () {
 
 
 			
-			// function applyCoupon(total){
-			// 	let couponCode = document.getElementById('coupenCode').value.toUpperCase()
-			// 	let message = document.getElementById('coupenMessage')
-			// 	let discountDisplay = doucment.getElementById('discountId')
-			// 	let finalTotal = document.getElementById('final_total')
-			// 	fetch('/cart/applyCoupen',{
-			// 		method:"post",
-			// 		headers:{'content-type':'application/json'},
-			// 		body:JSON.stringify(
-			// 			{couponCode}
-			// 		)
-			// 	}).then(res => res.json()).then(data){
-			// 		if(data.coupenStatus == true){
-			// 			message.innerHTML = ""
-			// 			discountDisplay.innerHTML = data.discount
-			// 			finalTotal.innerHTML=data.discountTotal
-			// 		}else{
-			// 			message.innerHTML = 'COUPEN NOT ACCEEPTALN'
-			// 			discountDisplay.innerHTML = data.discount
-			// 			finalTotal.innerHTML = data.discountTotal
-			// 		}
-		
-			// 	}
-			// }
+			
 
 
 		</script>

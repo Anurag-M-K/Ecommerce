@@ -53,10 +53,11 @@ let cart = async (req, res) => {
 const productCount = (req, res, next) => {
   let userData = req.session.user;
   userHelper.changeProductQuantity(req.body).then(async (response) => {
-    console.log("here :",req.body.total);
+    
     userHelper.getTotalAmount(userData._id).then((result) => {
-      let totalAmount = result.totalAmount;
-     
+      // let totalAmount = result.totalAmount;
+     console.log("here totoal :",result);
+     console.log("response:",response)
 userCartHelper.getCart(req.session.user._id).then((cart)=>{
  
   res.json({ response, result});

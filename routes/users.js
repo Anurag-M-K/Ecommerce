@@ -11,6 +11,7 @@ const order = require('../controllers/users/order');
 const profile = require('../controllers/users/profile')
 const wishlistController = require('../controllers/users/wishlistController')
 const coupenController = require('../controllers/users/userCoupenController')
+const session = require('../middleware/userSession')
 const verifyLogin = (req,res,next)=>{
     if(req.session.loggedIn){
         next()
