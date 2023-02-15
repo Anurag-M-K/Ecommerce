@@ -1,3 +1,9 @@
+<style>
+
+
+
+</style>
+
 <body class="bg-light" >
 
 
@@ -17,14 +23,14 @@
 
 			<!-- ----------------------------------------------------------Table for cart details------------------------------------------------------->
 
-<div class="container-fluid">
+<div class="container-FLUID  	">
 	<div class="row">
-		<div class="col-sm ml-5 mb-5 col-">
-			<div class="table-responsive ml-5" style="margin-left:15rem  ;     width: 56rem;    ">
-				<table class="timetable_sub" id="cartTable" style="    margin-left: 1rem;
-				width: 55rem;">
+		<div class="col-sm  mb-5 col-md-8 col-sm-12">
+			<div class="table-responsive  " >
+				<table class="timetable_sub " id="cartTable" >
 					<thead>
 						<tr>
+							
 							<th>Sl No</th>
 							<th>Product Name</th>
 							<th>Image</th>
@@ -91,11 +97,11 @@
 			</div>
 		</div>
 
-		<div class="col-sm">
-			<div class="card border mr-5 mt-4 mb-5 " style="margin-left: -6rem;   width: 25rem;">
+		<div  class="col-md-4  col-sm-12">
+			<div class="card border  mt-4 mb-5 " id="coupenCard" style="width:18rem ; margin-left:0%;  ">
 				
 				<div class="input-group">
-					<input type="text" class="form-control p-4" id="coupenCode"  name="couponCode" placeholder="Coupon Code" name="couponCode">
+					<input type="text" class="form-control" id="coupenCode"  name="couponCode" placeholder="Coupon Code" name="couponCode">
 					<span id="couponMessage"></span>
 					<div class="input-group-append">
 						<button class="btn btn-primary" onclick="applyCoupon()">Apply Coupon</button>
@@ -190,20 +196,7 @@
 
 
 
-				
-			
-		<script>
-			$(document).ready(function () {
-				$('#cartTable').DataTable();
-			});
-		</script>
-
-		<script type="text/javascript" charset="utf8"
-			src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-		<!-- footer -->
-
-
-
+	
 
 
 

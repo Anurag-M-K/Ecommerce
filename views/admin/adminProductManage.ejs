@@ -1,128 +1,122 @@
+<body id="adminProduct">
 
 
-
-
-
-
-
- 
-
-
-
-   <!-- Main -->
-   <main class="main-container">
-    <div class="main-title">
-      <p class="font-weight-bold">PRODUCTS</p>
-    </div>
-  
-  
-  
-  
-   
-    <div class="table-responsive">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
-        <a href="/admin/addProductPage" class="btn btn-success">Add Product</a>
-        </div>
-        <table class="table table-striped table-bordered" style="border: 1px solid black; margin-top: 15px;" id="productsTable">
-          <thead class="bg-secondary">
-            <tr>
-              <th>S.NO</th>
-              <th>Brand</th>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Product Image</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead >
-          <tbody style="border: 1px solid black; margin-top: 15px;" >
-              <% for(var i=0;i<products.length;i++) { %>
-            <tr style="border-color: black;">
-              <td style="border-color: black;"> <%= i+1 %> </td>
-              <td style="border-color: black;"> <%= products[i].brandName %> </td>
-              <td style="border-color: black;"> <%= products[i].productName %> </td>
-              <td style="border-color: black;"> <%= products[i].Price %> </td>
-              <td style="border-color: black;"> <%= products[i].Quantity %></td>
-              <td style="border-color: black;"> <img src="<%= products[i].file_url %>" style="width:75px ; height:50px;" alt=""></td>
-             <td style="border-color: black;"> <a href="/admin/showEditProductPage?id=<%= products[i]._id %>" class="btn btn-success">Edit</a>  </td>
-             <td style="border-color: black;">
-              <% if(products[i].state=='active') { %> <button class="btn btn-warning" onclick="deleteProduct('<%= products[i]._id %>')" >Out Of Stock</button>
-            <% } else { %>
-              <button class="btn btn-success" onclick="inStock('<%= products[i]._id%>')" >Stock</button>
-              <% } %>
-            </td>
-             </tr>
-            <% } %>
+  <div class="container-fluid position-relative d-flex p-0">
+      <div class="content">
+             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+              <a href="/admin/admin-panel" class="navbar-brand d-flex d-lg-none me-4">
+                  <h2 class="text-primary mb-0"><i class="fa fa-home"></i></h2>
+              </a>
+              <a href="#" class="sidebar-toggler flex-shrink-0 m-3">
+                  <i class="fa fa-bars"></i>
+              </a>
           
-          </tbody>
-        </table>
+          </nav>
+          <!-- Recent Sales Start -->
+          <div class="container-fluid pt-4 px-4">
+              <div class="bg-secondary text-center rounded p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                      <h2 class="mb-0">Products</h2>
+
+                      <button type="button" class="btn btn-info"><a href="/admin/addProductPage" class="text-dark">Add new
+                              product</a></button>
+
+                  </div>
+                  <div class="table-responsive">
+                      <table class="table text-start align-middle table-bordered table-hover mb-0" id="example">
+                          <thead>
+                              <tr class="text-white">
+                                <th>S.NO</th>
+            <th>Brand</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Product Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <% for(var i=0;i<products.length;i++) { %>
+                               <tr style="border-color: black;">
+            <td style="border-color: black;"> <%= i+1 %> </td>
+            <td style="border-color: black;"> <%= products[i].brandName %> </td>
+            <td style="border-color: black;"> <%= products[i].productName %> </td>
+            <td style="border-color: black;"> <%= products[i].Price %> </td>
+            <td style="border-color: black;"> <%= products[i].Quantity %></td>
+            <td style="border-color: black;"> <img src="<%= products[i].file_url %>" style="width:75px ; height:50px;" alt=""></td>
+           <td style="border-color: black;"> <a href="/admin/showEditProductPage?id=<%= products[i]._id %>" class="btn btn-success">Edit</a>  </td>
+           <td style="border-color: black;">
+            <% if(products[i].state=='active') { %> <button class="btn btn-warning" onclick="deleteProduct('<%= products[i]._id %>')" >Out Of Stock</button>
+          <% } else { %>
+            <button class="btn btn-success" onclick="inStock('<%= products[i]._id%>')" >Stock</button>
+            <% } %>
+          </td>
+           </tr>
+          <% } %>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <!-- Recent Sales End -->
       </div>
-      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-      <script>
+  </div>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script>
 
 
 
 
 
-        $(document).ready( function () {
-    $('#productsTable').DataTable();
-} );
+//       $(document).ready( function () {
+//   $('#productsTable').DataTable();
+// } );
 
 
 
-// function deleteProduct(proId){
-//   swal({
-//     title:"DELETE",
-//     text:'DO YOU WANT TO DELETE THIS CATEGORY',
-//     icon :'warning',
-//     buttons:["CANCEL","OK"],
-//   }).then(val=>{
-//     if(val){
-//       fetch('/admin/deleteProduct?id='+proId,
-//       {
-//         method:'delete'
-//       }).then(
-//         swal({
-//           title:'SUCCESS',
-//           text:'PRODUCT SUCCESSFULLY DELETED',
-//           icon:"success",
-//           button:'OK'
-//         }).then(val=>{
-//           location.reload()
-//         })
-//       )
-//     }
-//   })
-// }
+
 function deleteProduct(proId){
-  fetch('/admin/adminProductManage/softDelete?id='+proId,{
-    method:'POST',
-    headers:{'content-type':'application/json'},
-    body:JSON.stringify()
-  }).then(()=>{
-    window.location.reload();
-  }).cath((error)=>{
-    console.error('error:',error)
-  })
+fetch('/admin/adminProductManage/softDelete?id='+proId,{
+  method:'POST',
+  headers:{'content-type':'application/json'},
+  body:JSON.stringify()
+}).then(()=>{
+  window.location.reload();
+}).cath((error)=>{
+  console.error('error:',error)
+})
 }
 
 function inStock(proId){
-  fetch('/admin/adminProductManage/instock?id='+proId,{
-    method:'POST',
-    headers:{'content-type':'application/json'},
-    body:JSON.stringify()
-  }).then(()=>{
-    window.location.reload()
-  }).catch((error)=>{
-    console.error('error',error)
-  })
+fetch('/admin/adminProductManage/instock?id='+proId,{
+  method:'POST',
+  headers:{'content-type':'application/json'},
+  body:JSON.stringify()
+}).then(()=>{
+  window.location.reload()
+}).catch((error)=>{
+  console.error('error',error)
+})
 }
 
 
 
 
-      </script>
+    </script>
 
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/admin/lib/chart/chart.min.js"></script>
+  <script src="/admin/lib/easing/easing.min.js"></script>
+  <script src="/admin/lib/waypoints/waypoints.min.js"></script>
+  <script src="/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/admin/lib/tempusdominus/js/moment.min.js"></script>
+  <script src="/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    
+  <!-- Template Javascript -->
+  <script src="/admin/js/main.js"></script>
+</body>

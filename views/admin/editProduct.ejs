@@ -9,7 +9,7 @@
         <div class="row pb-5">
             <form action="/admin/updateProductDetails" method="post" enctype="multipart/form-data">
 
-                <input type="text" class="form-input" name="id" value="<%= product._id %>">
+                <input type="text" style="display:none ;" class="form-input" name="id" value="<%= product._id %>">
            
                 <div class="d-flex pe-3">
                     <div class="input-group mb-3 pe-3 w-50">
@@ -59,6 +59,10 @@
                     </div>
                     
             
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Image</label>
+                    <img width="100px" height="100px" src="<%=product.file_url %>" alt="Somthing Wrong">
                 </div>
 
                 <!-- <div class="d-flex">

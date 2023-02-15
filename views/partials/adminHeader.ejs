@@ -1,85 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Cricket Store</title>
+	<link rel="icon" href="/user/img/Fevicon.jpg" type="image/png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <!-- Montserrat Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <div class="grid-container">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-      <!-- Header -->
-      <header class="header">
-        <div class="container">
-          <div class="menu-icon" onclick="openSidebar()">
-            <span class="material-icons-outlined">menu</span>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
-            <a href="/admin/adminLogout" class="btn btn-primary btn-md active " role="button" aria-pressed="true">Log Out</a>
+    <!-- Libraries Stylesheet -->
+    <link href="/admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/admin/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3">
+        <nav class="navbar bg-secondary navbar-dark">
+            <a href="/admin/admin-panel" class="navbar-brand mx-4 mb-3">
+                <h3 class="text-primary"><i class="fa fa-admin me-2"></i>Cricket Store</h3>
+            </a>
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <img class="rounded-circle" src="/admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <div
+                        class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                    </div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0">Anurag MK</h6>
+                    <span>Admin</span>
+                </div>
             </div>
-        </div>
-      
-       
-      </header>
-      <!-- End Header -->
+            <div class="navbar-nav w-100">
+                <a href="/admin/admin-panel" data-active="adminProduct"
+                    class="nav-item nav-link  {{#if dashboard}}active{{/if}}" id="das"><i
+                        class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="/admin/adminCategory" data-active="adminProduct "
+                    class="nav-item nav-link  {{#if category}}active{{/if}}" id="cat"><i
+                        class="fa fa-cubes me-2"></i>Categories</a>
+                <a href="/admin/product" data-active="adminProduct "
+                    class="nav-item nav-link  {{#if product}}active{{/if}}" on id="pro"><i
+                        class="	fa fa-sitemap me-2"></i>Products</a>
+                <a href="/admin/adminBanner" class="nav-item nav-link  {{#if banner}}active{{/if}}"><i
+                        class="fa fa-table me-2"></i>Banner</a>
+                <a href="/admin/user-management" data-active="adminProduct "
+                    class="nav-item nav-link  {{#if userDetail}}active{{/if}}" id="use"><i
+                        class="fa fa-users me-2"></i>Users</a>
+                <a href="/admin/coupen" data-active="adminProduct "
+                    class="nav-item nav-link  {{#if coupon}}active{{/if}}" id="use"><i
+                        class="fa fa-table me-2"></i>Coupons</a>
+                <a href="/admin/orders" data-active="adminProduct "
+                    class="nav-item nav-link  {{#if order}}active{{/if}}" id="use"><i
+                        class="fa fa-chart-bar me-2"></i>Orders</a>
+                 <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                            class="fa fa-laptop me-2"></i>Elements</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="button.html" class="dropdown-item">Buttons</a>
+                        <a href="typography.html" class="dropdown-item">Typography</a>
+                        <a href="element.html" class="dropdown-item">Other Elements</a>
+                    </div>
+                </div> 
+                <a href="/admin/adminLogout" class="nav-item nav-link"><i class="fa fa-reply me-2"></i>Logout</a>
+               
+            </div>
+        </nav>
+    </div>
+    <!-- Sidebar End -->
 
-      <!-- Sidebar -->
-      <aside id="sidebar">
-        <div class="sidebar-title">
-          <div class="sidebar-brand">
-            <span class="material-icons-outlined">inventory</span> Cric Store
-          </div>
-          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-        </div>
-
-        <ul class="sidebar-list">
-             <li class="sidebar-list-item">
-              <a href="/admin/admin-panel" class="btn btn-primary" style=" width: 215px;">  Dashboard</a>
-          </li>
-        
-
-          <ul class="sidebar-list">
-            <li class="sidebar-list-item">
-             <a href="/admin/adminCategory" class="btn btn-primary"  style=" width: 215px;">  Category</a>
-         </li>
 
 
+    <script>
+        function active(button) {
+            $(".active").removeClass("active");
+            $(button).addClass("active");
+        }
+    </script>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/lib/chart/chart.min.js"></script>
+    <script src="/admin/lib/easing/easing.min.js"></script>
+    <script src="/admin/lib/waypoints/waypoints.min.js"></script>
+    <script src="/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/admin/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-          <li class="sidebar-list-item">
-            <a href="/admin/product" class="btn btn-primary"  style=" width: 215px;"> Products</a>
-          </li>
-          <li class="sidebar-list-item"> 
-        <a href="/admin/adminBanner" class="btn btn-primary"  style=" width: 218px;"> Banner </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="/admin/user-management" class="btn btn-primary"  style=" width: 218px">  Users </a> 
-          </li>
-          <li class="sidebar-list-item">
-            <a href="/admin/brandCategory" class="btn btn-primary" style=" width: 218px">Brand </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="/admin/orders" class="btn btn-primary" style=" width: 218px">Orders </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="/admin/coupen" class="btn btn-primary" style=" width: 218px">Coupens </a>
-          </li>
-          <li class="sidebar-list-item">
-          <a href="/admin/adminLogout" class="btn btn-primary" style=" width: 218px">Log out</a> 
-          </li>
-        </ul>
-      </aside>
-      <!-- End Sidebar -->
+    <!-- Template Javascript -->
+    <script src="/admin/js/main.js"></script>
+</body>
 
-     
+</html>

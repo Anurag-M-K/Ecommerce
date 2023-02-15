@@ -1,95 +1,108 @@
-<body class="bg-light " style="    overflow-x: hidden ;">
-  <main class="main-container">
-  <div class="main-title">
-    <p class="font-weight-bold">USERS</p>
+<body>
+
+  <div class="container-fluid position-relative d-flex p-0">
+      <div class="content">
+             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0 ">
+              <a href="/admin/admin-panel" class="navbar-brand d-flex d-lg-none me-4">
+                  <h2 class="text-primary mb-0"><i class="fa fa-home"></i></h2>
+              </a>
+              <a href="#" class="sidebar-toggler flex-shrink-0 m-3">
+                  <i class="fa fa-bars"></i>
+              </a>
+          
+          </nav>
+          <!-- Recent Sales Start -->
+          <div class="container-fluid pt-4 px-4">
+              <div class="bg-secondary text-center rounded p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                      <h2 class="mb-0">Users</h2> 
+
+                  </div>
+                  <div class="table-responsive">
+                      <table id="user-Table" class="table text-start align-middle table-bordered table-hover mb-0"  >
+                          <thead>
+                              <tr class="text-white">
+                                      <th>Name</th>
+            <th>Surname</th>
+            <th >Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+
+                              </tr>
+                          </thead>
+                          <tbody style="border-color: black;">
+          <% for(var i=0;i<userDetails.length;i++) { %>
+            <tr >
+             <td style="border-color: black;"> <%= userDetails[i].Name %></td>
+            <td style="border-color: black;"> <%= userDetails[i].Lname%></td>
+             <td style="border-color: black;"><%= userDetails[i].Email%></td>
+             <td style="border-color: black;"> <%= userDetails[i].Phone %></td>
+               
+              
+
+              <td>
+                <% if (userDetails[i].state=="active" ) { %>
+                  <button onclick="userBlock('<%= userDetails[i]._id %>')" 
+                   style="background:#5E4543 ;" class="btn btn-primary" >Block</button>  
+                  <% } else{ %>
+                    <button onclick="userUnBlock('<%= userDetails[i]._id %>')" style="background: #c5cf64;" class="btn btn-primary"
+                      >Unblock</button>
+                  <% } %>
+                  
+                  </td>
+            
+
+            </tr>
+            <% } %>
+
+
+
+
+        </tbody>
+                      </table>
+                  </div>
+
+
+              </div>
+          </div>
+          <!-- Recent Sales End -->
+
+      </div>
   </div>
 
-
-     
-      
-        <!--   -->
-
-
-        <table id="user-Table" class="table table-striped table-bordered"  style="border: 1px solid black; margin-top: 75px ; margin-left: 75px;"  >
-
-          <thead class="bg-secondary" >
-            <tr>
-              <th>Name</th>
-              <th>Surname</th>
-              <th style="    width: 294.681px;">Email</th>
-              <th>Phone</th>
-              <th>Actions</th>
-              
-            </tr>
-          </thead>
-          <tbody style="border-color: black;">
-            <% for(var i=0;i<userDetails.length;i++) { %>
-              <tr >
-               <td style="border-color: black;"> <%= userDetails[i].Name %></td>
-              <td style="border-color: black;"> <%= userDetails[i].Lname%></td>
-               <td style="border-color: black;"><%= userDetails[i].Email%></td>
-               <td style="border-color: black;"> <%= userDetails[i].Phone %></td>
-                 
-                
-
-                <td>
-                  <% if (userDetails[i].state=="active" ) { %>
-                    <button onclick="userBlock('<%= userDetails[i]._id %>')" 
-                     style="background:#5E4543 ;" class="btn btn-primary" >Block</button>  
-                    <% } else{ %>
-                      <button onclick="userUnBlock('<%= userDetails[i]._id %>')" style="background: #c5cf64;" class="btn btn-primary"
-                        >Unblock</button>
-                    <% } %>
-                    
-                    </td>
-              
-
-              </tr>
-              <% } %>
+<script>
+   function userBlock(userId){
+    fetch('/admin/userManagement/block',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body: JSON.stringify({userId})
+    }).then(()=>{
+      window.location.reload();
+    }).catch((error)=>{
+      console.error("error: ", error)
+    })
+   }
 
 
-
-
-          </tbody>
-        </table>
-    </div> 
-
- 
-        
-
-    <script>
-     function userBlock(userId){
-      fetch('/admin/userManagement/block',{
-        method:'POST',
-        headers:{'content-type':'application/json'},
-        body: JSON.stringify({userId})
-      }).then(()=>{
-        window.location.reload();
-      }).catch((error)=>{
-        console.error("error: ", error)
-      })
-     }
-
-
-     function userUnBlock(userId)
+   function userUnBlock(userId)
 {
-  fetch('/admin/userManagement/unblock',{
-    method : "POST",
-    headers : {'content-type':'application/json'},
-    body:JSON.stringify({userId})
-  }).then(()=>{
-    window.location.reload()
-  }).catch((error)=>{
-    console.error("error:",error)
-  })
+fetch('/admin/userManagement/unblock',{
+  method : "POST",
+  headers : {'content-type':'application/json'},
+  body:JSON.stringify({userId})
+}).then(()=>{
+  window.location.reload()
+}).catch((error)=>{
+  console.error("error:",error)
+})
 }    </script>
 
 
 <script>
-  $(document).ready( function () {
-    $('#user-Table').DataTable();
-  } );
-  </script>
-  
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+$(document).ready( function () {
+  $('#user-Table').DataTable();
+} );
+</script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 </body>

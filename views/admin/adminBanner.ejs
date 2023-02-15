@@ -1,149 +1,168 @@
-
-
-<main class="main-container">
-  <div class="main-title">
-    <p class="font-weight-bold">BANNER</p>
-  </div>
-
-
-
-<section class="home-section mt-2 ">
-  <div class="container mb-3">
-    <!-- Button trigger modal -->
-<button
-type="button"
-class="btn btn-success"
-data-bs-toggle="modal"
-data-bs-target="#exampleModal"
->
-ADD BANNER
-</button>
-<form action="/admin/addNewBanner" method="POST" enctype="multipart/form-data">
+<body id="adminCategory">
+ 
   
-<!-- Modal -->
-<div
-class="modal fade"
-id="exampleModal"
-tabindex="-1"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title text-warning" id="exampleModalLabel">ADD BANNER</h5>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="modal"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="modal-body">
-      <label for="newBannerName" class="text-primary">Banner Name : </label>
-      <input type="text" name="bannerName" id="bannerName"><br><br>
-      <label for="newBannerOffer" class="text-primary">Banner offer : </label>
-      <input type="number" name="bannerOffer" id="bannerOffer"><br><br>
-      <label for="newBannerImage" class="text-primary">ADD BANNER IMAGE</label>
-      <input type="file" name="bannerImage" id="bannerImage"><br>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Close
-      </button>
-      <button type="submit" class="btn btn-success">ADD</button>
-    </div>
-  </div>
-</div>
-</div>
-  </div>
-</form>
-  <div class="container">
-    <table class="table table-striped table-bordered" style="border: 1px solid black; margin-top: 15px;">
-      <thead class="bg-secondary">
-        <tr >
-          <th scope="col">SNO</th>
-          <th scope="col">BANNER NAME</th>
-          <th scope="col">BANNER IMAGE</th>
-          <th scope="col">DELETE BANNER</th>
-        </tr>
-      </thead>
-      <tbody  style="border-color: black;">
-         <% for(var i=0;i<banners.length;i++) { %>
-        <tr>
-          <th style="border-color: black;" scope="row"><%= i+1 %></th>
-          <td  style="border-color: black;"><%= banners[i].bannerName %></td>
-          <td  style="border-color: black;"><img src="<%= banners[i].bannerImage %>" alt="banner image" style="width:6em ; height:5em"></td>
-          <td  style="border-color: black;"><a class="btn btn-danger" onclick="deleteBanner('<%= banners[i]._id %>')">DELETE</a></td>
-        </tr>
-     <% } %>
-      </tbody>
-    </table>
-  </div>
-</section>
-</div>
-<script>
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".sidebarBtn");
-  sidebarBtn.onclick = function () {
-    sidebar.classList.toggle("active");
-    if (sidebar.classList.contains("active")) {
-      sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-    } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-  };
-
-  var myModal = document.getElementById("myModal");
-  var myInput = document.getElementById("myInput");
-
-  myModal.addEventListener("shown.bs.modal", function () {
-    myInput.focus();
-  });
-
-
-  // function deleteBanner(bannerId){
-  //   fetch("/admin/deleteBanner",{
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type':'application/JSON'
-  //     },
-  //     body:JSON.stringify({
-  //       bannerId
-  //     })
-  //   }).then(()=>{
-  //     window.location.href='/adminBannerPage'
+  <form action="/admin/addNewBanner" method="POST" enctype="multipart/form-data">
     
-  //   })
-  // }
-
-  function deleteBanner(bannerId){
-    console.log("banner id fetch:",bannerId);
-    swal({
-      title:'DELETE',
-      text:'DO YOU WANT TO DELETE THIS CATEGORY',
-      icon :'warning',
-      buttons:["CANCEL","OK"],
-    }).then(val=>{
-      if(val){
-        fetch('/admin/deleteBanner',
-        {
-          method:'delete',
-          headers:{'content-type':'application/JSON'},
-          body:JSON.stringify({
-            bannerId
-          })
-        }).then(
-          swal({
-            title:'SUCCESS',
-            text:'BANNER SUCCESSFULLY DELETED',
-            icon:'success',
-            button:'OK'
-          }).then(val=>{
-            location.reload()
-          })
-        )
-      }
-    })
-  }
-</script>
-
-
+  <!-- Modal -->
+  <div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="exampleModalLabel">ADD BANNER</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <label for="newBannerName" class="text-primary">Banner Name : </label>
+        <input type="text" name="bannerName" id="bannerName"><br><br>
+        <label for="newBannerOffer" class="text-primary">Banner offer : </label>
+        <input type="number" name="bannerOffer" id="bannerOffer"><br><br>
+        <label for="newBannerImage" class="text-primary">ADD BANNER IMAGE</label>
+        <input type="file" name="bannerImage" id="bannerImage"><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-success">ADD</button>
+      </div>
+    </div>
+  </div>
+  </div>
+    </div>
+  </form>
+      <div class="container-fluid position-relative d-flex p-0">
+          <div class="content">
+                 <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                  <a href="/admin/admin-panel" class="navbar-brand d-flex d-lg-none me-4">
+                      <h2 class="text-primary mb-0"><i class="fa fa-home"></i></h2>
+                  </a>
+                  <a href="#" class="sidebar-toggler flex-shrink-0 m-3">
+                      <i class="fa fa-bars"></i>
+                  </a>
+              
+              </nav>
+              <!-- Recent Sales Start -->
+              <div class="container-fluid pt-4 px-4">
+                
+                  <div class="bg-secondary text-center rounded p-4">
+                      <div class="d-flex align-items-center justify-content-between mb-4">
+                       
+                        <h2 class="mb-0">Banner Details</h2> <button
+  type="button"
+  class="btn btn-success"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  >
+  ADD BANNER
+  </button>
+                         
+                         
+                      </div>
+                      <div class="table-responsive">
+                          <table class="table text-start align-middle table-bordered table-hover mb-0" >
+                              <thead>
+                              <tr >
+            <th scope="col">SNO</th>
+            <th scope="col">BANNER NAME</th>
+            <th scope="col">BANNER IMAGE</th>
+            <th scope="col">DELETE BANNER</th>
+          </tr>
+                              </thead>
+                             <tbody  style="border-color: black;">
+           <% for(var i=0;i<banners.length;i++) { %>
+          <tr>
+            <th style="border-color: black;" scope="row"><%= i+1 %></th>
+            <td  style="border-color: black;"><%= banners[i].bannerName %></td>
+            <td  style="border-color: black;"><img src="<%= banners[i].bannerImage %>" alt="banner image" style="width:6em ; height:5em"></td>
+            <td  style="border-color: black;"><a class="btn btn-danger" style="color: white;" onclick="deleteBanner('<%= banners[i]._id %>')">DELETE</a></td>
+          </tr>
+       <% } %>
+        </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+              <!-- Recent Sales End -->
+          </div>
+      </div>
+      
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    };
+  
+    var myModal = document.getElementById("myModal");
+    var myInput = document.getElementById("myInput");
+  
+    myModal.addEventListener("shown.bs.modal", function () {
+      myInput.focus();
+    });
+  
+  
+    function deleteBanner(bannerId){
+      console.log("banner id fetch:",bannerId);
+      swal({
+        title:'DELETE',
+        text:'DO YOU WANT TO DELETE THIS CATEGORY',
+        icon :'warning',
+        buttons:["CANCEL","OK"],
+      }).then(val=>{
+        if(val){
+          fetch('/admin/deleteBanner',
+          {
+            method:'delete',
+            headers:{'content-type':'application/JSON'},
+            body:JSON.stringify({
+              bannerId
+            })
+          }).then(
+            swal({
+              title:'SUCCESS',
+              text:'BANNER SUCCESSFULLY DELETED',
+              icon:'success',
+              button:'OK'
+            }).then(val=>{
+              location.reload()
+            })
+          )
+        }
+      })
+    }
+  </script>
+  
+  
+  
+  
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="/admin/lib/chart/chart.min.js"></script>
+      <script src="/admin/lib/easing/easing.min.js"></script>
+      <script src="/admin/lib/waypoints/waypoints.min.js"></script>
+      <script src="/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="/admin/lib/tempusdominus/js/moment.min.js"></script>
+      <script src="/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+      <script src="/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  
+      <!-- Template Javascript -->
+      <script src="/admin/js/main.js"></script>
+  
+  </body>
+  
+  </html>
