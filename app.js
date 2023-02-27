@@ -60,9 +60,7 @@ db.connect((err)=>{
     else console.log("database connected successfully")
 })
 
-// app.use(function(req,res,next){
-//    res.status(404).send("page not found")
-// })
+
 
 
 

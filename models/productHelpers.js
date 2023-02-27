@@ -53,7 +53,6 @@ module.exports = {
         })
     },
     updateProductDetails : (file_url,productId,productDetails,productImage )=>{
-        console.log("log",productDetails)
        
        
         
@@ -72,7 +71,6 @@ module.exports = {
                 },
             }).then((response)=>{
                 resolve(response)
-                console.log("response ofn image :",response);
             })
         })
     },
@@ -90,7 +88,6 @@ module.exports = {
         })
     },
     softDelete : (proDetails)=>{
-        console.log("id in model:",proDetails);
         return new Promise((resolve,reject)=>{
             db.get().collection(collections.PRODUCT_COLLECTION).updateOne({
                 _id:ObjectId(proDetails)
@@ -99,7 +96,6 @@ module.exports = {
                 $set:{state:'deleted'}
             }).then((response)=>{
                 resolve(response)
-                console.log("response",response);
             })
         })
     },

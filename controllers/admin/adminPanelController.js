@@ -12,10 +12,7 @@ const orderStatus = (req,res)=>{
                 placed = values.count
             }else if(values._id.status == 'pending'){
                 pending=values.count
-            // }else if(values._id.status == 'Delivered'){
-            //     delivered = values.count
-            // }else if(values._id.status == 'Cancelled'){
-            //     cancelled = values.count
+        
             }
         }
         

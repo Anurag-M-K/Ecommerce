@@ -22,16 +22,26 @@ const contactUs = async(req,res)=>{
 
 const aboutPage = async(req,res)=>{
     let userData = req.session.user 
+    console.log("userid ",userData)
+    if(userData){
 
-   
-        let totalAmount = await userHelper.getTotalAmount(req.session.user._id)
-       
-        let products = await userHelper.getCartProducts(req.session.user._id)
+        try {
+            
+            let totalAmount = await userHelper.getTotalAmount(req.session.user._id)
+            
+            let products = await userHelper.getCartProducts(req.session.user._id)
             let  cartCount = await  userHelper.getCartCount(req.session.user._id)
             categoryHelper.getAllCategories().then((CategoryDetails) => {
-
+                
                 res.render('users/aboutUs',{user:true,admin:false,userData,totalAmount,products,cartCount,CategoryDetails})
             })
+        } catch (error) {
+            console.log(error)
+        }
+    }else{
+        res.redirect("/userLogin")
+    }
+   
         
 }
 

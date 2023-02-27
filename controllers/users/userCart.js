@@ -56,8 +56,7 @@ const productCount = (req, res, next) => {
     
     userHelper.getTotalAmount(userData._id).then((result) => {
       // let totalAmount = result.totalAmount;
-     console.log("here totoal :",result);
-     console.log("response:",response)
+   
 userCartHelper.getCart(req.session.user._id).then((cart)=>{
  
   res.json({ response, result});

@@ -4,7 +4,6 @@ const ObjectId = require("mongodb").ObjectID;
 const db = require("../../config/connection");
 const bcrypt = require("bcrypt");
 const collection = require("../../config/collection");
-const { log } = require("console");
 const { ObjectID } = require("bson");
 
 module.exports = {
@@ -19,7 +18,6 @@ module.exports = {
   ) => {
     return new Promise(async (resolve, reject) => {
       Password = await bcrypt.hash(Password, 10);
-      console.log(Password);
       db.get()
         .collection(collection.USER_COLLECTION)
         .insertOne({ verified, Name, Email, Password, Lname, Phone, state })
@@ -38,7 +36,6 @@ module.exports = {
         .findOne({ Name: userdata.username });
 
       if (user) {
-        console.log("user found");
         if (user.verified == 1 && user.state == "active") {
           bcrypt.compare(userdata.Password, user.Password).then((status) => {
             if (status) {
@@ -139,14 +136,12 @@ module.exports = {
     });
   },
   getAddress: (userId) => {
-    console.log("userId", userId);
     return new Promise(async (resolve, reject) => {
       const addressList = await db
         .get()
         .collection(collection.USER_ADDRESS_COLLECTION)
         .findOne({ user: ObjectId(userId) });
       resolve(addressList);
-      console.log("response : : :", addressList);
     });
   },
 };

@@ -130,7 +130,6 @@ const updateProductDetailsAction = (req,res)=>{
 
 const softDelete = (req,res)=>{
     const proDetails = req.query.id
-    console.log("prodetails",req.query.id);
     productHelper.softDelete(proDetails).then((response)=>{
         res.json({status:true})
     })
@@ -139,7 +138,6 @@ const softDelete = (req,res)=>{
 
 const stock = (req,res)=>{
     const proDetails = req.query.id
-    console.log("id",proDetails)
     productHelper.InStock(proDetails).then((response)=>{
         res.json({status:true})
     })

@@ -109,7 +109,6 @@ const signupFromHome = (req, res) => {
 //session controller
 const userSessionController = (req, res) => {
   let userData = req.session.user;
-  console.log("Login Page");
 
   userHelper.userDoLogin(req.body).then((response) => {
     
@@ -164,7 +163,6 @@ const userSignupBcrypt = (req, res) => {
 //nodemailer email sending
 const checkOtp = (req, res) => {
   console.log(OTP);
-  console.log(req.body);
   if (OTP == req.body.otpSend) {
     userHelper.updateVerified(userId).then((response) => {
       console.log("success");

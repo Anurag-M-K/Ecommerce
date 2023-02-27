@@ -19,7 +19,6 @@ const applyCoupen = async (req, res) => {
         });
     
   } else {
-    console.log("response3", response);
     res.json(response);
   }
 };

@@ -46,7 +46,7 @@ adminOrderModel.getAllOrderedPoducts(proId).then((orderProducts)=>{
  
 
 
-  res.render('admin/orderProductsPage',{admin:true,user:false,orderProducts})
+  res.render('admin/orderProductsPage',{admin:false,user:false,orderProducts})
   
 })
 
