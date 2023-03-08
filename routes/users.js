@@ -46,7 +46,6 @@ router.get("/users/deleteWishlist", wishlistController.deleteProduct);
 router.get("/addtocartWishList/:id", wishlistController.addToCartWishlist);
 
 //checkout
-// router.get('/addressPayment',userCheckOut.showCheckoutPage)
 router.post("/place-order", userCheckOut.checkOut);
 
 //category based page

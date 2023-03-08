@@ -18,8 +18,6 @@ let cart = async (req, res) => {
   if (userData) {
     cartCount = await userHelper.getCartCount(req.session.user._id);
     let products = await userHelper.getCartProducts(req.session.user._id);
-    // let cart  = await userCartHelper.getCart(req.session.user._id)
-
     let totalAmount = 0;
     if (products.length > 0) {
       totalAmount = 0;

@@ -49,29 +49,36 @@
             </div>
             
 
-        </div <br><b>
+        </div> <br><b>
     </div>
 </div>
 
 
 <script>
-    	function addToCart(proId) {
-				$.ajax({
-					url: '/addtocartWishList/' + proId,
-					method: 'get',
-					success: (response) => {
-                        console.log("response :",response);
-						if (response.status) {
-							let count = $('#cart-count').html()
-							count = parseInt(count) + 1
-							$("#cart-count").html(count)
-						}
+            function addToCart(proId){
+		swal({
+title: "Good job!",
+text: "You Added to Cart!",
+icon: "success",
+});
+$.ajax({
 
-					}
-				})
-			}
+	// url:'/add-to-cart/'+proId,
+
+	method:'get',
+	success:(response)=>{
+
+		 if(response.status){
+			let count = $('#cart-count').html()
+			count = parseInt(count)+1
+			$('#cart-count').html(count)
+		}
+	
+	}
+})
+ 
+}
 </script>
-
 
 
 

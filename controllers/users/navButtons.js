@@ -22,7 +22,6 @@ const contactUs = async(req,res)=>{
 
 const aboutPage = async(req,res)=>{
     let userData = req.session.user 
-    console.log("userid ",userData)
     if(userData){
 
         try {

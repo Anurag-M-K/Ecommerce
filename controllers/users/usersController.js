@@ -165,7 +165,6 @@ const checkOtp = (req, res) => {
   console.log(OTP);
   if (OTP == req.body.otpSend) {
     userHelper.updateVerified(userId).then((response) => {
-      console.log("success");
       console.log(OTP);
       res.redirect("/");
     });

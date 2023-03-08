@@ -161,7 +161,6 @@ module.exports = {
     details.Price = parseInt(details.Price)
     details.count = parseInt(details.count);
     details.quantity = parseInt(details.quantity);
-    console.log("details:",details.Price);
     return new Promise((resolve, reject) => {
       if (details.count == -1 && details.quantity == 1) {
         db.get()
@@ -194,7 +193,6 @@ module.exports = {
           )
           .then((response) => {
             resolve({ status: true });
-            console.log("response  from mmodel :",response);
             
           });
       }
@@ -467,7 +465,6 @@ module.exports = {
     });
   },
   getCart:(id)=>{
-    console.log("id",id);
     return new Promise(async(resolve,reject)=>{
       let cart = await db.get().collection(collection.CART_COLLECTION).find({user:ObjectId(id)}).toArray()
 
@@ -484,7 +481,6 @@ module.exports = {
         }
       ]).toArray()
         resolve(cartpro)
-        console.log("sdgsdfgsdfg",cartpro);
       })
 
 
